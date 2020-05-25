@@ -11,6 +11,7 @@ class _1_TwoSum {
 
     /**
      * 将目标数字作为键(第一次见到这种解法，居然有些懵逼😄）
+     * 将当前数字视为当前数字。。。哈哈
      */
     public int[] twoSum1(int[] nums, int target) {
         if (nums == null || nums.length < 2) {
@@ -32,6 +33,7 @@ class _1_TwoSum {
 
     /**
      * 将自己作为键
+     * 将当前数字视为目标数字
      */
     public int[] twoSum2(int[] nums, int target) {
         if (nums == null || nums.length < 2) {
