@@ -1,12 +1,14 @@
+import java.util.HashSet;
+
 /**
  * Definition for singly-linked list.
  * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
+ * int val;
+ * ListNode next;
+ * ListNode(int x) {
+ * val = x;
+ * next = null;
+ * }
  * }
  */
 public class _141_HasCycle {
@@ -17,7 +19,7 @@ public class _141_HasCycle {
 
 
         HashSet<ListNode> set = new HashSet<>();
-        while(head != null) {
+        while (head != null) {
             if (set.contains(head)) {
                 return true;
             }
@@ -27,4 +29,14 @@ public class _141_HasCycle {
         return false;
     }
 
+    private static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
+    }
 }
+

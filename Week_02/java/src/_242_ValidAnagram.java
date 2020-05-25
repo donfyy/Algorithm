@@ -1,5 +1,10 @@
 import java.util.Arrays;
-
+/**
+ * 第一遍：2020/05/25周一 ✅
+ * 第二遍：2020/05/26周二
+ * 第三遍：2020/06/01周一
+ * 第四遍：2020/06/15周一
+ */
 public class _242_ValidAnagram {
     /**
      * time:O(nlogn) space:O(n) String.toCharArray() 创建了一个新的字符数组

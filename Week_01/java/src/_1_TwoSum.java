@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class _1_TwoSum {
     public int[] twoSum(int[] nums, int target) {
         if (nums == null || nums.length < 2) {

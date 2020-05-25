@@ -1,4 +1,6 @@
-class _239_SlidingWindowMaximum {
+import java.util.LinkedList;
+
+class _20_ValidParentheses {
     
     public boolean isValid(String s) {
         if (s == null) {

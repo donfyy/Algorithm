@@ -1,4 +1,6 @@
-class _20_ValidParentheses {
+import java.util.LinkedList;
+
+class _155_MinStack {
     
     public boolean isValid(String s) {
         if (s == null) {

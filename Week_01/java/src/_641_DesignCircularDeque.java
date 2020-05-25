@@ -3,15 +3,19 @@ class _641_DesignCircularDeque {
     private int head;
     private int tail;
 
-    /** Initialize your data structure here. Set the size of the deque to be k. */
+    /**
+     * Initialize your data structure here. Set the size of the deque to be k.
+     */
     public _641_DesignCircularDeque(int k) {
         if (k < 1) {
             throw new RuntimeException("k cannot less than 1");
         }
         array = new int[k + 1];
     }
-    
-    /** Adds an item at the front of Deque. Return true if the operation is successful. */
+
+    /**
+     * Adds an item at the front of Deque. Return true if the operation is successful.
+     */
     public boolean insertFront(int value) {
         int expectedHead = getPreviousIndex(head);
         if (expectedHead == tail) {
@@ -22,19 +26,23 @@ class _641_DesignCircularDeque {
         return true;
 
     }
-    
-    /** Adds an item at the rear of Deque. Return true if the operation is successful. */
+
+    /**
+     * Adds an item at the rear of Deque. Return true if the operation is successful.
+     */
     public boolean insertLast(int value) {
         int expectedTail = getNextIndex(tail);
         if (expectedTail == head) {
             return false;
-        }    
+        }
         array[tail] = value;
         tail = expectedTail;
         return true;
     }
-    
-    /** Deletes an item from the front of Deque. Return true if the operation is successful. */
+
+    /**
+     * Deletes an item from the front of Deque. Return true if the operation is successful.
+     */
     public boolean deleteFront() {
         if (isEmpty()) {
             return false;
@@ -43,8 +51,10 @@ class _641_DesignCircularDeque {
         head = getNextIndex(head);
         return true;
     }
-    
-    /** Deletes an item from the rear of Deque. Return true if the operation is successful. */
+
+    /**
+     * Deletes an item from the rear of Deque. Return true if the operation is successful.
+     */
     public boolean deleteLast() {
         if (isEmpty()) {
             return false;
@@ -53,30 +63,38 @@ class _641_DesignCircularDeque {
         tail = getPreviousIndex(tail);
         return true;
     }
-    
-    /** Get the front item from the deque. */
+
+    /**
+     * Get the front item from the deque.
+     */
     public int getFront() {
         if (isEmpty()) {
             return -1;
         }
         return array[head];
     }
-    
-    /** Get the last item from the deque. */
+
+    /**
+     * Get the last item from the deque.
+     */
     public int getRear() {
         if (isEmpty()) {
             return -1;
         }
         return array[getPreviousIndex(tail)];
     }
-    
-    /** Checks whether the circular deque is empty or not. */
+
+    /**
+     * Checks whether the circular deque is empty or not.
+     */
     public boolean isEmpty() {
         return head == tail;
 
     }
-    
-    /** Checks whether the circular deque is full or not. */
+
+    /**
+     * Checks whether the circular deque is full or not.
+     */
     public boolean isFull() {
         return head == getNextIndex(tail);
     }
@@ -84,6 +102,7 @@ class _641_DesignCircularDeque {
     private int getNextIndex(int index) {
         return (index + 1) % array.length;
     }
+
     private int getPreviousIndex(int index) {
         return (index - 1 + array.length) % array.length;
     }
