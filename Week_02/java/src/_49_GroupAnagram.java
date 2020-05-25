@@ -57,7 +57,7 @@ public class _49_GroupAnagram {
      * 即：每个大于1的自然数，要么本身就是质数，要么可以写为2个以上的质数的积，而且这些质因子按大小排列之后，写法仅有一种方式。
      * 思路：以字符串的质数积作为哈希表的键。
      * 时间：O(nk)
-     * 空间：O(nk)
+     * 空间：O(n)
      * 缺点：乘积容易溢出
      */
     public List<List<String>> groupAnagrams3(String[] strs) {
