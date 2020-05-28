@@ -1,0 +1,121 @@
+    //该函数用于计算key的哈希码
+    static final int hash(Object key) {
+        int h;
+        //⚠️：这里并没有直接返回key.hashCode()，这么做是为了减少哈希冲突，至于原理我不懂😓
+        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+    }
+    //put调用了putVal
+    public V put(K key, V value) {
+        return putVal(hash(key), key, value, false, true);
+    }
+    final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+                   boolean evict) {
+        Node<K,V>[] tab; Node<K,V> p; int n, i;
+        if ((tab = table) == null || (n = tab.length) == 0)
+            // 若Node数组为null或者其长度为0则扩容数组
+            n = (tab = resize()).length;
+        // 将key的哈希码与上数组的长度减一得到key在数组中的索引i
+        if ((p = tab[i = (n - 1) & hash]) == null)
+            //若下标i处没有Node，换言之，没有产生哈希冲突，则新建一个Node，存放在i处
+            tab[i] = newNode(hash, key, value, null);
+        else {
+            //i处存在了Node，e表示与key相同的存在表中的Node，k用来记录某个Node的key
+            Node<K,V> e; K k;
+            if (p.hash == hash &&
+                ((k = p.key) == key || (key != null && key.equals(k))))
+                //位于i处的Node的key与要插入的key相同
+                e = p;
+            else if (p instanceof TreeNode)
+                //i处的Node是一个TreeNode，则执行红黑树的插入操作，并返回已存在的与key相等的TreeNode
+                e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
+            else {
+                //遍历链表
+                for (int binCount = 0; ; ++binCount) {
+                    if ((e = p.next) == null) {
+                        //在链表的尾部插入为key,value新建的Node
+                        p.next = newNode(hash, key, value, null);
+                        if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st
+                            //如果链表中的节点数目超过TREEIFY_THRESHOLD(8)那么将链表转换成红黑树
+                            treeifyBin(tab, hash);
+                        break;
+                    }
+                    if (e.hash == hash &&
+                        ((k = e.key) == key || (key != null && key.equals(k))))
+                        //找到了已存在的与key相等的Node
+                        break;
+                    p = e;
+                }
+            }
+            if (e != null) { // existing mapping for key
+                //数组中存在key对应的Node
+                V oldValue = e.value;
+                if (!onlyIfAbsent || oldValue == null)
+                    //onlyIfAbsent表示如果value已经存在那么不更新value
+                    //若总是更新value或者value缺席，那么更新value
+                    e.value = value;
+                afterNodeAccess(e);
+                //返回旧值
+                return oldValue;
+            }
+        }
+        //⚠️：只有在哈希表中真正增加了一个Node，才会增加modCount的值
+        ++modCount;
+        if (++size > threshold)
+            //若Node的数目超过了threshold(这个阈值由数组长度与加载因子决定)，那么扩容数组
+            resize();
+        afterNodeInsertion(evict);
+        return null;
+    }
+    //remove调用了removeNode
+    public V remove(Object key) {
+        Node<K,V> e;
+        return (e = removeNode(hash(key), key, null, false, true)) == null ?
+            null : e.value;
+    }
+    //读完了putVal函数便清楚：若产生哈希冲突，如果冲突处的节点数目不超过8，则用链表存储节点，否则用红黑树来存储。
+    //在插入一个节点时，若节点数目超出8，则将链表转换成红黑树，反之，删除节点时，会将红黑树转换成链表吗？盲猜会。。。
+    final Node<K,V> removeNode(int hash, Object key, Object value,
+                                   boolean matchValue, boolean movable) {
+            Node<K,V>[] tab; Node<K,V> p; int n, index;
+            if ((tab = table) != null && (n = tab.length) > 0 &&
+                (p = tab[index = (n - 1) & hash]) != null) {
+                //若节点数组不为null，并且节点数组的长度大于0，并且key对应的索引处存在节点
+                Node<K,V> node = null, e; K k; V v;
+                if (p.hash == hash &&
+                    ((k = p.key) == key || (key != null && key.equals(k))))
+                    //i处的节点就是要删除的节点
+                    node = p;
+                else if ((e = p.next) != null) {
+                    if (p instanceof TreeNode)
+                        //从红黑树中查询key对应的节点
+                        node = ((TreeNode<K,V>)p).getTreeNode(hash, key);
+                    else {
+                        //顺序遍历链表，查找key对应的节点
+                        do {
+                            if (e.hash == hash &&
+                                ((k = e.key) == key ||
+                                 (key != null && key.equals(k)))) {
+                                node = e;
+                                break;
+                            }
+                            p = e;
+                        } while ((e = e.next) != null);
+                    }
+                }
+                if (node != null && (!matchValue || (v = node.value) == value ||
+                                     (value != null && value.equals(v)))) {
+
+                    if (node instanceof TreeNode)
+                        ((TreeNode<K,V>)node).removeTreeNode(this, tab, movable);
+                    else if (node == p)
+                        tab[index] = node.next;
+                    else
+                        p.next = node.next;
+                    ++modCount;
+                    --size;
+                    afterNodeRemoval(node);
+                    return node;
+                }
+            }
+            return null;
+        }
