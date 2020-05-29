@@ -104,13 +104,17 @@
                 }
                 if (node != null && (!matchValue || (v = node.value) == value ||
                                      (value != null && value.equals(v)))) {
-
+                    //要移除的key存在于哈希表中
                     if (node instanceof TreeNode)
+                        //从红黑树中移除该节点
                         ((TreeNode<K,V>)node).removeTreeNode(this, tab, movable);
                     else if (node == p)
+                        //重置表中的头节点
                         tab[index] = node.next;
                     else
+                        //从链表中移除该节点
                         p.next = node.next;
+                    //修改数量增加
                     ++modCount;
                     --size;
                     afterNodeRemoval(node);
