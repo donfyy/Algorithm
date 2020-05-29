@@ -81,7 +81,7 @@
             null : e.value;
     }
     //读完了putVal函数便清楚：若产生哈希冲突，如果冲突处的节点数目不超过8，则用链表存储节点，否则用红黑树来存储。
-    //在插入一个节点时，若节点数目超出8，则将链表转换成红黑树，反之，删除节点时，会将红黑树转换成链表吗？盲猜会。。。
+    //在插入一个节点时，若节点数目超出8，则将链表转换成红黑树，反之，删除节点时，会将红黑树转换成链表吗？盲猜会。。。其实不会的，没必要
     final Node<K,V> removeNode(int hash, Object key, Object value,
                                    boolean matchValue, boolean movable) {
             Node<K,V>[] tab; Node<K,V> p; int n, index;
