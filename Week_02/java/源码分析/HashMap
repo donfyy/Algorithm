@@ -1,3 +1,9 @@
+    总结下：
+    HashMap的实现：数组+链表+红黑树
+    //todo:
+
+
+
     //该函数用于计算key的哈希码
     static final int hash(Object key) {
         int h;
