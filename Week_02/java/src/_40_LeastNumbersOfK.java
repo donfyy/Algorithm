@@ -1,3 +1,4 @@
+import java.util.PriorityQueue;
 import java.util.Random;
 
 /**
@@ -8,11 +9,45 @@ import java.util.Random;
  */
 class _40_LeastNumbersOfK {
     /**
+     * 使用堆来保存最小的k个数
+     * 时间：O(nlogk) 空间：O(k)
+     * @param arr
+     * @param k
+     * @return
+     */
+    public int[] getLeastNumbers1(int[] arr, int k) {
+        if (arr == null || k <= 0 || arr.length < k) {
+            return new int[0];
+        }
+
+        PriorityQueue<Integer> queue = new PriorityQueue<>((l, r) -> r - l);
+
+        for (int i = 0; i < arr.length; i++) {
+            if (queue.size() < k) {
+                queue.offer(arr[i]);
+            } else {
+                int max = queue.peek();
+                if (arr[i] < max) {
+                    queue.poll();
+                    queue.offer(arr[i]);
+                }
+            }
+        }
+
+        int[] ret = new int[k];
+        int idx = 0;
+        for (int i : queue) {
+            ret[idx++] = i;
+        }
+        return ret;
+    }
+
+    /**
      * 这是基于partition函数的解法，不能说成快排，和快排思想类似，但不是快排，只是一次分组。
      * 时间：O(n) 最差：O(n^2)
      * 空间：O(1)
      */
-    public int[] getLeastNumbers(int[] arr, int k) {
+    public int[] getLeastNumbers2(int[] arr, int k) {
         if (arr == null || k < 1 || arr.length < k) {
             return new int[0];
         }
