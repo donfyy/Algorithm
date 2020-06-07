@@ -22,15 +22,14 @@ class _169_MajorityElements {
         int count = 1;
 
         for (int i = 1; i < nums.length; i++) {
-            if (current == nums[i]) {
+            if (count == 0) {
+                count = 1;
+                current = nums[i];
+            } else if (current == nums[i]) {
                 count++;
             } else {
-                if (--count == 0) {
-                    current = nums[i];
-                    count = 1;
-                }
+                count--;
             }
-
         }
 
         return current;
