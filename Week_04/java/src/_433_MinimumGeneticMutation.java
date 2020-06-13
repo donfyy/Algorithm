@@ -1,6 +1,7 @@
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+
 /**
  * 第一遍：2020/06/11周四 ✅
  * 第二遍：2020/06/12周二
@@ -9,34 +10,34 @@ import java.util.List;
  * 没彻底理解，需要多做几遍。
  */
 class _433_MinimumGeneticMutation {
-    int minStepCount = Integer.MAX_VALUE;
+    int minLevel = Integer.MAX_VALUE;
 
-    public int minMutation1(String start, String end, String[] bank) {
+    public int minMutationDfs1(String start, String end, String[] bank) {
+        if (start == null || end == null || start.length() != end.length() || bank == null || bank.length == 0) {
+            return -1;
+        }
+
         dfs(new HashSet<String>(), 0, start, end, bank);
-        return (minStepCount == Integer.MAX_VALUE) ? -1 : minStepCount;
+        return minLevel == Integer.MAX_VALUE ? -1 : minLevel;
     }
 
-    void dfs(HashSet<String> set, int step, String current, String end, String[] bank) {
+    void dfs(HashSet<String> visited, int level, String current, String end, String[] bank) {
         if (current.equals(end)) {
-            minStepCount = Math.min(step, minStepCount);
-            if (step > minStepCount) {
-                return;
-            }
+            minLevel = Math.min(minLevel, level);
+            return;
         }
 
         for (String str : bank) {
             int diff = 0;
             for (int i = 0; i < str.length(); i++) {
-                if (current.charAt(i) != str.charAt(i) && ++diff > 1) {
-                    break;
-                }
-            }
-            if (diff == 1 && !set.contains(str)) {
-                set.add(str);
-                dfs(set, step + 1, str, end, bank);
-                set.remove(str);
+                if (str.charAt(i) != current.charAt(i) && ++diff > 1) break;
             }
 
+            if (diff == 1 && !visited.contains(str)) {
+                visited.add(str);
+                dfs(visited, level + 1, str, end, bank);
+                visited.remove(str);
+            }
         }
     }
 
