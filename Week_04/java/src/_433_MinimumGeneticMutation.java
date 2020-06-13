@@ -1,13 +1,19 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 第一遍：2020/06/11周四 ✅
+ * 第二遍：2020/06/13周六 ✅
  * 第二遍：2020/06/12周二
  * 第三遍：2020/06/18周四
  * 第四遍：2020/07/02周四
  * 没彻底理解，需要多做几遍。
+ * 获取一次基因变化后的结果有两种方式
+ * 1.将当前基因某个碱基逐个替换为候选碱基，然后判断替换后的基因是否在基因库中。
+ * 2.遍历基因库找到与当前基因只相差一个碱基的基因。
+ * 因此这道题的bfs和dfs解法至少有4种，在算上bfs的3种写法，一共可以有8种解法。
+ * 2种基因变化的方式是8种解法的核心。
+ * 需要考虑去重的原因是基因变化是一张图，而不是一棵树。第i个碱基在当前层可以从A变成B
+ * 在下一层的时候又会从B变成A，因此我们要记录已经访问的基因，也就是要去重。
  */
 class _433_MinimumGeneticMutation {
     int minLevel = Integer.MAX_VALUE;
@@ -37,6 +43,280 @@ class _433_MinimumGeneticMutation {
                 visited.add(str);
                 dfs(visited, level + 1, str, end, bank);
                 visited.remove(str);
+            }
+        }
+    }
+
+    public int minMutationBfs4(String start, String end, String[] bank) {
+        if (start == null || end == null || start.length() != end.length() || bank == null || bank.length == 0)
+            return -1;
+
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(start);
+        HashSet<String> visited = new HashSet<>();
+
+        int level = 0;
+        while (!queue.isEmpty()) {
+            int levelCount = queue.size();
+            while (levelCount-- > 0) {
+                String curr = queue.poll();
+                if (curr.equals(end)) return level;
+
+                for (String next : bank) {
+                    int diff = 0;
+                    for (int i = 0; i < curr.length(); i++) {
+                        if (curr.charAt(i) != next.charAt(i) && ++diff > 1) break;
+                    }
+
+                    if (diff == 1 && !visited.contains(next)) {
+                        visited.add(next);
+                        queue.offer(next);
+                    }
+                }
+            }
+            level++;
+        }
+
+        return -1;
+    }
+
+    public int minMutationBfs5(String start, String end, String[] bank) {
+        if (start == null || end == null || start.length() != end.length() || bank == null || bank.length == 0)
+            return -1;
+
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(start);
+        HashSet<String> visited = new HashSet<>();
+
+        int level = 0, cl = 1, nl = 0;
+
+        while (!queue.isEmpty()) {
+            String curr = queue.poll();
+            if (curr.intern() == end.intern()) return level;
+            for (String next : bank) {
+                int diff = 0;
+                for (int i = 0; i < next.length(); i++) {
+                    if (next.charAt(i) != curr.charAt(i) && ++diff > 1) break;
+                }
+                if (diff == 1 && !visited.contains(next)) {
+                    visited.add(next);
+                    queue.offer(next);
+                    nl++;
+                }
+            }
+
+            cl--;
+            if (cl == 0) {
+                level++;
+                cl = nl;
+                nl = 0;
+            }
+        }
+
+        return -1;
+    }
+
+    public int minMutationBfs6(String start, String end, String[] bank) {
+        if (start == null || end == null || start.length() != end.length() || bank == null || bank.length == 0)
+            return -1;
+
+        Queue<String> cl = new LinkedList<>();
+        Queue<String> nl = new LinkedList<>();
+        HashSet<String> visited = new HashSet<>();
+        cl.offer(start);
+        int level = 0;
+        while (!cl.isEmpty()) {
+            String curr = cl.poll();
+            if (curr.intern() == end.intern()) return level;
+
+            for (String next : bank) {
+                int diff = 0;
+                for (int i = 0; i < next.length(); i++) {
+                    if (next.charAt(i) != curr.charAt(i) && ++diff > 1) break;
+                }
+                if (diff == 1 && !visited.contains(next)) {
+                    visited.add(next);
+                    nl.offer(next);
+                }
+            }
+
+            if (cl.isEmpty()) {
+                Queue<String> temp = cl;
+                cl = nl;
+                nl = temp;
+
+                level++;
+            }
+        }
+        return -1;
+    }
+
+    public int minMutationBfs1(String start, String end, String[] bank) {
+        if (start == null || end == null || start.length() != end.length() || bank == null || bank.length == 0) {
+            return -1;
+        }
+        HashSet<String> bankSet = new HashSet<>(bank.length);
+        Collections.addAll(bankSet, bank);
+
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(start);
+        HashSet<String> visited = new HashSet<>();
+        int level = 0;
+
+        char[] change = new char[]{'A', 'C', 'G', 'T'};
+
+        while (!queue.isEmpty()) {
+            int levelCount = queue.size();
+            while (levelCount-- > 0) {
+                String current = queue.poll();
+                if (current.equals(end)) return level;
+
+                char[] currentCharArray = current.toCharArray();
+                for (int i = 0; i < currentCharArray.length; i++) {
+                    char oldChar = currentCharArray[i];
+                    for (char c : change) {
+                        currentCharArray[i] = c;
+                        String nextCurrent = new String(currentCharArray);
+                        if (!visited.contains(nextCurrent) && bankSet.contains(nextCurrent)) {
+                            visited.add(nextCurrent);
+                            queue.offer(nextCurrent);
+                        }
+                    }
+                    currentCharArray[i] = oldChar;
+                }
+            }
+            level++;
+        }
+
+        return -1;
+    }
+
+    public int minMutationBfs2(String start, String end, String[] bank) {
+        if (start == null || end == null || start.length() != end.length() || bank == null || bank.length == 0)
+            return -1;
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(start);
+        int level = 0;
+        int cl = 1, nl = 0;
+
+        HashSet<String> bankSet = new HashSet<>();
+        Collections.addAll(bankSet, bank);
+        HashSet<String> visited = new HashSet<>();
+
+        char[] changeArray = new char[]{'A', 'C', 'G', 'T'};
+        while (!queue.isEmpty()) {
+            String curr = queue.poll();
+            if (curr.equals(end)) return level;
+
+            char[] currArray = curr.toCharArray();
+            for (int i = 0; i < currArray.length; i++) {
+                char old = currArray[i];
+                for (char c : changeArray) {
+                    currArray[i] = c;
+                    String next = new String(currArray);
+                    if (!visited.contains(next) && bankSet.contains(next)) {
+                        visited.add(next);
+                        queue.offer(next);
+                        nl++;
+                    }
+                }
+                currArray[i] = old;
+            }
+
+            cl--;
+            if (cl == 0) {
+                level++;
+                cl = nl;
+                nl = 0;
+            }
+        }
+        return -1;
+    }
+
+    public int minMutationBfs3(String start, String end, String[] bank) {
+        if (start == null || end == null || start.length() != end.length() || bank == null || bank.length == 0)
+            return -1;
+
+        Queue<String> cl = new LinkedList<>();
+        Queue<String> nl = new LinkedList<>();
+        cl.offer(start);
+
+        HashSet<String> visited = new HashSet<>();
+        HashSet<String> bankSet = new HashSet<>();
+        Collections.addAll(bankSet, bank);
+
+        int level = 0;
+
+        char[] change = new char[]{'A', 'C', 'G', 'T'};
+        while (!cl.isEmpty()) {
+            String curr = cl.poll();
+            if (curr.equals(end)) return level;
+
+            char[] currArr = curr.toCharArray();
+            for (int i = 0; i < currArr.length; i++) {
+                char old = currArr[i];
+                for (char c : change) {
+                    //将当前字符逐个替换为候选字符
+                    currArr[i] = c;
+                    String next = new String(currArr);
+                    if (!visited.contains(next) && bankSet.contains(next)) {
+                        visited.add(next);
+                        nl.offer(next);
+                    }
+
+                }
+                currArr[i] = old;
+            }
+
+            if (cl.isEmpty()) {
+                Queue<String> temp = cl;
+                cl = nl;
+                nl = temp;
+
+                level++;
+            }
+        }
+
+        return -1;
+    }
+
+    static class SolutionDfs {
+        int minLevel = Integer.MAX_VALUE;
+        char[] change = new char[]{'A', 'C', 'G', 'T'};
+
+        public int minMutation(String start, String end, String[] bank) {
+            if (start == null || end == null || start.length() != end.length() || bank == null || bank.length == 0)
+                return -1;
+
+            HashSet<String> bankSet = new HashSet<>();
+            Collections.addAll(bankSet, bank);
+            dfs(0, start, end, bankSet, new HashSet<String>());
+
+            return minLevel == Integer.MAX_VALUE ? -1 : minLevel;
+        }
+
+        void dfs(int level, String curr, String end, HashSet<String> bankSet, HashSet<String> visited) {
+            if (curr.equals(end)) {
+                minLevel = Math.min(minLevel, level);
+                return;
+            }
+
+            char[] currArr = curr.toCharArray();
+            for (int i = 0; i < currArr.length; i++) {
+                char old = currArr[i];
+
+                for (char c : change) {
+                    currArr[i] = c;
+                    String next = new String(currArr);
+
+                    if (!visited.contains(next) && bankSet.contains(next)) {
+                        visited.add(next);
+                        dfs(level + 1, next, end, bankSet, visited);
+                        visited.remove(next);
+                    }
+                }
+
+                currArr[i] = old;
             }
         }
     }
