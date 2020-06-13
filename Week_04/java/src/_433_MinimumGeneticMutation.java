@@ -27,11 +27,20 @@ class _433_MinimumGeneticMutation {
         return minLevel == Integer.MAX_VALUE ? -1 : minLevel;
     }
 
+    /**
+     * @param visited 当前路径上已经访问过的节点
+     * @param level
+     * @param current
+     * @param end
+     * @param bank
+     */
     void dfs(HashSet<String> visited, int level, String current, String end, String[] bank) {
         if (current.equals(end)) {
             minLevel = Math.min(minLevel, level);
             return;
         }
+        //假如已经得到了一个最小变化次数，继续变化碱基得到的变化次数一定比这个最小变化次数要大，此时可以结束当前的dfs
+        if (level == minLevel) return;
 
         for (String str : bank) {
             int diff = 0;
@@ -44,6 +53,103 @@ class _433_MinimumGeneticMutation {
                 dfs(visited, level + 1, str, end, bank);
                 visited.remove(str);
             }
+        }
+    }
+
+    static class SolutionIterativeDfs1 {
+        static class Node {
+            Node(String val, int level, HashSet<String> visited) {
+                this.val = val;
+                this.level = level;
+                this.visited = visited;
+            }
+
+            String val;
+            int level;
+            HashSet<String> visited;
+        }
+
+        public int minMutation(String start, String end, String[] bank) {
+            if (start == null || end == null || start.length() != end.length() || bank == null || bank.length == 0)
+                return -1;
+            Deque<Node> stack = new LinkedList<>();
+            stack.offerLast(new Node(start, 0, new HashSet<String>()));
+            int minLevel = Integer.MAX_VALUE;
+            while (!stack.isEmpty()) {
+                Node node = stack.pollLast();
+                if (node.val.intern() == end.intern()) {
+                    if (minLevel > node.level) {
+                        minLevel = node.level;
+                    }
+                    continue;
+                }
+                if (node.level == minLevel) continue;
+                for (String next : bank) {
+                    int diff = 0;
+                    for (int i = 0; i < next.length(); i++) {
+                        if (node.val.charAt(i) != next.charAt(i) && ++diff > 1) break;
+                    }
+                    if (diff == 1 && !node.visited.contains(next)) {
+                        HashSet<String> visited = new HashSet<>(node.visited);
+                        visited.add(next);
+                        stack.offerLast(new Node(next, node.level + 1, visited));
+                    }
+                }
+            }
+
+            return minLevel == Integer.MAX_VALUE ? -1 : minLevel;
+        }
+    }
+
+    static class SolutionIterativeDfs2 {
+        static class Node {
+            Node(String val, int level, HashSet<String> visited) {
+                this.val = val;
+                this.level = level;
+                this.visited = visited;
+            }
+
+            String val;
+            int level;
+            HashSet<String> visited;
+        }
+
+        public int minMutation(String start, String end, String[] bank) {
+            if (start == null || end == null || start.length() != end.length() || bank == null || bank.length == 0)
+                return -1;
+            LinkedList<Node> stack = new LinkedList<>();
+            stack.offerLast(new Node(start, 0, new HashSet<String>()));
+            char[] candidates = new char[]{'A', 'C', 'G', 'T'};
+            HashSet<String> bankSet = new HashSet<>();
+            Collections.addAll(bankSet, bank);
+            int minLevel = Integer.MAX_VALUE;
+            while (!stack.isEmpty()) {
+                Node node = stack.pollLast();
+                if (node.val.intern() == end.intern()) {
+                    if (minLevel > node.level) {
+                        minLevel = node.level;
+                    }
+                    continue;
+                }
+                if (node.level == minLevel) continue;
+
+                char[] arr = node.val.toCharArray();
+                for (int i = 0; i < arr.length; i++) {
+                    char old = arr[i];
+                    for (char c : candidates) {
+                        arr[i] = c;
+
+                        String next = new String(arr);
+                        if (bankSet.contains(next) && !node.visited.contains(next)) {
+                            HashSet<String> visited = new HashSet<>(node.visited);
+                            visited.add(next);
+                            stack.offerLast(new Node(next, node.level + 1, visited));
+                        }
+                    }
+                    arr[i] = old;
+                }
+            }
+            return minLevel == Integer.MAX_VALUE ? -1 : minLevel;
         }
     }
 
