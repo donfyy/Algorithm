@@ -1,4 +1,5 @@
 import java.util.*;
+
 /**
  * 第一遍：2020/06/14周日 ✅
  * 第二遍：2020/06/15周一
@@ -17,13 +18,15 @@ import java.util.*;
 class _127_WordLadder {
     /**
      * 双向广度优先搜索快啊，20ms左右
+     *
      * @param beginWord
      * @param endWord
      * @param wordList
      * @return
      */
     public int ladderLengthBfs1(String beginWord, String endWord, List<String> wordList) {
-        if (beginWord == null || endWord == null || beginWord.length() != endWord.length() || wordList == null || wordList.isEmpty()) return 0;
+        if (beginWord == null || endWord == null || beginWord.length() != endWord.length() || wordList == null || wordList.isEmpty())
+            return 0;
         HashSet<String> wordSet = new HashSet<>(wordList);
         if (!wordSet.contains(endWord)) return 0;
 
@@ -37,13 +40,7 @@ class _127_WordLadder {
         visited.add(endWord);
 
         int level = 1;
-        while (!beginLevel.isEmpty() && !endLevel.isEmpty()) {
-            if (beginLevel.size() > endLevel.size()) {
-                HashSet<String> temp = beginLevel;
-                beginLevel = endLevel;
-                endLevel = temp;
-            }
-
+        while (!beginLevel.isEmpty()) {
             HashSet<String> nextLevel = new HashSet<>();
 
             for (String word : beginLevel) {
@@ -66,8 +63,13 @@ class _127_WordLadder {
                     arr[i] = old;
                 }
             }
+            if (nextLevel.size() > endLevel.size()) {
+                beginLevel = endLevel;
+                endLevel = nextLevel;
+            } else {
+                beginLevel = nextLevel;
+            }
 
-            beginLevel = nextLevel;
             level++;
         }
 
@@ -127,6 +129,7 @@ class _127_WordLadder {
 
         /**
          * 超出时间限制。
+         *
          * @param beginWord
          * @param endWord
          * @param wordList
