@@ -1,4 +1,4 @@
-class _11_MaxArea {
+class _11_ContainerWithMostWater {
     public int maxArea(int[] height) {
         if (height == null) {
             return 0;
