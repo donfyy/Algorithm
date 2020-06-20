@@ -1,5 +1,4 @@
 fun search(nums: IntArray, target: Int): Int {
-    if (nums.isEmpty()) return -1
     var l = 0
     var h = nums.size - 1
     while (l <= h) {

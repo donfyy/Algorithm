@@ -6,7 +6,7 @@ fun mySqrt1(x: Int): Int {
     while (r * r > x) r = ((r + x / r) ushr 1)
     return r.toInt()
 }
-
+//164ms
 fun mySqrt2(x: Int): Int {
     if (x < 0) return -1;
     if (x == 0) return 0;

@@ -1,3 +1,4 @@
+//136ms
 fun isPerfectSquare(num: Int): Boolean {
     if (num < 1) return false
     if (num == 1) return true
@@ -11,7 +12,7 @@ fun isPerfectSquare(num: Int): Boolean {
     }
     return false
 }
-
+//152ms
 fun isPerfectSquare1(num: Int): Boolean {
     if (num < 1) return false
     var r = num.toLong()
