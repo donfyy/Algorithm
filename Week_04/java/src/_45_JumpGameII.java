@@ -8,6 +8,31 @@
  * 每一步（跳跃）都采取最优的选择。
  */
 class _45_JumpGameII {
+    //bfs方式的贪心
+    public int jump(int[] nums) {
+        if (nums == null || nums.length <= 1) {
+            return 0;
+        }
+
+        int i = 0;
+        int levelMax = 0;
+        int maxPos = 0;
+        int level = 0;
+        out:
+        while (levelMax - i + 1 > 0) {
+            while (i <= levelMax) {
+                maxPos = Math.max(maxPos, i + nums[i]);
+                if (maxPos >= nums.length - 1) {
+                    break out;
+                }
+                i++;
+            }
+            levelMax = maxPos;
+            level++;
+        }
+        return level + 1;
+    }
+
     public int jump1(int[] nums) {
         if (nums == null) {
             return 0;
