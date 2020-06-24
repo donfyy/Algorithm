@@ -1,27 +1,25 @@
 import java.util.*
 
 fun trap(height: IntArray): Int {
-    if (height.size < 3) {
-        return 0
-    }
+    if (height.size < 3) return 0
     var l = 0
     var r = height.size - 1
-    var lM = 0
-    var rM = 0
+    var leftMax = 0
+    var rightMax = 0
     var ret = 0
     while (l < r) {
         if (height[l] < height[r]) {
-            if (height[l] > lM) {
-                lM = height[l]
+            if (leftMax > height[l]) {
+                ret += leftMax - height[l]
             } else {
-                ret += lM - height[l]
+                leftMax = height[l]
             }
             l++
         } else {
-            if (height[r] > rM) {
-                rM = height[r]
+            if (rightMax > height[r]) {
+                ret += rightMax - height[r]
             } else {
-                ret += rM - height[r]
+                rightMax = height[r]
             }
             r--
         }
