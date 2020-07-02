@@ -6,7 +6,7 @@
  * 节点需要一个isEnd标记来表示到达该节点的路径所表示的字符串是不是一个单词。
  */
 class Trie {
-    private TrieNode root;
+     TrieNode root;
 
     /**
      * Initialize your data structure here.
@@ -62,31 +62,6 @@ class Trie {
         return true;
     }
 
-    static class TrieNode {
-        private static final int R = 26;
-        private TrieNode[] children = new TrieNode[R];
-        private boolean isEnd;
-
-        public boolean containsKey(char c) {
-            return children[c - 'a'] != null;
-        }
-
-        public TrieNode get(char c) {
-            return children[c - 'a'];
-        }
-
-        public void put(char c, TrieNode node) {
-            children[c - 'a'] = node;
-        }
-
-        public void setEnd() {
-            isEnd = true;
-        }
-
-        public boolean isEnd() {
-            return isEnd;
-        }
-    }
 }
 
 /**
