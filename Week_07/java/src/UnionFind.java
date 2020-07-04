@@ -25,4 +25,8 @@ class UnionFind {
         parent[rootP] = rootQ;
         count--;
     }
+
+    public int getCount() {
+        return count;
+    }
 }
