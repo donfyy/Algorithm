@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * 第一遍：2020/06/11周四 ✅
  * 第二遍：2020/06/13周六 ✅
- * 第二遍：2020/06/12周二
+ * 第三遍：2020/07/04周六 ✅
  * 第三遍：2020/06/18周四
  * 第四遍：2020/07/02周四
  * 没彻底理解，需要多做几遍。
@@ -53,6 +53,57 @@ class _433_MinimumGeneticMutation {
                 dfs(visited, level + 1, str, end, bank);
                 visited.remove(str);
             }
+        }
+    }
+
+    static class TwoEndBfs {
+        public int minMutation(String start, String end, String[] bank) {
+            if (start == null || end == null || bank == null || bank.length == 0 || start.isEmpty() || end.isEmpty() || start.length() != end.length()) {
+                return -1;
+            }
+
+            HashSet<String> beginLevel = new HashSet<>();
+            beginLevel.add(start);
+            HashSet<String> endLevel = new HashSet<>();
+            endLevel.add(end);
+            HashSet<String> visited = new HashSet<>();
+            visited.add(end);
+            visited.add(start);
+            int level = 1;
+
+            while (!beginLevel.isEmpty()) {
+                HashSet<String> nextLevel = new HashSet<>();
+                for (String str : beginLevel) {
+
+                    for (String next : bank) {
+                        int diff = 0;
+                        for (int i = 0; i < next.length(); i++) {
+                            if (next.charAt(i) != str.charAt(i) && ++diff > 1) {
+                                break;
+                            }
+                        }
+                        if (diff == 1 && endLevel.contains(next)) {
+                            return level;
+                        }
+                        if (diff == 1 && !visited.contains(next)) {
+
+                            visited.add(next);
+                            nextLevel.add(next);
+                        }
+                    }
+                }
+
+                if (nextLevel.size() > endLevel.size()) {
+                    beginLevel = endLevel;
+                    endLevel = nextLevel;
+                } else {
+                    beginLevel = nextLevel;
+                }
+
+                level++;
+            }
+
+            return -1;
         }
     }
 
@@ -160,6 +211,7 @@ class _433_MinimumGeneticMutation {
         Queue<String> queue = new LinkedList<>();
         queue.offer(start);
         HashSet<String> visited = new HashSet<>();
+        visited.add(start);
 
         int level = 0;
         while (!queue.isEmpty()) {
