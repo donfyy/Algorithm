@@ -181,60 +181,60 @@
         ...
         ```
  - 高级搜索
-  - 剪枝
-    - 某个选择不符合条件，就不选了，也就不用下沉了。这就是剪枝
-    - 回溯法
-      - 回溯法采用试错的思想，尝试分步的去解决一个问题。在分步解决问题的过程中，当它通过尝试发现现有的分步答案不能得到有效的正确的解答的时候，它将取消上一步甚至上几步的计算，再通过其他的可能的分步解答再次尝试寻找问题的答案。回溯法通常用最简单的递归来实现，在反复重复上述的步骤后可能会出现两种情况：
-        - 找到一个可能存在的正确答案
-        - 在尝试了所有可能的分步方法后宣告该问题没有答案
-      - 最坏的情况下，回溯法会导致一次时间复杂度为指数时间的计算。
-    - 参考链接
-      - [AlphaZero Explained](https://nikcheerla.github.io/deeplearningschool/2018/01/01/AlphaZero-Explained/)
-      - [棋类复杂度](https://en.wikipedia.org/wiki/Game_complexity)
-    - 实战题目
-      - [爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)
-      - [括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
-      - [N皇后](https://leetcode-cn.com/problems/n-queens/)
-      - [有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/)
-      - [解数独](https://leetcode-cn.com/problems/sudoku-solver/#/description)
-  - 双向BFS
-    - 实战题目
-      - [单词接龙](https://leetcode-cn.com/problems/word-ladder/)
-      - [最小基因变化](https://leetcode-cn.com/problems/minimum-genetic-mutation/)
-    - 代码模版
-       ```python
-        def BFS(graph, start, end): 
-         startQueue = [] 
-         startQueue.append([start]) 
-         endQueue = []
-         endQueue.append(end)
-         visited = set()
-         visited.add(start) 
-         visited.add(end)
-        while startQueue: 
-         nextQueue = []
-         node = queue.pop() 
-         process(node) 
-         nodes = generate_related_nodes(node) 
-         if nodes not in visited:
-            visited.add(nodes)
-            nextQueue.push(nodes) 
-        # other processing work 
-        ...
-         startQueue = nextQueue
-         if len(startQueue) > len(nextQueue):
-            startQueue, nextQueue = nextQueue, startQueue
-        ```      
-  - 启发式搜索（A*）
-    - 参考链接
-      - [A* 代码模板](https://shimo.im/docs/8CzMlrcvbWwFXA8r)
-      - [相似度测量方法](https://dataaspirant.com/2015/04/11/five-most-popular-similarity-measures-implementation-in-python/)
-      - [二进制矩阵中的最短路径的 A* 解法](https://leetcode.com/problems/shortest-path-in-binary-matrix/discuss/313347/A*-search-in-Python)
-      - [8 puzzles 解法比较](https://zxi.mytechroad.com/blog/searching/8-puzzles-bidirectional-astar-vs-bidirectional-bfs/)
-    - 实战题目
-      - [二进制矩阵中的最短路径](https://leetcode-cn.com/problems/shortest-path-in-binary-matrix/)
-      - [滑动谜题](https://leetcode-cn.com/problems/sliding-puzzle/)
-      - [解数独](https://leetcode-cn.com/problems/sudoku-solver/)
+   - 剪枝
+     - 某个选择不符合条件，就不选了，也就不用下沉了。这就是剪枝
+     - 回溯法
+       - 回溯法采用试错的思想，尝试分步的去解决一个问题。在分步解决问题的过程中，当它通过尝试发现现有的分步答案不能得到有效的正确的解答的时候，它将取消上一步甚至上几步的计算，再通过其他的可能的分步解答再次尝试寻找问题的答案。回溯法通常用最简单的递归来实现，在反复重复上述的步骤后可能会出现两种情况：
+         - 找到一个可能存在的正确答案
+         - 在尝试了所有可能的分步方法后宣告该问题没有答案
+       - 最坏的情况下，回溯法会导致一次时间复杂度为指数时间的计算。
+     - 参考链接
+       - [AlphaZero Explained](https://nikcheerla.github.io/deeplearningschool/2018/01/01/AlphaZero-Explained/)
+       - [棋类复杂度](https://en.wikipedia.org/wiki/Game_complexity)
+     - 实战题目
+       - [爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)
+       - [括号生成](https://leetcode-cn.com/problems/generate-parentheses/)
+       - [N皇后](https://leetcode-cn.com/problems/n-queens/)
+       - [有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/)
+       - [解数独](https://leetcode-cn.com/problems/sudoku-solver/#/description)
+   - 双向BFS
+     - 实战题目
+       - [单词接龙](https://leetcode-cn.com/problems/word-ladder/)
+       - [最小基因变化](https://leetcode-cn.com/problems/minimum-genetic-mutation/)
+     - 代码模版
+        ```python
+         def BFS(graph, start, end): 
+          startQueue = [] 
+          startQueue.append([start]) 
+          endQueue = []
+          endQueue.append(end)
+          visited = set()
+          visited.add(start) 
+          visited.add(end)
+         while startQueue: 
+          nextQueue = []
+          node = queue.pop() 
+          process(node) 
+          nodes = generate_related_nodes(node) 
+          if nodes not in visited:
+             visited.add(nodes)
+             nextQueue.push(nodes) 
+         # other processing work 
+         ...
+          startQueue = nextQueue
+          if len(startQueue) > len(nextQueue):
+             startQueue, nextQueue = nextQueue, startQueue
+         ```      
+   - 启发式搜索（A*）
+     - 参考链接
+       - [A* 代码模板](https://shimo.im/docs/8CzMlrcvbWwFXA8r)
+       - [相似度测量方法](https://dataaspirant.com/2015/04/11/five-most-popular-similarity-measures-implementation-in-python/)
+       - [二进制矩阵中的最短路径的 A* 解法](https://leetcode.com/problems/shortest-path-in-binary-matrix/discuss/313347/A*-search-in-Python)
+       - [8 puzzles 解法比较](https://zxi.mytechroad.com/blog/searching/8-puzzles-bidirectional-astar-vs-bidirectional-bfs/)
+     - 实战题目
+       - [二进制矩阵中的最短路径](https://leetcode-cn.com/problems/shortest-path-in-binary-matrix/)
+       - [滑动谜题](https://leetcode-cn.com/problems/sliding-puzzle/)
+       - [解数独](https://leetcode-cn.com/problems/sudoku-solver/)
 - 作业
   - [爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/) X
   - [实现 Trie](https://leetcode-cn.com/problems/implement-trie-prefix-tree/solution/)
