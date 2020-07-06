@@ -246,7 +246,7 @@
   - [单词接龙](https://leetcode-cn.com/problems/word-ladder/)
   - [最小基因变化](https://leetcode-cn.com/problems/minimum-genetic-mutation/)
   - [单词搜索 II](https://leetcode-cn.com/problems/word-search-ii/)
-  - [N皇后](https://leetcode-cn.com/problems/n-queens/) X
+  - [N皇后](https://leetcode-cn.com/problems/n-queens/) 
   - [解数独](https://leetcode-cn.com/problems/sudoku-solver/#/description) X
   - [二进制矩阵中的最短路径](https://leetcode-cn.com/problems/shortest-path-in-binary-matrix/) X
   - [滑动谜题](https://leetcode-cn.com/problems/sliding-puzzle/) X
