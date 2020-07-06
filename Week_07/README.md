@@ -241,7 +241,7 @@
   - [朋友圈](https://leetcode-cn.com/problems/friend-circles)
   - [岛屿数量](https://leetcode-cn.com/problems/number-of-islands/) X
   - [被围绕的区域](https://leetcode-cn.com/problems/surrounded-regions/) X
-  - [有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/) X
+  - [有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/) 
   - [括号生成](https://leetcode-cn.com/problems/generate-parentheses/) X
   - [单词接龙](https://leetcode-cn.com/problems/word-ladder/)
   - [最小基因变化](https://leetcode-cn.com/problems/minimum-genetic-mutation/)
