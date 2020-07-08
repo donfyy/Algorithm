@@ -6,10 +6,53 @@ import java.util.List;
 /**
  * 第一遍：2020/06/06周六 ✅
  * 第二遍：2020/07/06周一 ✅
+ * 第三遍：2020/07/08周三 ✅
  * 第三遍：2020/06/13周六
  * 第四遍：2020/06/27周六
  */
 class _51_NQueens {
+    class SolutionUsingBits {
+        int[] queens;
+        int n;
+        List<List<String>> ret;
+        public List<List<String>> solveNQueens(int n) {
+            if (n < 1) return Collections.emptyList();
+            queens = new int[n];
+            this.n = n;
+            ret = new LinkedList<>();
+            dfs(0, 0, 0, 0);
+            return ret;
+        }
+
+        void dfs(int row, int col, int pie, int na) {
+            if (row == n) {
+                generateSolution();
+                return;
+            }
+
+            int bits = ~(col | pie | na) & ((1 << n) - 1);
+            while (bits != 0) {
+                int pos = bits & -bits;
+                queens[row] = pos;
+                dfs(row + 1, col | pos, (pie | pos) << 1, (na | pos) >> 1);
+                bits = bits & (bits - 1);
+            }
+        }
+
+        void generateSolution() {
+            StringBuilder sb = new StringBuilder();
+            List<String> list = new ArrayList<>(n);
+            for (int row : queens) {
+                for (int i = 0; i < n; i++) {
+                    sb.append((row & 1) == 1 ? 'Q' : '.');
+                    row >>= 1;
+                }
+                list.add(sb.toString());
+                sb.delete(0, sb.length());
+            }
+            ret.add(list);
+        }
+    }
     //i处的值表示i行皇后的列号
     private int[] mQueens;
     //i处的值表示i列是否被攻击了
