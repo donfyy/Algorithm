@@ -1,3 +1,5 @@
+import java.lang.StringBuilder
+
 class _52_NQueensII_KT_Solution {
     var count = 0
     fun totalNQueens(n: Int): Int {
