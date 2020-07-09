@@ -41,5 +41,45 @@
     - [N 皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
     - [比特位计数](https://leetcode-cn.com/problems/counting-bits/description/)
 - 布隆过滤器
+  - 和哈希表类似。只需要知道某个元素有或没有
+  - 一个很长的**二进制**向量和一系列**随机映射函数**。用于检索一个元素是否存在一个集合中
+    - 将每个元素映射到一组二进制位索引，所以对于某个元素如果对应的一组二进制位索引都为1则该元素可能存在，否则该元素一定不存在。
+  - 优点：空间效率和查询时间都远远超过一般的算法
+  - 缺点：有一定的误识别率和删除困难
+  - 应用：放在最外面当作一个缓存使用，挡在机器前面的快速查询的缓存。
+  - 案例
+    - 比特币网络
+    - 分布式系统（Map-Reduce）-Hadoop search engine
+    - Redis缓存
+    - 垃圾邮件，评论等的过滤
+  - Python 的实现 bitarray 
+    - 哈希算法： hash(element, seed) % array.size
+  - 参考链接
+    - [布隆过滤器的原理和实现](https://www.cnblogs.com/cpselvis/p/6265825.html)
+    - [使用布隆过滤器解决缓存击穿、垃圾邮件识别、集合判重](https://blog.csdn.net/tianyaleixiaowu/article/details/74721877)
+    - [布隆过滤器 Python 代码示例](https://shimo.im/docs/UITYMj1eK88JCJTH)
+    - [布隆过滤器 Python 实现示例](https://www.geeksforgeeks.org/bloom-filters-introduction-and-python-implementation/)
+    - [高性能布隆过滤器 Python 实现示例](https://github.com/jhgg/pybloof)
+    - [布隆过滤器 Java 实现示例 1](https://github.com/lovasoa/bloomfilter/blob/master/src/main/java/BloomFilter.java)
+    - [布隆过滤器 Java 实现示例 2](https://github.com/Baqend/Orestes-Bloomfilter)
 - LRU缓存
+  - xxx
+  - 参考链接
+    - [Understanding the Meltdown exploit](https://www.sqlpassion.at/archive/2018/01/06/understanding-the-meltdown-exploit-in-my-own-simple-words/)
+    - [替换算法总揽](https://en.wikipedia.org/wiki/Cache_replacement_policies)
+    - [LRU Cache Python 代码示例](https://shimo.im/docs/CoyPAyXooGcDuLQo)
+  - 实战题目
+    - [LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/#/)
 - 排序算法
+  - 比较类排序
+  - 非比较类排序
+  - 参考链接
+    - [十大经典排序算法](https://www.cnblogs.com/onepixel/p/7674659.html)
+    - [9 种经典排序算法可视化动画](https://www.bilibili.com/video/av25136272)
+    - [6 分钟看完 15 种排序算法动画展示](https://www.bilibili.com/video/av63851336)
+  - 实战题目
+    - [数组的相对排序](https://leetcode-cn.com/problems/relative-sort-array/)
+    - [有效的字母异位词](https://leetcode-cn.com/problems/valid-anagram/)
+    - [力扣排行榜](https://leetcode-cn.com/problems/design-a-leaderboard/)
+    - [合并区间](https://leetcode-cn.com/problems/merge-intervals/)
+    - [翻转对](https://leetcode-cn.com/problems/reverse-pairs/)
