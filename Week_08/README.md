@@ -84,7 +84,7 @@
      |       |              |              |              |         |       |
      |计数排序|O(n+k)        |O(n+k)        |O(n+k)        |O(n+k)   |稳定    |
      |桶排序  |O(n+k)        |O(n^2)        |O(n)          |O(n+k)   |稳定    |
-     |计数排序|O(n\*k)        |O(n\*k)      |O(n\*k)        |O(n\*k)   |稳定    |
+     |基数排序|O(n\*k)        |O(n\*k)      |O(n\*k)        |O(n\*k)   |稳定    |
 
 
   - 比较类排序
@@ -151,6 +151,21 @@
                }
         ```
       - 希尔排序
+        ```java
+               public static void shellSort(int[] array) {
+                   for (int gap = array.length >>> 1; gap > 0; gap >>>= 1) {
+                       for (int i = gap; i < array.length; i++) {
+                           int j = i;
+                           int value = array[i];
+                           while (j - gap >=0 && array[j - gap] > value) {
+                               array[j] = array[j - gap];
+                               j = j - gap;
+                           }
+                           array[j] = value;
+                       }
+                   }
+               }
+        ```
     - 选择排序:每次找最小值，然后放到排序数组的起始位置。
       - 简单选择排序
         ```java
@@ -237,8 +252,62 @@
   - 非比较类排序
     - 不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此也称为线性时间非比较类排序。
     - 一般来说只能用于整型类型的排序，一般用额外的辅助空间。
-    - 计数排序
-    - 桶排序
+    - 计数排序:将输入的数据值转化为键值存储在额外开辟的数组空间中。作为一种线性时间复杂度的排序，计数排序要求输入的数据是有确定范围的整数。当k不是很大且序列比较集中时，计数排序是一个很有效的排序算法。
+      ```java
+             public static void countingSort(int[] array) {
+                 int maxValue = findMaxValue(array);
+                 int[] bucket = new int[maxValue + 1];
+                 for (int value : array) {
+                     bucket[value]++;
+                 }
+         
+                 for (int i = 0, j = 0; i < bucket.length; i++) {
+                     int count = bucket[i];
+                     while (count-- > 0) {
+                         array[j++] = i;
+                     }
+                 }
+             }
+      ```
+    - 桶排序:桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶在分别排序。
+      ```java
+             public static void bucketSort(int[] array) {
+                 int bucketSize = 3;
+                 int max = array[0];
+                 int min = array[0];
+                 for (int i = 1; i < array.length; i++) {
+                     if (array[i] > max) {
+                         max = array[i];
+                     }
+                     if (array[i] < min) {
+                         min = array[i];
+                     }
+                 }
+         
+                 //创建桶
+                 int bucketCount = (max - min) / bucketSize + 1;
+                 List[] buckets = new ArrayList[bucketCount];
+                 for (int i = 0; i < bucketCount; i++) {
+                     buckets[i] = new ArrayList();
+                 }
+         
+                 //将元素添加到所属的桶中
+                 for (int i = 0; i < array.length; i++) {
+                     int value = array[i];
+                     buckets[(value - min) / bucketSize].add(value);
+                 }
+         
+                 int k = 0;
+                 for (int i = 0; i < buckets.length; i++) {
+                     //对桶进行排序
+                     Collections.sort(buckets[i]);
+                     //排序后在取出放到原来的数组中
+                     for (int j = 0; j < buckets[i].size(); j++) {
+                         array[k++] = (int) buckets[i].get(j);
+                     }
+                 }
+             }
+      ```
     - 基数排序
   - 数组prepend操作的优化：多申请一些内存，然后在数组的开始预留一部分空间，prepend操作则是把头下标向前移动一位。
   - 参考链接
