@@ -23,7 +23,7 @@ public class CountingSort {
         }
     }
 
-    private static int findMaxValue(int[] array) {
+    public static int findMaxValue(int[] array) {
         int max = array[0];
         for (int i = 1; i < array.length; i++) {
             if (array[i] > max) {

@@ -308,7 +308,39 @@
                  }
              }
       ```
-    - 基数排序
+    - 基数排序:按照低位先排序，然后收集；再按高位排序，然后再收集；依此类推，直到最高位。有些时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。
+      ```java
+             public static void radixSort(int[] array) {
+                 //找到最大元素
+                 int max = findMaxValue(array);
+                 //找到最高位
+                 int maxDigit = 0;
+                 while (max > 0) {
+                     max /= 10;
+                     maxDigit++;
+                 }
+                 //对每一位进行计数排序
+                 LinkedList[] bucket = new LinkedList[10];
+                 for (int i = 0; i < bucket.length; i++) {
+                     bucket[i] = new LinkedList();
+                 }
+                 for (int digit = 0, dev = 1, mod = 10; digit < maxDigit; digit++, mod *= 10, dev *= 10) {
+                     //将元素放到对应的桶中
+                     for (int i = 0; i < array.length; i++) {
+                         int bucketIndex = array[i] % mod / dev;
+                         bucket[bucketIndex].offer(array[i]);
+                     }
+                     //再从桶中将元素恢复到数组里
+                     int k = 0;
+                     for (int i = 0; i < bucket.length; i++) {
+                         LinkedList list = bucket[i];
+                         while (!list.isEmpty()) {
+                             array[k++] = (int) list.poll();
+                         }
+                     }
+                 }
+             }
+      ```
   - 数组prepend操作的优化：多申请一些内存，然后在数组的开始预留一部分空间，prepend操作则是把头下标向前移动一位。
   - 参考链接
     - [十大经典排序算法](https://www.cnblogs.com/onepixel/p/7674659.html)
