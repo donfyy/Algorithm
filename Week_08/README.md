@@ -92,45 +92,80 @@
     - 交换排序
       - 冒泡排序:嵌套循环，每次查看相邻的元素如果逆序，则交换。
       - 快速排序:从数组中选取一个枢纽pivot，将小元素放在pivot的左边，将大元素放在pivot的右边，然后对pivot左边的数组和pivot右边的数组执行同样的操作。
-      ```java    
-             public static void quickSort(int[] array, int begin, int end) {
-                 if (begin >= end) {
-                    return;
-                 }
-                 int pivot = partition(array, begin, end);
-                 quickSort(array, begin, pivot - 1);
-                 quickSort(array, pivot + 1, end);
-             }
+        ```java    
+               public static void quickSort(int[] array, int begin, int end) {
+                   if (begin >= end) {
+                      return;
+                   }
+                   int pivot = partition(array, begin, end);
+                   quickSort(array, begin, pivot - 1);
+                   quickSort(array, pivot + 1, end);
+               }
          
-             public static int partition(int[] array, int begin, int end) {
-                 int pivot = end;
-                 int j = begin - 1;
-                 for (int i = begin; i < end; i++) {
-                     if (array[i] < array[pivot]) {
-                         swap(array, i, ++j);
-                     }
-                 }
-                 swap(array, ++j, pivot);
-                 return j;
-             }
+               public static int partition(int[] array, int begin, int end) {
+                   int pivot = end;
+                   int j = begin - 1;
+                   for (int i = begin; i < end; i++) {
+                       if (array[i] < array[pivot]) {
+                           swap(array, i, ++j);
+                       }
+                   }
+                   swap(array, ++j, pivot);
+                   return j;
+               }
          
-             public static void swap(int[] array, int i, int j) {
-                 if (i != j) {
-                     array[i] = array[i] ^ array[j];
-                     array[j] = array[i] ^ array[j];
-                     array[i] = array[i] ^ array[j];
-                 }
-             }
-      ```
+               public static void swap(int[] array, int i, int j) {
+                   if (i != j) {
+                       array[i] = array[i] ^ array[j];
+                       array[j] = array[i] ^ array[j];
+                       array[i] = array[i] ^ array[j];
+                   }
+               }
+        ```
     - 插入排序:从前到后逐步构建有序序列；对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。
       - 简单插入排序
       - 希尔排序
     - 选择排序:每次找最小值，然后放到排序数组的起始位置。
       - 简单选择排序
       - 堆排序
-    - 归并排序
+    - 归并排序-分治
       - 二路归并排序
+        1.把长度为n的输入序列分成两个长度为n/2的子序列
+        2.对两个子序列分别采用归并排序
+        3.将两个排序好的子序列合并为一个排序序列
+        ```java
+               public static void mergeSort(int[] array) {
+                   mergeSort(array, new int[array.length], 0, array.length - 1);
+               }
+           
+               public static void mergeSort(int[] array, int[] temp, int left, int right) {
+                   if (left >= right) {
+                       return;
+                   }
+           
+                   int mid = left + ((right - left) >> 1);
+                   mergeSort(array, temp, left, mid);
+                   mergeSort(array, temp, mid + 1, right);
+                   merge(array, temp, left, mid, right);
+               }
+           
+               private static void merge(int[] array, int[] temp, int left, int mid, int right) {
+                   int i = left, j = mid + 1, k = left;
+                   while (i <= mid && j <= right) {
+                       temp[k++] = array[i] < array[j] ? array[i++] : array[j++];
+                   }
+                   while (i <= mid) {
+                       temp[k++] = array[i++];
+                   }
+                   while (j <= right) {
+                       temp[k++] = array[j++];
+                   }
+                   System.arraycopy(temp, left, array, left, right - left + 1);
+               }
+        ```
       - 多路归并排序
+      - 与快排的比较
+        - 快排在分解到最下层的时候就排序完成了，而归并在回归到最上层的时候才排序完成。递归分为两个过程，自顶向下分解与自底向上回归。快排在自顶向下分解时就在排序，而归并在自底向上回归时排序。快排类似与树的前序遍历，归并类似于书的后序遍历。
   - 非比较类排序
     - 不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此也称为线性时间非比较类排序。
     - 一般来说只能用于整型类型的排序，一般用额外的辅助空间。
