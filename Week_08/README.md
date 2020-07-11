@@ -91,6 +91,19 @@
     - 通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn),因此也称为非线性时间比较类排序。
     - 交换排序
       - 冒泡排序:嵌套循环，每次查看相邻的元素如果逆序，则交换。
+        ```java
+               public static void bubbleSort(int[] array) {
+                   for (int i = array.length - 1; i > 0; i--) {
+                       for (int j = 0; j < i; j++) {
+                           if (array[j] > array[j + 1]) {
+                               int temp = array[j];
+                               array[j] = array[j + 1];
+                               array[j + 1] = temp;
+                           }
+                       }
+                   }
+               }
+        ```
       - 快速排序:从数组中选取一个枢纽pivot，将小元素放在pivot的左边，将大元素放在pivot的右边，然后对pivot左边的数组和pivot右边的数组执行同样的操作。
         ```java    
                public static void quickSort(int[] array, int begin, int end) {
@@ -124,9 +137,40 @@
         ```
     - 插入排序:从前到后逐步构建有序序列；对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。
       - 简单插入排序
+        ```java
+               public static void insertionSort(int[] array) {
+                   for (int i = 1; i < array.length; i++) {
+                       int value = array[i];
+                       int j = i - 1;
+                       while (j >= 0 && array[j] > value) {
+                           array[j + 1] = array[j];
+                           j--;
+                       }
+                       array[j + 1] = value;
+                   }
+               }
+        ```
       - 希尔排序
     - 选择排序:每次找最小值，然后放到排序数组的起始位置。
       - 简单选择排序
+        ```java
+               public static void selectionSort(int[] array) {
+                   for (int i = 0; i < array.length - 1; i++) {
+                       int min = i;
+                       for (int j = i + 1; j < array.length; j++) {
+                           if (array[j] < array[min]) {
+                               min = j;
+                           }
+                       }
+           
+                       if (min != i) {
+                           int temp = array[min];
+                           array[min] = array[i];
+                           array[i] = temp;
+                       }
+                   }
+               }
+        ```
       - 堆排序 - 插入删除O(logn),取最大最小值O(1)
         
         1.遍历数组建立小顶堆
