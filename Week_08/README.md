@@ -95,11 +95,11 @@
       ```java    
              public static void quickSort(int[] array, int begin, int end) {
                  if (begin >= end) {
-                     return;
+                    return;
                  }
-                 int pivotIndex = partition(array, begin, end);
-                 quickSort(array, begin, pivotIndex - 1);
-                 quickSort(array, pivotIndex + 1, end);
+                 int pivot = partition(array, begin, end);
+                 quickSort(array, begin, pivot - 1);
+                 quickSort(array, pivot + 1, end);
              }
          
              public static int partition(int[] array, int begin, int end) {

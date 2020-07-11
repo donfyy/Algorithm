@@ -15,9 +15,9 @@ public class QuickSort {
         if (begin >= end) {
             return;
         }
-        int pivotIndex = partition(array, begin, end);
-        quickSort(array, begin, pivotIndex - 1);
-        quickSort(array, pivotIndex + 1, end);
+        int pivot = partition(array, begin, end);
+        quickSort(array, begin, pivot - 1);
+        quickSort(array, pivot + 1, end);
     }
 
     public static int partition(int[] array, int begin, int end) {
