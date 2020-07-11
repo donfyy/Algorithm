@@ -12,7 +12,7 @@ public class HeapSort {
         System.out.println(Arrays.toString(a2));
 
         int[] a3 = {1, 5, 3, 2, 6, 4};
-        heapSort2Iterative(a3);
+        heapSort2Recursive(a3);
         System.out.println(Arrays.toString(a3));
 
     }

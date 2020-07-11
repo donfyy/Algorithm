@@ -134,17 +134,18 @@
         2.依次取出堆顶元素，并删除
         
         ```java
-                //时间O(nlogn) 空间O(n)
-                public static void heapSort(int[] array) {
-                    PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(array.length);
-                    for (int i = 0; i < array.length; i++) {
-                        priorityQueue.offer(array[i]);
-                    }
-                    for (int i = 0; i < array.length; i++) {
-                        array[i] = priorityQueue.poll();
-                    }
-                }
+              //时间O(nlogn) 空间O(n)
+              public static void heapSort(int[] array) {
+                  PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(array.length);
+                  for (int i = 0; i < array.length; i++) {
+                      priorityQueue.offer(array[i]);
+                  }
+                  for (int i = 0; i < array.length; i++) {
+                      array[i] = priorityQueue.poll();
+                  }
+              }
         ```
+        [手动维护堆的版本](https://github.com/donfyy/algorithm009-class01/blob/master/Week_08/java/src/HeapSort.java)
     - 归并排序-分治
       - 二路归并排序
       
