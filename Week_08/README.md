@@ -91,7 +91,37 @@
     - 通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn),因此也称为非线性时间比较类排序。
     - 交换排序
       - 冒泡排序:嵌套循环，每次查看相邻的元素如果逆序，则交换。
-      - 快速排序
+      - 快速排序:从数组中选取一个枢纽pivot，将小元素放在pivot的左边，将大元素放在pivot的右边，然后对pivot左边的数组和pivot右边的数组执行同样的操作。
+      ```java    
+             public static void quickSort(int[] array, int begin, int end) {
+                 if (begin >= end) {
+                     return;
+                 }
+                 int pivotIndex = partition(array, begin, end);
+                 quickSort(array, begin, pivotIndex - 1);
+                 quickSort(array, pivotIndex + 1, end);
+             }
+         
+             public static int partition(int[] array, int begin, int end) {
+                 int pivot = end;
+                 int j = begin - 1;
+                 for (int i = begin; i < end; i++) {
+                     if (array[i] < array[pivot]) {
+                         swap(array, i, ++j);
+                     }
+                 }
+                 swap(array, ++j, pivot);
+                 return j;
+             }
+         
+             public static void swap(int[] array, int i, int j) {
+                 if (i != j) {
+                     array[i] = array[i] ^ array[j];
+                     array[j] = array[i] ^ array[j];
+                     array[i] = array[i] ^ array[j];
+                 }
+             }
+      ```
     - 插入排序:从前到后逐步构建有序序列；对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。
       - 简单插入排序
       - 希尔排序
@@ -107,6 +137,7 @@
     - 计数排序
     - 桶排序
     - 基数排序
+  - 数组prepend操作的优化：多申请一些内存，然后在数组的开始预留一部分空间，prepend操作则是把头下标向前移动一位。
   - 参考链接
     - [十大经典排序算法](https://www.cnblogs.com/onepixel/p/7674659.html)
     - [9 种经典排序算法可视化动画](https://www.bilibili.com/video/av25136272)
