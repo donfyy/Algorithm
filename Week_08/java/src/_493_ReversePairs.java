@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * 第一遍：2020/07/12周日 ✅
  * 第二遍：2020/07/08周四
@@ -8,10 +11,12 @@
  */
 class _493_ReversePairs {
     // TODO: 2020/7/12  BST 与 BIT解法
+    //https://leetcode.com/problems/reverse-pairs/discuss/97268/General-principles-behind-problems-similar-to-%22Reverse-Pairs%22
     public int reversePairs(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
+        Arrays.sort(new int[0][], Comparator.comparingInt(e -> e[0]));
         return mergeSort(nums, new int[nums.length], 0, nums.length - 1);
     }
 
