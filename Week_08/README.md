@@ -1,45 +1,45 @@
 学习笔记
 
-- 位运算
-  - 位运算符
-    - 按位与(&) 0011 & 1011 -> 0011
-    - 按位或(|) 0011 | 1011 -> 1011
-    - 按位取反(~) ~0011 -> 1100
-    - 按位异或(^) 0011 ^ 1011 -> 1000
-      - x ^ 0 = x
-      - x ^ 1s = ~x
-      - x ^ (~x) = 1s
-      - x ^ x = 0
-      - c = a ^ b => b = a ^ c, a = b ^ c 
-      - a ^ b ^ c = a ^ (b ^ c) = (a ^ b) ^ c
-    - 指定位置的位运算
-      - 将x最右边的n位清零：x & (~0 << n)
-      - 获取x的第n位值（0或者1）：(x >> n) & 1
-      - 获取x的第n位的幂值：x & (1 << n)
-      - 仅将第n位置为1：x | (1 << n) 
-      - 仅将第n位置为0：x | (~(1 << n))
-      - 将x最高位至第n位（含）清零：x & ((1<<n) - 1)
-    - 实战位运算要点
-      - 判断奇偶
-        - x % 2 == 1 -> (x & 1) == 1
-        - x % 2 == 0 -> (x & 1) == 0
-        - 使用java或高级语言的话，编译器足够智能，写成%的话也会被编译成&操作
-        - 没有啊。。。我看生成的字节码使用%的话使用的是irem指令还是取模运算啊。
-      - x >> 1 -> x / 2 即： x = x / 2; -> x = x >> 1 . mid = (left + right) / 2; -> mid = (left + right) >> 1;
-      - x = x & (x - 1) 清零最低位的1 : 100 & 011 -> 000 101 & 100 -> 100
-      - x & -x 得到最低位的1 : 100 & 100 -> 100 011 & 101 -> 001
-      - x & ~x -> 0
-    
-  - 参考链接
-    - [如何从十进制转换为二进制](https://zh.wikihow.com/%E4%BB%8E%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6)
-    - [N 皇后位运算代码示例](https://shimo.im/docs/YzWa5ZZrZPYWahK2)
-  - 实战题目
-    - [位 1 的个数](https://leetcode-cn.com/problems/number-of-1-bits/)
-    - [2 的幂](https://leetcode-cn.com/problems/power-of-two/)
-    - [颠倒二进制位](https://leetcode-cn.com/problems/reverse-bits/)
-    - [N 皇后](https://leetcode-cn.com/problems/n-queens/description/)
-    - [N 皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
-    - [比特位计数](https://leetcode-cn.com/problems/counting-bits/description/)
+###1. 位运算
+####1.1 位运算符
+- 按位与(&) 0011 & 1011 -> 0011
+- 按位或(|) 0011 | 1011 -> 1011
+- 按位取反(~) ~0011 -> 1100
+- 按位异或(^) 0011 ^ 1011 -> 1000
+  - x ^ 0 = x
+  - x ^ 1s = ~x
+  - x ^ (~x) = 1s
+  - x ^ x = 0
+  - c = a ^ b => b = a ^ c, a = b ^ c 
+  - a ^ b ^ c = a ^ (b ^ c) = (a ^ b) ^ c
+####1.2 指定位置的位运算
+- 将x最右边的n位清零：x & (~0 << n)
+- 获取x的第n位值（0或者1）：(x >> n) & 1
+- 获取x的第n位的幂值：x & (1 << n)
+- 仅将第n位置为1：x | (1 << n) 
+- 仅将第n位置为0：x | (~(1 << n))
+- 将x最高位至第n位（含）清零：x & ((1<<n) - 1)
+####1.3 实战位运算要点
+- 判断奇偶
+  - x % 2 == 1 -> (x & 1) == 1
+  - x % 2 == 0 -> (x & 1) == 0
+  - 使用java或高级语言的话，编译器足够智能，写成%的话也会被编译成&操作
+  - 没有啊。。。我看生成的字节码使用%的话使用的是irem指令还是取模运算啊。
+- x >> 1 -> x / 2 即： x = x / 2; -> x = x >> 1 . mid = (left + right) / 2; -> mid = (left + right) >> 1;
+- x = x & (x - 1) 清零最低位的1 : 100 & 011 -> 000 101 & 100 -> 100
+- x & -x 得到最低位的1 : 100 & 100 -> 100 011 & 101 -> 001
+- x & ~x -> 0
+  
+####参考链接
+- [如何从十进制转换为二进制](https://zh.wikihow.com/%E4%BB%8E%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6)
+- [N 皇后位运算代码示例](https://shimo.im/docs/YzWa5ZZrZPYWahK2)
+####实战题目
+- [位 1 的个数](https://leetcode-cn.com/problems/number-of-1-bits/)
+- [2 的幂](https://leetcode-cn.com/problems/power-of-two/)
+- [颠倒二进制位](https://leetcode-cn.com/problems/reverse-bits/)
+- [N 皇后](https://leetcode-cn.com/problems/n-queens/description/)
+- [N 皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
+- [比特位计数](https://leetcode-cn.com/problems/counting-bits/description/)
 - 布隆过滤器
   - 和哈希表类似。只需要知道某个元素有或没有
   - 一个很长的**二进制**向量和一系列**随机映射函数**。用于检索一个元素是否存在一个集合中
