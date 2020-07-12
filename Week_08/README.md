@@ -150,24 +150,24 @@
                    }
                }
         ```
-      - 希尔排序
+      - 希尔排序:是简单插入排序的改进版。与简单插入排序的不同之处在于，会优先比较距离较远的元素。又叫缩小增量排序。希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态的定义间隔序列。
         ```java
                public static void shellSort(int[] array) {
-                   for (int gap = array.length >>> 1; gap > 0; gap >>>= 1) {
-                       for (int i = gap; i < array.length; i++) {
-                           int j = i;
-                           int value = array[i];
-                           while (j - gap >=0 && array[j - gap] > value) {
-                               array[j] = array[j - gap];
-                               j = j - gap;
-                           }
-                           array[j] = value;
-                       }
-                   }
+                    for (int gap = array.length >>> 1; gap > 0; gap >>>= 1) {
+                        for (int i = gap; i < array.length; i++) {
+                            int j = i - gap;
+                            int value = array[i];
+                            while (j >= 0 && array[j] > value) {
+                                array[j + gap] = array[j];
+                                j -= gap;
+                            }
+                            array[j + gap] = value;
+                        }
+                    }
                }
         ```
-    - 选择排序:每次找最小值，然后放到排序数组的起始位置。
-      - 简单选择排序
+    - 选择排序
+      - 简单选择排序:不断地将未排序序列的最小值放到未排序序列的起始位置。
         ```java
                public static void selectionSort(int[] array) {
                    for (int i = 0; i < array.length - 1; i++) {
@@ -308,7 +308,7 @@
                  }
              }
       ```
-    - 基数排序:按照低位先排序，然后收集；再按高位排序，然后再收集；依此类推，直到最高位。有些时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。
+    - 基数排序:按照低位先排序，然后收集；再按高位排序，然后再收集；依此类推，直到最高位。有些时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序的性能比桶排序要略差，每一次关键字的桶分配都需要O(n)的时间复杂度，而且分配后得到的新的关键字序列又需要(n)的时间复杂度。假如待排序序列可以分为d个关键字，则基数排序的时间复杂度将是O(d * 2n)，d远远小于n，因此时间复杂度还是线性级别。空间复杂度为O(n+k),其中k为桶的数量。
       ```java
              public static void radixSort(int[] array) {
                  //找到最大元素

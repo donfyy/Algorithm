@@ -47,6 +47,7 @@ public class HeapSort {
 
     public static void heapifyDownIterative(int[] array, int length, int i) {
         int half = length >>> 1;
+        int value = array[i];
         while (i < half) {
             int child = (i << 1) + 1;
             int right = child + 1;
@@ -54,15 +55,13 @@ public class HeapSort {
                 child = right;
             }
 
-            if (array[child] <= array[i]) {
+            if (array[child] <= value) {
                 break;
             }
-            int temp = array[child];
-            array[child] = array[i];
-            array[i] = temp;
-
+            array[i] = array[child];
             i = child;
         }
+        array[i] = value;
     }
 
     //时间O(nlogn) 空间O(logn)

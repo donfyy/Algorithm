@@ -10,13 +10,13 @@ public class ShellSort {
     public static void shellSort(int[] array) {
         for (int gap = array.length >>> 1; gap > 0; gap >>>= 1) {
             for (int i = gap; i < array.length; i++) {
-                int j = i;
+                int j = i - gap;
                 int value = array[i];
-                while (j - gap >=0 && array[j - gap] > value) {
-                    array[j] = array[j - gap];
-                    j = j - gap;
+                while (j >= 0 && array[j] > value) {
+                    array[j + gap] = array[j];
+                    j -= gap;
                 }
-                array[j] = value;
+                array[j + gap] = value;
             }
         }
     }
