@@ -1,4 +1,6 @@
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.PriorityQueue;
 /**
  * 第一遍：2020/07/12周日 ✅
@@ -12,7 +14,7 @@ import java.util.PriorityQueue;
 class _1244_DesignALeaderboard {
     HashMap<Integer,Integer> playerMap = new HashMap<>();
     public _1244_DesignALeaderboard() {
-
+        List<int[]> ints = Arrays.asList(new int[0]);
     }
     
     public void addScore(int playerId, int score) {
