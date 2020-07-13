@@ -93,9 +93,7 @@ public class SortPractice {
 
     // TODO: 2020/7/11 quick sort
     public static void quickSort(int[] array, int left, int right) {
-        if (left >= right) {
-            return;
-        }
+        if (left >= right) return;
 
         int pivot = partition(array, left, right);
         quickSort(array, left, pivot - 1);
@@ -134,8 +132,9 @@ public class SortPractice {
         for (int i = (length >>> 1) - 1; i >= 0; i--) {
             heapifyDown(array, length, i);
         }
+
         for (int i = length - 1; i > 0; i--) {
-            QuickSort.swap(array, 0, i);
+            QuickSort.swap(array, i, 0);
             heapifyDown(array, i, 0);
         }
     }
@@ -161,24 +160,16 @@ public class SortPractice {
 
     // TODO: 2020/7/11 merge sort
     public static void mergeSort(int[] array, int[] temp, int left, int right) {
-        if (left >= right) {
-            return;
-        }
+        if (left >= right) return;
         int mid = left + ((right - left) >>> 1);
         mergeSort(array, temp, left, mid);
         mergeSort(array, temp, mid + 1, right);
-
-        // merge
         int i = left, j = mid + 1, k = left;
         while (i <= mid && j <= right) {
-            temp[k++] = array[i] > array[j] ? array[j++] : array[i++];
+            temp[k++] = array[i] < array[j] ? array[i++] : array[j++];
         }
-        while (i <= mid) {
-            temp[k++] = array[i++];
-        }
-        while (j <= right) {
-            temp[k++] = array[j++];
-        }
+        while (i <= mid) temp[k++] = array[i++];
+        while (j <= right) temp[k++] = array[j++];
         System.arraycopy(temp, left, array, left, right - left + 1);
     }
 
@@ -193,12 +184,13 @@ public class SortPractice {
 
         int j = 0;
         for (int i = 0; i <= maxValue; i++) {
-            int count = bucket[i];
-            while (count-- > 0) {
+            while (bucket[i] > 0) {
                 array[j++] = i;
+                bucket[i]--;
             }
         }
     }
+
     // TODO: 2020/7/11 bucket sort
     public static void bucketSort(int[] array) {
         int bucketSize = 3;
@@ -215,14 +207,14 @@ public class SortPractice {
         }
 
         int j = 0;
-        for (int i = 0; i < bucketCount; i++) {
-            Collections.sort(buckets[i]);
-
-            for (Object e : buckets[i]) {
-                array[j++] = (int) e;
+        for (List list : buckets) {
+            Collections.sort(list);
+            for (Object o : list) {
+                array[j++] = ((int) o);
             }
         }
     }
+
     // TODO: 2020/7/11 radix sort
     public static void radixSort(int[] array) {
         int maxValue = CountingSort.findMaxValue(array);
@@ -231,22 +223,22 @@ public class SortPractice {
             digitCount++;
             maxValue /= 10;
         }
-
         LinkedList[] buckets = new LinkedList[10];
         for (int i = 0; i < 10; i++) {
             buckets[i] = new LinkedList();
         }
-        for (int digit = 0, dev = 1, mod = 10; digit < digitCount; digit++, dev *= 10, mod *= 10) {
+        for (int digit = 0, dev = 1, mod = 10; digit < digitCount; digit++) {
             for (int value : array) {
                 buckets[value % mod / dev].offer(value);
             }
 
             int j = 0;
-            for (LinkedList list: buckets) {
+            for (LinkedList list : buckets) {
                 while (!list.isEmpty()) {
                     array[j++] = (int) list.poll();
                 }
             }
         }
+
     }
 }
