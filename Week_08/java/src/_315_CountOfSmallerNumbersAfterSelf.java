@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.List;
 /**
  * 第一遍：2020/07/13周一 ✅
- * 第二遍：2020/07/08周四
+ * 第二遍：2020/07/14周二 ✅
  * 第三遍：2020/07/13周一
  * 第二遍：2020/07/06周一
  * 第二遍：2020/07/03周五
@@ -36,12 +36,15 @@ class _315_CountOfSmallerNumbersAfterSelf {
         int i = left, j = mid + 1, k = i;
         int c = 0;
         while (i <= mid) {
-            while (j <= right && nums[indexes[j]] < nums[indexes[i]]) {
+            //把idx缓存起来可以稳定到6ms。。
+            int idx = indexes[i];
+            while (j <= right && nums[idx] > nums[indexes[j]]) {
                 c++;
                 cache[k++] = indexes[j++];
             }
-            count[indexes[i]] += c;
-            cache[k++] = indexes[i++];
+            count[idx] += c;
+            cache[k++] = idx;
+            i++;
         }
 
         while (j <= right) cache[k++] = indexes[j++];
@@ -56,15 +59,14 @@ class _315_CountOfSmallerNumbersAfterSelf {
         int i = left, j = mid + 1, k = i;
         int c = 0;
         while (j <= right) {
-            //把idx缓存起来可以稳定到6ms。。
-            int idx = indexes[i];
-            while (j <= right && nums[idx] > nums[indexes[j]]) {
-                c++;
-                cache[k++] = indexes[j++];
+            int idx = indexes[j];
+            while (i <= mid && nums[indexes[i]] <= nums[idx]) {
+                count[indexes[i]] += c;
+                cache[k++] = indexes[i++];
             }
-            count[idx] += c;
+            c++;
             cache[k++] = idx;
-            i++;
+            j++;
         }
         while (i <= mid) {
             count[indexes[i]] += c;
