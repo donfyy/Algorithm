@@ -13,4 +13,9 @@ fun main() {
     println('Z'.toInt())
     println('z'.toInt())
     println('a'.toInt())
+    println('0'.toInt())
+    println('9'.toInt())
+    println('+'.toInt())
+    println('-'.toInt())
+    println(Integer.MAX_VALUE)
 }
