@@ -23,4 +23,48 @@ class _14_LongestCommonPrefix {
         }
         return first.substring(0, idx);
     }
+
+    class SolutionWithTrie {
+        public String longestCommonPrefix(String[] strs) {
+            if (strs == null || strs.length == 0) return "";
+            Trie trie = new Trie();
+            for (String str : strs) {
+                if (str.length() == 0) return "";
+                trie.insert(str);
+            }
+
+            return trie.commonPrefix();
+        }
+
+        class Trie {
+            Trie[] children = new Trie[26];
+            int idx;
+            int count;
+            boolean isEnd;
+
+            void insert(String str) {
+                Trie node = this;
+                for (int i = 0; i < str.length(); i++) {
+                    int idx = str.charAt(i) - 'a';
+                    if (node.children[idx] == null) {
+                        node.children[idx] = new Trie();
+                        node.count++;
+                        node.idx = idx;
+                    }
+                    node = node.children[idx];
+                }
+                node.isEnd = true;
+            }
+
+            String commonPrefix() {
+                StringBuilder sb = new StringBuilder();
+                Trie node = this;
+                while (!node.isEnd && node.count == 1) {
+                    sb.append((char) (node.idx + 'a'));
+                    node = node.children[node.idx];
+                }
+                return sb.toString();
+            }
+        }
+    }
 }
