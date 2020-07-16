@@ -6,7 +6,7 @@
 - [最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)
 - [宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/)
 - [字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
-- [字符串转换整数 (atoi) ](https://leetcode-cn.com/problems/string-to-integer-atoi/)
+- [**字符串转换整数 (atoi)**](https://leetcode-cn.com/problems/string-to-integer-atoi/)
 ##### 2.1.2 字符串操作问题
 - [最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix/description/)
 - [反转字符串](https://leetcode-cn.com/problems/reverse-string)

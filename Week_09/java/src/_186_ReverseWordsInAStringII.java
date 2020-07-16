@@ -6,7 +6,7 @@
  * 第三遍：2020/06/29周一
  * 第四遍：2020/07/05周日
  */
-class _186_ReversWordsInAStringII {
+class _186_ReverseWordsInAStringII {
     public void reverseWords(char[] s) {
         if (s == null || s.length == 0) return;
         int length = s.length;

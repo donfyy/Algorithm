@@ -1,6 +1,6 @@
 /**
  * 第一遍：2020/07/15周三 ✅
- * 第二遍：2020/07/15周三
+ * 第二遍：2020/07/16周四 ✅
  * 第三遍：2020/07/08周四
  * 第四遍：2020/07/13周一
  * 第三遍：2020/06/29周一
@@ -9,7 +9,7 @@
  * c++原地操作数组的解法
  * https://leetcode-cn.com/problems/reverse-words-in-a-string/solution/c-yuan-di-cao-zuo-fen-xiang-cbiao-zhun-ku-xia-zai-/
  */
-class _151_ReversWordsInAString {
+class _151_ReverseWordsInAString {
     public String reverseWords(String s) {
         if (s == null || s.length() == 0) return s;
         char[] array = s.toCharArray();
