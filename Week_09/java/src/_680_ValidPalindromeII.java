@@ -9,14 +9,14 @@
 class _680_ValidPalindromeII {
     public boolean validPalindrome(String s) {
         if (s == null || s.length() == 0) return false;
-        return dfs(s, 0, s.length() - 1, false);
+        return recur(s, 0, s.length() - 1, false);
     }
 
-    boolean dfs(String s, int l, int r, boolean deleted) {
+    boolean recur(String s, int l, int r, boolean deleted) {
         while (l < r) {
             if (s.charAt(l) != s.charAt(r)) {
                 if (deleted) return false;
-                return dfs(s, l + 1, r, true) || dfs(s, l, r - 1, true);
+                return recur(s, l + 1, r, true) || recur(s, l, r - 1, true);
             }
             l++;
             r--;
