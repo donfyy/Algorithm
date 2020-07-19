@@ -24,3 +24,4 @@
 - [**戳气球**](https://leetcode-cn.com/problems/burst-balloons/)
   - 这道题目很难，第一遍花了近两个小时，只是懂了大概，继续努力.
   - [动态规划套路解决戳气球问题](https://leetcode-cn.com/problems/burst-balloons/solution/dong-tai-gui-hua-tao-lu-jie-jue-chuo-qi-qiu-wen-ti/)
+- [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)

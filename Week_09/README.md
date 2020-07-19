@@ -23,4 +23,4 @@
 ##### 2.1.4 回文串问题
 - [验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
 - [验证回文字符串 Ⅱ](https://leetcode-cn.com/problems/valid-palindrome-ii/)
-- [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+- [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_5_LongestPalindromicSubstring.java)
