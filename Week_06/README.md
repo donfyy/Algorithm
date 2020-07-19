@@ -21,3 +21,5 @@
         - **自底向上的优化空间后的循环** 这是应该给出的解法
 ### 实战题目
 - [交错字符串](https://leetcode-cn.com/problems/interleaving-string/)
+- [**戳气球**](https://leetcode-cn.com/problems/burst-balloons/)
+  - 这道题目很难，第一遍花了近两个小时，只是懂了大概，继续努力.
