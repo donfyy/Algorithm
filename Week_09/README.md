@@ -1,14 +1,14 @@
 学习笔记
-### 1 字符串算法
-#### 1.1 练习题目
-##### 1.1.1 字符串基础
-###### 1.1.1.1 字符串基础问题
+# 1 字符串算法
+## 1.1 练习题目
+### 1.1.1 字符串基础
+#### 1.1.1.1 字符串基础问题
 - [转换成小写字母](https://leetcode-cn.com/problems/to-lower-case/)
 - [最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)
 - [宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/)
 - [字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
 - [**字符串转换整数 (atoi)**](https://leetcode-cn.com/problems/string-to-integer-atoi/)
-###### 1.1.1.2 字符串操作问题
+#### 1.1.1.2 字符串操作问题
 - [最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix/description/)
 - [反转字符串](https://leetcode-cn.com/problems/reverse-string)
 - [反转字符串 II ](https://leetcode-cn.com/problems/reverse-string-ii/)
@@ -16,24 +16,24 @@
   - 空格处理上花了较多时间。
 - [反转字符串中的单词 III ](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
 - [仅仅反转字母](https://leetcode-cn.com/problems/reverse-only-letters/)
-###### 1.1.1.3 异位词问题
+#### 1.1.1.3 异位词问题
 - [有效的字母异位词](https://leetcode-cn.com/problems/valid-anagram/)
 - [字母异位词分组](https://leetcode-cn.com/problems/group-anagrams/)
 - [**找到字符串中所有字母异位词**](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)
   - 没看懂题解的代码。。。
-###### 1.1.1.4 回文串问题
+#### 1.1.1.4 回文串问题
 - [验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
 - [验证回文字符串 Ⅱ](https://leetcode-cn.com/problems/valid-palindrome-ii/)
 - [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_5_LongestPalindromicSubstring.java)
-##### 1.1.2 高级字符串算法
-###### 1.1.2.1 最长子串、子序列问题
+### 1.1.2 高级字符串算法
+#### 1.1.2.1 最长子串、子序列问题
 - [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_5_LongestPalindromicSubstring.java)
 - [最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/kotlin/src/_1143_LongestCommonSubsequence.kt)
 - [编辑距离](https://leetcode-cn.com/problems/edit-distance/)
-###### 1.1.2.2 字符串+dp
+#### 1.1.2.2 字符串+dp
 - [正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
   - [参考题解](https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/)
 - [通配符匹配](https://leetcode-cn.com/problems/wildcard-matching/)
 - [不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)
 
-### 2 [动态规划](https://github.com/donfyy/algorithm009-class01/tree/master/Week_06)
+# 2 [动态规划](https://github.com/donfyy/algorithm009-class01/tree/master/Week_06)
