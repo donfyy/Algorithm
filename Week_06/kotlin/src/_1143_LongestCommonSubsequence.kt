@@ -38,18 +38,26 @@ fun longestCommonSubsequence1(text1: String, text2: String): Int {
 
 //时间O(m*n)空间O(min(m,n))
 fun longestCommonSubsequence2(text1: String, text2: String): Int {
+    //f(i, j)表示text1前i个字符组成的字符串与text2前j个字符组成的字符串的最长公共子序列的长度
+    //if (text1[i - 1] == text2[j - 1]) f(i, j) = f(i - 1, j - 1) + 1
+    //else f(i, j) = max(f(i - 1, j), f(i, j - 1))
+    // 1 <= i <= text1.length    1 <= j <= text2.length
     val m = text1.length
     val n = text2.length
-    if (m < n) return longestCommonSubsequence2(text2, text1)
-    val dp = IntArray(n + 1)
+    if (m < n) return longestCommonSubsequence(text2, text1)
+    val dp = IntArray(n + 2)
+
     for (i in 1..m) {
-        var dpi_1j_1 = 0
-        var dpi_1j = dp[1]
-        val c = text1[i - 1]
+        var leftTop = 0
+        var top = dp[1]
         for (j in 1..n) {
-            dp[j] = if (c == text2[j - 1]) dpi_1j_1 + 1 else Math.max(dp[j - 1], dpi_1j)
-            dpi_1j_1 = dpi_1j
-            if (j != n) dpi_1j = dp[j + 1]
+            if (text1[i - 1] == text2[j - 1]) {
+                dp[j] = leftTop + 1
+            } else {
+                dp[j] = Math.max(dp[j - 1], top)
+            }
+            leftTop = top
+            top = dp[j + 1]
         }
     }
     return dp[n]
