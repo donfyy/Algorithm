@@ -31,9 +31,9 @@
 - [最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/kotlin/src/_1143_LongestCommonSubsequence.kt)
 - [编辑距离](https://leetcode-cn.com/problems/edit-distance/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_72_EditDistance.java)
 #### 1.1.2.2 字符串+dp
-- [正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
+- [正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_10_RegularExpressionMatching.java)
   - [参考题解](https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/)
 - [通配符匹配](https://leetcode-cn.com/problems/wildcard-matching/)
-- [不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)
+- [不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_115_DistinctSequences.java)
 
 # 2 [动态规划](https://github.com/donfyy/algorithm009-class01/tree/master/Week_06)
