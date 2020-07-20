@@ -45,19 +45,17 @@ fun longestCommonSubsequence2(text1: String, text2: String): Int {
     val m = text1.length
     val n = text2.length
     if (m < n) return longestCommonSubsequence(text2, text1)
-    val dp = IntArray(n + 2)
-
+    val dp = IntArray(n + 1)
     for (i in 1..m) {
         var leftTop = 0
-        var top = dp[1]
         for (j in 1..n) {
+            val top = dp[j]
             if (text1[i - 1] == text2[j - 1]) {
                 dp[j] = leftTop + 1
             } else {
                 dp[j] = Math.max(dp[j - 1], top)
             }
             leftTop = top
-            top = dp[j + 1]
         }
     }
     return dp[n]
