@@ -5,13 +5,13 @@ fun longestPalindrome(s: String): String {
     //0 <= i <= n - 1   0 <= j <= n - 1
     if (s.isEmpty()) return s
     val n = s.length
-    val dp = Array(n) { BooleanArray(n) }
+    val dp = BooleanArray(n)
     var l = 0
     var r = 0
     for (i in n - 1 downTo 0) {
         for (j in n - 1 downTo i) {
-            dp[i][j] = s[i] == s[j] && (j - i < 2 || dp[i + 1][j - 1])
-            if (dp[i][j] && j - i > r - l) {
+            dp[j] = s[i] == s[j] && (j - i < 2 || dp[j - 1])
+            if (dp[j] && j - i > r - l) {
                 l = i
                 r = j
             }
