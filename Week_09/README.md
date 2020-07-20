@@ -29,7 +29,7 @@
 #### 1.1.2.1 最长子串、子序列问题
 - [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_5_LongestPalindromicSubstring.java)
 - [最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/kotlin/src/_1143_LongestCommonSubsequence.kt)
-- [编辑距离](https://leetcode-cn.com/problems/edit-distance/)
+- [编辑距离](https://leetcode-cn.com/problems/edit-distance/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_72_EditDistance.java)
 #### 1.1.2.2 字符串+dp
 - [正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
   - [参考题解](https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/)
