@@ -25,3 +25,10 @@
   - 这道题目很难，第一遍花了近两个小时，只是懂了大概，继续努力.
   - [动态规划套路解决戳气球问题](https://leetcode-cn.com/problems/burst-balloons/solution/dong-tai-gui-hua-tao-lu-jie-jue-chuo-qi-qiu-wen-ti/)
 - [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+- [最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/)
+  f(i, j)表示t1\[0, i - 1\]与t2\[0, j - 1\]的最长公共子序列的长度
+  则if (t1\[i - 1\] == t2\[j - 1\]) f(i, j) = f(i - 1, j - 1) + 1
+  else f(i, j) = max(f(i - 1, j), f(i, j - 1))。
+  如果求最长公共子串的长度则f(i, j)表示t1\[0, i - 1\]与t2\[0, j - 1]**包含t1\[i - 1]和t2\[j - 1]**的最长公共子串的长度
+  因此if (t1\[i - 1\] == t2\[j - 1\]) f(i, j) = f(i - 1, j - 1) + 1
+  else f(i, j) = 0, 我们要返回max(f(i, j))。这个状态的定义和最大子序和的状态定义类似。
