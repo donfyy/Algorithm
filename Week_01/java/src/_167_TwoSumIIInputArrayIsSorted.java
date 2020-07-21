@@ -16,12 +16,21 @@ class _167_TwoSumIIInputArrayIsSorted {
                 l = m + 1;
             } else if (numbers[l] < target - numbers[r]) {
                 l++;
-            } else if (numbers[l] > target - numbers[r] ) {
+            } else if (numbers[l] > target - numbers[r]) {
                 r--;
             } else {
                 return new int[]{l + 1, r + 1};
             }
         }
         return new int[]{-1, -1};
+    }
+
+    public static void main(String[] args) {
+        System.out.println((Integer.MAX_VALUE) + ":" + Integer.toBinaryString(Integer.MAX_VALUE));
+        System.out.println((Integer.MAX_VALUE + Integer.MAX_VALUE) +
+                "\n:" + Integer.toBinaryString(Integer.MAX_VALUE + Integer.MAX_VALUE) +
+                "\n:" + Long.toBinaryString((long)Integer.MAX_VALUE + (long)Integer.MAX_VALUE));
+        System.out.println((Integer.MAX_VALUE + Integer.MAX_VALUE) >>> 1);
+        System.out.println((Integer.MAX_VALUE + Integer.MAX_VALUE) >> 1);
     }
 }
