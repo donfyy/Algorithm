@@ -42,4 +42,4 @@
 - [**编辑距离**](https://leetcode-cn.com/problems/edit-distance/)
 - [**不同的子序列**](https://leetcode-cn.com/problems/distinct-subsequences/)
 
-  没想明白为什么f(i, j) = f(i - 1, j - 1) + f(i, j - 1)。。。
+  没想明白为什么f(i, j) = f(i - 1, j - 1) + f(i, j - 1)。。。编辑距离相对于不同的子序列就好理解一些。
