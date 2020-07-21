@@ -9,13 +9,17 @@ class _167_TwoSumIIInputArrayIsSorted {
         if (numbers == null || numbers.length < 2) return new int[]{-1, -1};
         int l = 0, r = numbers.length - 1;
         while (l < r) {
-            int vl = numbers[l];
-            int diff = target - numbers[r];
-            if (vl == diff) return new int[]{l + 1, r + 1};
-            if (vl > diff) {
+            int m = (l + r) >>> 1;
+            if (numbers[l] > target - numbers[m]) {
+                r = m - 1;
+            } else if (numbers[r] < target - numbers[m]) {
+                l = m + 1;
+            } else if (numbers[l] < target - numbers[r]) {
+                l++;
+            } else if (numbers[l] > target - numbers[r] ) {
                 r--;
             } else {
-                l++;
+                return new int[]{l + 1, r + 1};
             }
         }
         return new int[]{-1, -1};
