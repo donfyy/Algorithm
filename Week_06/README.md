@@ -40,3 +40,6 @@
   else f(i, j) = 0, 我们要返回max(f(i, j))。这个状态的定义和最大子序和的状态定义类似。
   
 - [**编辑距离**](https://leetcode-cn.com/problems/edit-distance/)
+- [**不同的子序列**](https://leetcode-cn.com/problems/distinct-subsequences/)
+
+  没想明白为什么f(i, j) = f(i - 1, j - 1) + f(i, j - 1)。。。
