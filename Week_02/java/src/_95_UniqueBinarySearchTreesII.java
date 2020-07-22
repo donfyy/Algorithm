@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * 第一遍：2020/07/20周二 ✅
- * 第二遍：2020/07/21周二
+ * 第二遍：2020/07/21周二 ✅
  * 第三遍：2020/07/08周四
  * 第四遍：2020/07/13周一
  * 第三遍：2020/06/29周一
@@ -12,7 +12,9 @@ import java.util.List;
  * 今不知道回事，居然有理解障碍，卧槽，可能是太累了吧，早上就没有，而且比较顺利地写出来了dp解法
  * 明天要复习下。
  * 还有一种节省空间的dp解法
- * todo dp解法
+ * todo 彻底理解求出长度为1，2。。直到n地所有可能
+ * todo 学习从[1,2]推出[1,2,3]的解法
+ * 参考：https://leetcode-cn.com/problems/unique-binary-search-trees-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-2-7/
  */
 class _95_UniqueBinarySearchTreesII {
     public List<TreeNode> generateTrees(int n) {
@@ -85,6 +87,35 @@ class _95_UniqueBinarySearchTreesII {
             this.val = val;
             this.left = left;
             this.right = right;
+        }
+    }
+
+    class SolutionByLength {
+        //不断地求长度从0到n地所有情况
+        public List<TreeNode> generateTrees(int n) {
+            if (n < 1) return Collections.emptyList();
+            LinkedList<TreeNode>[] dp = new LinkedList[n + 1];
+            dp[0] = new LinkedList<TreeNode>();
+            dp[0].add(null);
+            for (int length = 1; length <= n; length++) {
+                LinkedList<TreeNode> list = new LinkedList<>();
+                for (int root = 1; root <= length; root++) {
+                    for (TreeNode left : dp[root - 1]) {
+                        for (TreeNode right : dp[length - root]) {
+                            list.add(new TreeNode(root, left, clone(right, root)));
+                        }
+                    }
+                }
+                dp[length] = list;
+            }
+            return dp[n];
+        }
+
+        TreeNode clone(TreeNode node, int offset) {
+            if (node == null) {
+                return null;
+            }
+            return new TreeNode(node.val + offset, clone(node.left, offset), clone(node.right, offset));
         }
     }
 }
