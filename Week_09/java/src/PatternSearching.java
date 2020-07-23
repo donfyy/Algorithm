@@ -26,13 +26,13 @@ public class PatternSearching {
     public static class KMP {
         public void search(String txt, String pat) {
             int[] lps = createLPSArray(pat);
-            int m = txt.length();
-            int n = pat.length();
+            int n = txt.length();
+            int m = pat.length();
             int i = 0;
             int j = 0;
-            while (i < m) {
+            while (i < n) {
                 if (txt.charAt(i) == pat.charAt(j)) {
-                    if (j == n - 1) {
+                    if (j == m - 1) {
                         System.out.println("Pattern Found at index " + (i - j));
                         j = lps[j];
                         continue;
@@ -54,15 +54,15 @@ public class PatternSearching {
         }
 
         public int[] createLPSArray(String pat) {
-            int n = pat.length();
-            int[] lps = new int[n];
+            int m = pat.length();
+            int[] lps = new int[m];
             lps[0] = -1;
             lps[1] = 0;
             //A   B A B C A B A A
             //0   0 1 2 0 1 2 3
             int len = 0;
             int i = 1;
-            while (i < n - 1) {
+            while (i < m - 1) {
                 if (pat.charAt(i) == pat.charAt(len)) {
                     len++;
                     lps[++i] = len;
