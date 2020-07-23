@@ -22,7 +22,49 @@ public class PatternSearching {
         }
     }
 
-    // TODO: 2020/7/21 Rabin-Karp algorithm
+    public static class RabinKarp {
+        public static void main(String[] args) {
+            new RabinKarp().search("AABAACAADAABAABA", "AABA");
+        }
+
+        public static final int D = 256;
+        public static final int Q = 9997;
+
+        public void search(String txt, String pat) {
+            int m = pat.length();
+            int n = txt.length();
+//            "AABAACAADAABAABA" n = 16
+//            "AABA" m = 4
+            int patHash = 0, txtHash = 0;
+            for (int i = 0; i < m; i++) {
+                patHash = (D * patHash + pat.charAt(i)) % Q;
+                txtHash = (D * txtHash + txt.charAt(i)) % Q;
+            }
+
+            int highestPow = 1;// pow (256, M - 1)
+            for (int i = 0; i < m - 1; i++) {
+                highestPow = (highestPow * D) % Q;
+            }
+
+            for (int i = 0; i <= n - m; i++) {
+                if (txtHash == patHash) {
+                    int j = 0;
+                    while (j < m && pat.charAt(j) == txt.charAt(i + j)) j++;
+                    if (j == m) {
+                        System.out.println("Pattern Found at index " + i);
+                    }
+                }
+
+                if (i < n - m) {
+                    txtHash = (D * (txtHash - txt.charAt(i) * highestPow) + txt.charAt(i + m)) % Q;
+                    if (txtHash < 0) {
+                        txtHash += Q;
+                    }
+                }
+            }
+        }
+    }
+
     public static class KMP {
         public void search(String txt, String pat) {
             int[] lps = createLPSArray(pat);
