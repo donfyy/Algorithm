@@ -125,8 +125,22 @@ public class PatternSearching {
 
     public static class BoyerMoore {
         public static void main(String[] args) {
-            new BoyerMoore().search("AABAACAADAABAABA", "AABA");
+//            new BoyerMoore().search("AABAACAADAABAABA", "AABA");
+            String pat = "ABBAB";
+            //bpos  3 4 4 5 5 6
+            //shift 0 0 0 0 2 1
+            // TODO: 2020/7/23 折腾了一天没有理解好后缀的概念，草 
+            int[] shift = new int[pat.length() + 1];
+            int[] bpos = new int[pat.length() + 1];
+            BoyerMoore boyerMoore = new BoyerMoore();
+            boyerMoore.preprocessingStrongSuffix(
+                    shift,
+                    bpos,
+                    pat
+            );
+            boyerMoore.preProcessCash2(shift, bpos, pat);
         }
+
         public void search(String txt, String pat) {
             int m = pat.length();
             int n = txt.length();
@@ -143,6 +157,38 @@ public class PatternSearching {
                     i += Math.max(1, j - badChar[txt.charAt(i + j)]);
                 }
             }
+        }
+
+        public void preProcessCash2(int[] shift, int[] bpos, String pat) {
+            int m = pat.length();
+            for (int i = 0, j = bpos[0]; i <= m; i++) {
+                if (shift[i] == 0) {
+                    shift[i] = j;
+                }
+                if (i == j) {
+                    j = bpos[j];
+                }
+            }
+            System.out.println(Arrays.toString(bpos));
+            System.out.println(Arrays.toString(shift));
+        }
+
+        public void preprocessingStrongSuffix(int[] shift, int[] bpos, String pat) {
+            int m = pat.length();
+            int i = m, j = m + 1;
+            bpos[m] = j;
+            while (i > 0) {
+                while (j <= m && pat.charAt(i - 1) != pat.charAt(j - 1)) {
+                    if (shift[j] == 0) {
+                        shift[j] = j - i;
+                    }
+                    j = bpos[j];
+                }
+                i--;
+                j--;
+                bpos[i] = j;
+            }
+
         }
 
         public int[] badCharHeuristic(String pat) {
