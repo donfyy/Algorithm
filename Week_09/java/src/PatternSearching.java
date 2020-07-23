@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class PatternSearching {
     public static class Naive {
         public static void main(String[] args) {
@@ -118,6 +120,39 @@ public class PatternSearching {
             }
 
             return lps;
+        }
+    }
+
+    public static class BoyerMoore {
+        public static void main(String[] args) {
+            new BoyerMoore().search("AABAACAADAABAABA", "AABA");
+        }
+        public void search(String txt, String pat) {
+            int m = pat.length();
+            int n = txt.length();
+            int[] badChar = badCharHeuristic(pat);
+
+            int i = 0;
+            while (i <= n - m) {
+                int j = m - 1;
+                while (j >= 0 && pat.charAt(j) == txt.charAt(i + j)) j--;
+                if (j < 0) {
+                    System.out.println("Pattern found at index " + i);
+                    i += (i == n - m) ? 1 : m - badChar[txt.charAt(i + m)];
+                } else {
+                    i += Math.max(1, j - badChar[txt.charAt(i + j)]);
+                }
+            }
+        }
+
+        public int[] badCharHeuristic(String pat) {
+            int m = pat.length();
+            int[] badChar = new int[256];
+            Arrays.fill(badChar, -1);
+            for (int i = 0; i < m; i++) {
+                badChar[pat.charAt(i)] = i;
+            }
+            return badChar;
         }
     }
 }
