@@ -102,6 +102,12 @@ public class PatternSearching {
             int[] lps = new int[m];
             lps[0] = -1;
             lps[1] = 0;
+            //f(i)表示[0, i]字符串的最长公共前后缀的长度
+            //if (i == 0) f(i) = 0
+            //len表示f(i - 1)的最长公共前后缀的长度
+            //if (pat[len] == pat[i]) f(i) = f(i - 1) + 1
+            //else len = f(len - 1)
+            //f(0) = 0, len = 0
             //A   B A B C A B A A
             //0   0 1 2 0 1 2 3
             int len = 0;
@@ -129,7 +135,7 @@ public class PatternSearching {
             String pat = "ABBAB";
             //bpos  3 4 4 5 5 6
             //shift 0 0 0 0 2 1
-            // TODO: 2020/7/23 折腾了一天没有理解好后缀的概念，草 
+            // TODO: 2020/7/23 折腾了一天没有理解好后缀的概念，草
             int[] shift = new int[pat.length() + 1];
             int[] bpos = new int[pat.length() + 1];
             BoyerMoore boyerMoore = new BoyerMoore();
