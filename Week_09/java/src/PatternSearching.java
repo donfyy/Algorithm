@@ -131,26 +131,27 @@ public class PatternSearching {
 
     public static class BoyerMoore {
         public static void main(String[] args) {
-//            new BoyerMoore().search("AABAACAADAABAABA", "AABA");
-            String pat = "ABBAB";
-            //bpos  3 4 4 5 5 6
-            //shift 0 0 0 0 2 1
-            // TODO: 2020/7/23 折腾了一天没有理解好后缀的概念，草
+            BoyerMoore boyerMoore = new BoyerMoore();
+            boyerMoore.search("AABAACAADAABAABA", "AABA");
+            /* String pat = "CCACC";
             int[] shift = new int[pat.length() + 1];
             int[] bpos = new int[pat.length() + 1];
-            BoyerMoore boyerMoore = new BoyerMoore();
-            boyerMoore.preprocessingStrongSuffix(
+            boyerMoore.calculateShiftArrayForGoodSuffix(
+                    pat,
                     shift,
-                    bpos,
-                    pat
+                    bpos
             );
-            boyerMoore.preProcessCash2(shift, bpos, pat);
+            System.out.println(Arrays.toString(bpos));
+            System.out.println(Arrays.toString(shift)); */
         }
 
         public void search(String txt, String pat) {
             int m = pat.length();
             int n = txt.length();
-            int[] badChar = badCharHeuristic(pat);
+            int[] badCharPos = badCharHeuristic(pat);
+            int[] goodSuffixShift = new int[pat.length() + 1];
+            int[] bpos = new int[pat.length() + 1];
+            calculateShiftArrayForGoodSuffix(pat, goodSuffixShift, bpos);
 
             int i = 0;
             while (i <= n - m) {
@@ -158,9 +159,43 @@ public class PatternSearching {
                 while (j >= 0 && pat.charAt(j) == txt.charAt(i + j)) j--;
                 if (j < 0) {
                     System.out.println("Pattern found at index " + i);
-                    i += (i == n - m) ? 1 : m - badChar[txt.charAt(i + m)];
+//                    i += (i == n - m) ? 1 : Math.max(m - badChar[txt.charAt(i + m)], 1);
+                    int badCharShift = (i == n - m) ? 1 : Math.max(m - badCharPos[txt.charAt(i + m)], 1);
+                    i += Math.max(goodSuffixShift[0], badCharShift);
                 } else {
-                    i += Math.max(1, j - badChar[txt.charAt(i + j)]);
+//                    i += Math.max(1, j - badChar[txt.charAt(i + j)]);
+                    int badCharShift = Math.max(1, j - badCharPos[txt.charAt(i + j)]);
+                    i+= Math.max(goodSuffixShift[j + 1], badCharShift);
+                }
+            }
+        }
+
+        public void calculateShiftArrayForGoodSuffix(String pat, int[] shift, int[] bpos) {
+            int m = pat.length();
+            //bpos[i]表示[i, m - 1]最长公共前后缀中后缀首字母的位置
+            int j = m + 1;
+            int i = m;
+            bpos[i] = j;
+            while (i > 0) {
+                if (j <= m && pat.charAt(j - 1) != pat.charAt(i - 1)) {
+                    if (shift[j] == 0) {
+                        shift[j] = j - i;
+                    }
+                    j = bpos[j];
+                } else {
+                    i--;
+                    j--;
+                    bpos[i] = j;
+                }
+            }
+            //生成移位表shift[]
+            j = bpos[0];
+            for (i = 0; i <= m; i++) {
+                if (shift[i] == 0) {
+                    shift[i] = j;
+                }
+                if (i == j) {
+                    j = bpos[j];
                 }
             }
         }
