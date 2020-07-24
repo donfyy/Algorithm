@@ -45,3 +45,10 @@
 - [**不同的子序列**](https://leetcode-cn.com/problems/distinct-subsequences/)
 
   没想明白为什么f(i, j) = f(i - 1, j - 1) + f(i, j - 1)。。。编辑距离相对于不同的子序列就好理解一些。
+
+### 持续刷题
+- [除数博弈](https://leetcode-cn.com/problems/divisor-game/)
+  
+  这是一道数学题，奇数先手必败，偶数先手必胜。也可以用动态规划来做，但一开始我没有能正确的定义状态
+  f(i)表示黑板上的数字为i时Alice先手是否必胜，则状态的转移需要枚举\[1, i / 2\]的数字找到任意一个i的因数x并且
+  f(i - x) == true 则f(i) = true 否则f(i) = false。
