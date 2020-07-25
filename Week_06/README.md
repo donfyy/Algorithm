@@ -19,6 +19,24 @@
         - 自顶向下的记忆化递归
     - 自底向上的循环
         - **自底向上的优化空间后的循环** 这是应该给出的解法
+        
+### 第六周题目
+#### 中等
+- [最小路径和](https://leetcode-cn.com/problems/minimum-path-sum/)
+- [解码方法](https://leetcode-cn.com/problems/decode-ways)
+- [最大正方形](https://leetcode-cn.com/problems/maximal-square/)
+- [任务调度器](https://leetcode-cn.com/problems/task-scheduler/)
+- [回文子串](https://leetcode-cn.com/problems/palindromic-substrings/)
+#### 困难
+- [最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/)
+- [编辑距离](https://leetcode-cn.com/problems/edit-distance/)
+- [矩形区域不超过 K 的最大数值和](https://leetcode-cn.com/problems/max-sum-of-rectangle-no-larger-than-k/)
+- [青蛙过河](https://leetcode-cn.com/problems/frog-jump/)
+- [分割数组的最大值](https://leetcode-cn.com/problems/split-array-largest-sum)
+- [学生出勤记录 II ](https://leetcode-cn.com/problems/student-attendance-record-ii/)
+- [最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)
+- [戳气球](https://leetcode-cn.com/problems/burst-balloons/)
+
 ### 实战题目
 - [交错字符串](https://leetcode-cn.com/problems/interleaving-string/)
 - [**戳气球**](https://leetcode-cn.com/problems/burst-balloons/)

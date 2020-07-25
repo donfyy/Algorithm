@@ -6,6 +6,7 @@ import java.util.Arrays;
  * 第四遍：2020/07/05周日
  */
 class _410_SplitArrayLargestSum {
+    //时间O(nnm) 空间O(nm)
     public int splitArray(int[] nums, int m) {
         //数组长度为n，要分成m个非空连续子数组
         //第一次分割有 n - m + 1种，在区间[0, n - 1]选取i分割 [0, i] [i + 1, n - 1] i in [0, n - m]
@@ -38,5 +39,41 @@ class _410_SplitArrayLargestSum {
             }
         }
         return dp[n][m];
+    }
+
+    //时间O(n log(sum-max)) 空间 O(1)
+    public int splitArrayBinarySearch(int[] nums, int m) {
+        //子数组的和的最大值是有范围的，即[max(nums), sum(nums)]
+        //l = max(nums) r = sum(nums) mid = (l + r) >>> 1
+        //计算数组和最大值小于等于mid的子数组个数cnt，
+        //如果cnt > m，说明mid小 所以 l = mid + 1 否则 r = mid
+        if (nums == null || m < 1 || nums.length < m) return -1;
+        long l = nums[0];
+        long r = nums[0];
+        int length = nums.length;
+        for (int i = 1; i < length; i++) {
+            r += nums[i];
+            if (nums[i] > l) {
+                l = nums[i];
+            }
+        }
+        while (l < r) {
+            long mid = (l + r) >>> 1;
+            int cnt = 1;
+            long s = 0;
+            for (int v : nums) {
+                s+= v;
+                if (s > mid) {
+                    s = v;
+                    cnt++;
+                }
+            }
+            if (cnt > m) {
+                l = mid + 1;
+            } else {
+                r = mid;
+            }
+        }
+        return (int)l;
     }
 }
