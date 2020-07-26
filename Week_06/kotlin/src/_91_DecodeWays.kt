@@ -8,14 +8,13 @@ fun numDecodings(s: String): Int {
     var leftPreceding = 1
     var left = 1
     for (i in 2..s.length) {
-        var dp = left;
-        if (s[i - 1] == '0') {
-            if (s[i - 2] == '1' || s[i - 2] == '2') {
-                dp = leftPreceding
-            } else {
-                return 0
-            }
-        } else if (s[i - 2] == '1' || (s[i - 2] == '2' && s[i - 1] <= '6')) {
+        val first = s[i - 1] - '0'
+        val second = (s[i - 2] - '0') * 10 + first
+        var dp = 0
+        if (first in 1..9) {
+            dp = left
+        }
+        if (second in 10..26) {
             dp += leftPreceding
         }
         leftPreceding = left
