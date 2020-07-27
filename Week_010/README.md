@@ -12,7 +12,8 @@
 多看高票代码和高票题解。
 ## 后续的计划
 坚持每日一题，再刷两遍训练营。把没有完成的题目补上。
-
+[热题100](https://leetcode-cn.com/problemset/hot-100/)
+[剑指offer](https://leetcode-cn.com/problemset/lcof/)
 
 ## 学习方法
 三分看视频理解、七分练习
