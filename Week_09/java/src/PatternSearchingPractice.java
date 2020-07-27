@@ -79,10 +79,29 @@ public class PatternSearchingPractice {
 
     public static class BoyerMoore {
         public static void main(String[] args) {
-            new BoyerMoore().search(
-                    "AABAACAADAABAABA", "AABA"
+//            new BoyerMoore().search(
+//                    "AABAACAADAABAABA", "AABA"
+//            );
+            BoyerMoore bm = new BoyerMoore();
+            String pat = "AABA";
+            PatternSearching.BoyerMoore pbm = new PatternSearching.BoyerMoore();
+            int[] bpos2 = new int[pat.length() + 1];
+            int[] shift2 = new int[pat.length() + 1];
+            pbm.calculateShiftArrayForGoodSuffix(pat, shift2, bpos2);
+            int[] bpos = new int[pat.length() + 1];
+            int[] shift = new int[pat.length() + 1];
+            bm.shiftArrayForGoodSuffix(
+                    pat,
+                    bpos,
+                    shift
             );
+            int[] shift1 = new int[pat.length()];
+            bm.shiftArrayForGoodSuffix2(pat, shift1);
+            System.out.println("0:" + Arrays.toString(shift2));
+            System.out.println("1:" + Arrays.toString(shift));
+            System.out.println("2:" + Arrays.toString(shift1));
         }
+
         void search(String txt, String pat) {
             int m = pat.length();
             int n = txt.length();
@@ -111,6 +130,33 @@ public class PatternSearchingPractice {
             }
         }
 
+        void shiftArrayForGoodSuffix2(String pat, int[] shift) {
+            int m = pat.length();
+            int p = m;
+            int l = m - 1;
+            for (int i = l - 1; i >= 0; i--) {
+                int j = 0;
+                while (j < l - i && pat.charAt(j) == pat.charAt(i + 1 + j)) {
+                    j++;
+                }
+                if (j == l - i) {
+                    p = i + 1;
+                }
+                shift[i] = l - i + p;
+            }
+
+            for (int i = 0; i < l; i++) {
+                int j = 0;
+                while (j < i && pat.charAt(l - j) == pat.charAt(i - j)) {
+                    j++;
+                }
+                if (pat.charAt(l - j) != pat.charAt(i - j)) {
+                    shift[l - j] = j + l - i;
+                }
+            }
+        }
+
+
         void shiftArrayForGoodSuffix(String pat, int[] bpos, int[] shift) {
             int m = pat.length();
             //bpos[i]表示[i, m]字符串的最长公共前后缀后缀首字母的位置
@@ -119,7 +165,7 @@ public class PatternSearchingPractice {
             bpos[i] = j;
             while (i > 0) {
                 if (j <= m && pat.charAt(j - 1) != pat.charAt(i - 1)) {
-                    if (shift[j] != 0) {
+                    if (shift[j] == 0) {
                         shift[j] = j - i;
                     }
                     j = bpos[j];
@@ -131,8 +177,8 @@ public class PatternSearchingPractice {
             }
 
             j = bpos[0];
-            for (i = 0; i < m; i++) {
-                if (shift[j] == 0) {
+            for (i = 0; i <= m; i++) {
+                if (shift[i] == 0) {
                     shift[i] = j;
                 }
 
