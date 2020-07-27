@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class PatternSearchingPractice {
     public static class Naive {
         public static void main(String[] args) {
@@ -72,6 +74,82 @@ public class PatternSearchingPractice {
                 }
             }
             return lps;
+        }
+    }
+
+    public static class BoyerMoore {
+        public static void main(String[] args) {
+            new BoyerMoore().search(
+                    "AABAACAADAABAABA", "AABA"
+            );
+        }
+        void search(String txt, String pat) {
+            int m = pat.length();
+            int n = txt.length();
+
+            int[] badChar = badCharHeuristic(pat);
+            int[] bpos = new int[m + 1];
+            int[] goodSuffixShiftArray = new int[m + 1];
+            shiftArrayForGoodSuffix(pat, bpos, goodSuffixShiftArray);
+
+            int i = 0;
+            while (i <= n - m) {
+                int j = m - 1;
+                while (j >= 0 && txt.charAt(i + j) == pat.charAt(j)) {
+                    j--;
+                }
+                if (j == -1) {
+                    System.out.println("Pattern found at index " + i);
+                    int badCharShift = i == n - m ? 1 : Math.max(m - badChar[txt.charAt(i + m)], 1);
+                    int goodSuffixShift = goodSuffixShiftArray[0];
+                    i += Math.max(badCharShift, goodSuffixShift);
+                } else {
+                    int badCharShift = Math.max(j - badChar[txt.charAt(i + j)], 1);
+                    int goodSuffixShift = goodSuffixShiftArray[j + 1];
+                    i += Math.max(badCharShift, goodSuffixShift);
+                }
+            }
+        }
+
+        void shiftArrayForGoodSuffix(String pat, int[] bpos, int[] shift) {
+            int m = pat.length();
+            //bpos[i]表示[i, m]字符串的最长公共前后缀后缀首字母的位置
+            int j = m + 1;
+            int i = m;
+            bpos[i] = j;
+            while (i > 0) {
+                if (j <= m && pat.charAt(j - 1) != pat.charAt(i - 1)) {
+                    if (shift[j] != 0) {
+                        shift[j] = j - i;
+                    }
+                    j = bpos[j];
+                } else {
+                    i--;
+                    j--;
+                    bpos[i] = j;
+                }
+            }
+
+            j = bpos[0];
+            for (i = 0; i < m; i++) {
+                if (shift[j] == 0) {
+                    shift[i] = j;
+                }
+
+                if (i == j) {
+                    j = bpos[j];
+                }
+            }
+        }
+
+        int[] badCharHeuristic(String pat) {
+            int m = pat.length();
+            int[] badChar = new int[256];
+            Arrays.fill(badChar, -1);
+            for (int i = 0; i < m; i++) {
+                badChar[pat.charAt(i)] = i;
+            }
+            return badChar;
         }
     }
 }
