@@ -72,3 +72,4 @@
   f(i - x) == false(对手必败) 则f(i) = true 否则f(i) = false。
   
 - [矩阵中的最长递增路径](https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/)
+- [判断子序列](https://leetcode-cn.com/problems/is-subsequence/)
