@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class PatternSearching {
+    //    时间：O(nm)
     public static class Naive {
         public static void main(String[] args) {
             new Naive().search(
@@ -24,6 +25,7 @@ public class PatternSearching {
         }
     }
 
+    //    时间：O(n)
     public static class RabinKarp {
         public static void main(String[] args) {
             new RabinKarp().search("AABAACAADAABAABA", "AABA");
@@ -67,6 +69,7 @@ public class PatternSearching {
         }
     }
 
+    //    时间：O(n)
     public static class KMP {
         public void search(String txt, String pat) {
             int[] lps = createLPSArray(pat);
@@ -129,6 +132,7 @@ public class PatternSearching {
         }
     }
 
+    //    时间：O(n/m)
     public static class BoyerMoore {
         public static void main(String[] args) {
             BoyerMoore boyerMoore = new BoyerMoore();
@@ -208,6 +212,42 @@ public class PatternSearching {
                 badChar[pat.charAt(i)] = i;
             }
             return badChar;
+        }
+    }
+
+//    时间：O(n/m)
+    public static class Sunday {
+        public static void main(String[] args) {
+            new Sunday().search("AABAACAADAABAABA", "AABA");
+        }
+
+        void search(String txt, String pat) {
+            int m = pat.length();
+            int n = txt.length();
+            int i = 0;
+            int[] badCharShift = createBadCharShiftArray(pat);
+            while (i <= n - m) {
+                int j = 0;
+                while (j < m && txt.charAt(i + j) == pat.charAt(j)) {
+                    j++;
+                }
+                if (j == m) {
+                    System.out.println("Pattern found at index " + i);
+                    i += i == n - m ? 1 : badCharShift[txt.charAt(i + m)];
+                } else {
+                    i += badCharShift[txt.charAt(i + m)];
+                }
+            }
+        }
+
+        int[] createBadCharShiftArray(String pat) {
+            int m = pat.length();
+            int[] shift = new int[256];
+            Arrays.fill(shift, m);
+            for (int i = 0; i < m; i++) {
+                shift[pat.charAt(i)] = m - i;
+            }
+            return shift;
         }
     }
 }
