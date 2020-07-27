@@ -70,3 +70,5 @@
   这是一道数学题，奇数先手必败，偶数先手必胜。也可以用动态规划来做，但一开始我没有能正确的定义状态
   f(i)表示黑板上的数字为i时Alice先手是否必胜，则状态的转移需要枚举\[1, i / 2\]的数字找到任意一个i的因数x并且
   f(i - x) == false(对手必败) 则f(i) = true 否则f(i) = false。
+  
+- [矩阵中的最长递增路径](https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/)
