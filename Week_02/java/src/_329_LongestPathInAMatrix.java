@@ -3,7 +3,7 @@ import java.util.Queue;
 
 /**
  * 第一遍：2020/07/27周一 ✅
- * 第二遍：2020/07/26周日
+ * 第二遍：2020/07/28周二 ✅
  * 第三遍：2020/07/27周一
  * 第三遍：2020/06/21周日
  * 第四遍：2020/07/05周日
@@ -42,7 +42,7 @@ class _329_LongestPathInAMatrix {
         return memo[i][j];
     }
 
-    class SolutionWithDP {
+    class SolutionWithTopologicalSort {
         public int longestIncreasingPath(int[][] matrix) {
             if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
                 return 0;

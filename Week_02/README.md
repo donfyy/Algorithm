@@ -102,6 +102,8 @@
   - 二分图：如果能将一个图的节点集合分割成两个独立的子集，并使图中每一条边的两个节点分别来自两个独立的子集，则称该图为二分图。
   - 实战题目
     -[判断二分图](https://leetcode-cn.com/problems/is-graph-bipartite/)
+    -[矩阵中的最长递增路径](https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/)
+
   - 参考链接
     -[二分图详解](https://zhuanlan.zhihu.com/p/89972891)
 - 动态规划
