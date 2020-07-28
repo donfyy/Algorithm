@@ -1,5 +1,11 @@
 import java.util.Arrays;
-
+/**
+ * 第一遍：2020/07/27周一 ✅
+ * 第二遍：2020/07/28周二 ✅
+ * 第三遍：2020/07/27周一
+ * 第四遍：2020/07/28周二
+ * 第四遍：2020/07/05周日
+ */
 public class PatternSearchingPractice {
     public static class Naive {
         public static void main(String[] args) {
@@ -9,17 +15,65 @@ public class PatternSearchingPractice {
             );
         }
 
+        //        时间：O(nm)
         public void search(String txt, String pat) {
             int m = pat.length();
             int n = txt.length();
             int i = 0;
             while (i <= n - m) {
                 int j = 0;
-                while (j < m && txt.charAt(i + j) == pat.charAt(j)) j++;
+                while (j < m && pat.charAt(j) == txt.charAt(i + j)) {
+                    j++;
+                }
                 if (j == m) {
                     System.out.println("Pattern found at index " + i);
                 }
                 i++;
+            }
+        }
+    }
+
+    public static class RabinKarp {
+        public static void main(String[] args) {
+            new RabinKarp().search("AABAACAADAABAABA", "AABA");
+        }
+
+        public static final int D = 256;
+        public static final int Q = 9997;
+
+        public void search(String txt, String pat) {
+            int m = pat.length();
+            int n = txt.length();
+
+            int patHash = 0;
+            int txtHash = 0;
+            for (int i = 0; i < m; i++) {
+                patHash = (D * patHash + pat.charAt(i)) % Q;
+                txtHash = (D * txtHash + txt.charAt(i)) % Q;
+            }
+
+            int highestPow = 1;
+            for (int i = 0; i < m - 1; i++) {
+                highestPow = (highestPow * D) % Q;
+            }
+
+            for (int i = 0; i <= n - m; i++) {
+                if (txtHash == patHash) {
+                    int j = 0;
+                    while (j < m && pat.charAt(j) == txt.charAt(i + j)) {
+                        j++;
+                    }
+                    if (j == m) {
+                        System.out.println("Pattern found at index " + i);
+                    }
+                }
+
+                if (i < n - m) {
+                    txtHash = (D * (txtHash - txt.charAt(i) * highestPow) + txt.charAt(i + m)) % Q;
+                    if (txtHash < 0) {
+                        txtHash += Q;
+                    }
+                }
             }
         }
     }
@@ -30,27 +84,19 @@ public class PatternSearchingPractice {
         }
 
         public void search(String txt, String pat) {
-            int[] lps = createLPSArray(pat);
             int m = pat.length();
             int n = txt.length();
+            int[] lps = createLPSArray(pat);
             int i = 0;
-            int j = 0;
-            while (i < n) {
-                if (pat.charAt(j) == txt.charAt(i)) {
-                    if (j == m - 1) {
-                        System.out.println("Pattern found at index " + (i - j));
-                        j = lps[j];
-                        continue;
-                    }
+            while (i <= n - m) {
+                int j = 0;
+                while (j < m && pat.charAt(j) == txt.charAt(i + j)) {
                     j++;
-                    i++;
-                } else {
-                    if (j == 0) {
-                        i++;
-                    } else {
-                        j = lps[j];
-                    }
                 }
+                if (j == m) {
+                    System.out.println("Pattern found at index " + i);
+                }
+                i += j - lps[j];
             }
         }
 
@@ -58,18 +104,19 @@ public class PatternSearchingPractice {
             int m = pat.length();
             int[] lps = new int[m + 1];
             int len = 0;
-            lps[0] = -1;
-            lps[1] = 0;
             int i = 1;
+            lps[0] = -1;
             while (i < m) {
-                if (pat.charAt(len) == pat.charAt(i)) {
+                if (pat.charAt(i) == pat.charAt(len)) {
+                    i++;
                     len++;
-                    lps[++i] = len;
+                    lps[i] = len;
                 } else {
                     if (len > 0) {
                         len = lps[len];
                     } else {
-                        lps[++i] = 0;
+                        i++;
+                        lps[i] = 0;
                     }
                 }
             }
@@ -79,92 +126,46 @@ public class PatternSearchingPractice {
 
     public static class BoyerMoore {
         public static void main(String[] args) {
-//            new BoyerMoore().search(
-//                    "AABAACAADAABAABA", "AABA"
-//            );
-            BoyerMoore bm = new BoyerMoore();
-            String pat = "AABA";
-            PatternSearching.BoyerMoore pbm = new PatternSearching.BoyerMoore();
-            int[] bpos2 = new int[pat.length() + 1];
-            int[] shift2 = new int[pat.length() + 1];
-            pbm.calculateShiftArrayForGoodSuffix(pat, shift2, bpos2);
-            int[] bpos = new int[pat.length() + 1];
-            int[] shift = new int[pat.length() + 1];
-            bm.shiftArrayForGoodSuffix(
-                    pat,
-                    bpos,
-                    shift
+            new BoyerMoore().search(
+                    "AABAACAADAABAABA", "AABA"
             );
-            int[] shift1 = new int[pat.length()];
-            bm.shiftArrayForGoodSuffix2(pat, shift1);
-            System.out.println("0:" + Arrays.toString(shift2));
-            System.out.println("1:" + Arrays.toString(shift));
-            System.out.println("2:" + Arrays.toString(shift1));
         }
 
         void search(String txt, String pat) {
             int m = pat.length();
             int n = txt.length();
-
             int[] badChar = badCharHeuristic(pat);
-            int[] bpos = new int[m + 1];
-            int[] goodSuffixShiftArray = new int[m + 1];
-            shiftArrayForGoodSuffix(pat, bpos, goodSuffixShiftArray);
+            int[] shift = goodSuffixHeuristic(pat);
 
             int i = 0;
             while (i <= n - m) {
                 int j = m - 1;
-                while (j >= 0 && txt.charAt(i + j) == pat.charAt(j)) {
+                while (j >= 0 && pat.charAt(j) == txt.charAt(i + j)) {
                     j--;
                 }
+
                 if (j == -1) {
                     System.out.println("Pattern found at index " + i);
                     int badCharShift = i == n - m ? 1 : Math.max(m - badChar[txt.charAt(i + m)], 1);
-                    int goodSuffixShift = goodSuffixShiftArray[0];
+                    int goodSuffixShift = shift[0];
                     i += Math.max(badCharShift, goodSuffixShift);
                 } else {
-                    int badCharShift = Math.max(j - badChar[txt.charAt(i + j)], 1);
-                    int goodSuffixShift = goodSuffixShiftArray[j + 1];
+                    int badCharShift = Math.max(1, j - badChar[txt.charAt(i + j)]);
+                    int goodSuffixShift = shift[j + 1];
                     i += Math.max(badCharShift, goodSuffixShift);
                 }
             }
         }
 
-        void shiftArrayForGoodSuffix2(String pat, int[] shift) {
+        int[] goodSuffixHeuristic(String pat) {
             int m = pat.length();
-            int p = m;
-            int l = m - 1;
-            for (int i = l - 1; i >= 0; i--) {
-                int j = 0;
-                while (j < l - i && pat.charAt(j) == pat.charAt(i + 1 + j)) {
-                    j++;
-                }
-                if (j == l - i) {
-                    p = i + 1;
-                }
-                shift[i] = l - i + p;
-            }
-
-            for (int i = 0; i < l; i++) {
-                int j = 0;
-                while (j < i && pat.charAt(l - j) == pat.charAt(i - j)) {
-                    j++;
-                }
-                if (pat.charAt(l - j) != pat.charAt(i - j)) {
-                    shift[l - j] = j + l - i;
-                }
-            }
-        }
-
-
-        void shiftArrayForGoodSuffix(String pat, int[] bpos, int[] shift) {
-            int m = pat.length();
-            //bpos[i]表示[i, m]字符串的最长公共前后缀后缀首字母的位置
             int j = m + 1;
             int i = m;
+            int[] bpos = new int[m + 1];
+            int[] shift = new int[m + 1];
             bpos[i] = j;
             while (i > 0) {
-                if (j <= m && pat.charAt(j - 1) != pat.charAt(i - 1)) {
+                if (j <= m && pat.charAt(i - 1) != pat.charAt(j - 1)) {
                     if (shift[j] == 0) {
                         shift[j] = j - i;
                     }
@@ -181,11 +182,11 @@ public class PatternSearchingPractice {
                 if (shift[i] == 0) {
                     shift[i] = j;
                 }
-
                 if (i == j) {
                     j = bpos[j];
                 }
             }
+            return shift;
         }
 
         int[] badCharHeuristic(String pat) {
@@ -196,6 +197,42 @@ public class PatternSearchingPractice {
                 badChar[pat.charAt(i)] = i;
             }
             return badChar;
+        }
+    }
+
+    public static class Sunday {
+        public static void main(String[] args) {
+            new Sunday().search(
+                    "AABAACAADAABAABA", "AABA"
+            );
+        }
+
+        void search(String txt, String pat) {
+            int m = pat.length();
+            int n = txt.length();
+
+            int[] shift = badCharHeuristic(pat);
+            int i = 0;
+            while (i <= n - m) {
+                int j = 0;
+                while (j < m && pat.charAt(j) == txt.charAt(i + j)) {
+                    j++;
+                }
+                if (j == m) {
+                    System.out.println("Pattern found at index " + i);
+                }
+                i += i == n - m ? 1 : shift[txt.charAt(i + m)];
+            }
+        }
+
+        int[] badCharHeuristic(String pat) {
+            int m = pat.length();
+            int[] shift = new int[256];
+            Arrays.fill(shift, m);
+            for (int i = 0; i < m; i++) {
+                shift[pat.charAt(i)] = m - i;
+            }
+            return shift;
         }
     }
 }
