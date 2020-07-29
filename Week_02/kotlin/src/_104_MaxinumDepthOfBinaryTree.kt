@@ -1,9 +1,5 @@
 fun maxDepth(root: TreeNode?): Int {
-    if (root == null) {
-        return 0
-    }
-
-    return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    return if (root == null) 0 else Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
 }
 
 class TreeNode(var `val`: Int) {
