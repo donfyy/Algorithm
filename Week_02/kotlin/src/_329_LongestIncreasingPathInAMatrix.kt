@@ -9,7 +9,7 @@ fun longestIncreasingPath(matrix: Array<IntArray>): Int {
     val memo = Array(m) { IntArray(n) }
     for (i in 0 until m) {
         for (j in 0 until n) {
-            ret = Math.max(ret, dfs(matrix, i, j, memo))
+            ret = ret.coerceAtLeast(dfs(matrix, i, j, memo))
         }
     }
     return ret
@@ -25,8 +25,8 @@ fun dfs(matrix: Array<IntArray>, i: Int, j: Int, memo: Array<IntArray>): Int {
     for (dir in dirs) {
         val i_ = i + dir[0]
         val j_ = j + dir[1]
-        if (i_ in 0..m - 1 && j_ in 0..n - 1 && matrix[i_][j_] > matrix[i][j]) {
-            memo[i][j] = Math.max(memo[i][j], dfs(matrix, i_, j_, memo) + 1)
+        if (i_ in 0 until m && j_ in 0 until n && matrix[i_][j_] > matrix[i][j]) {
+            memo[i][j] = memo[i][j].coerceAtLeast(dfs(matrix, i_, j_, memo) + 1)
         }
     }
     return memo[i][j]
@@ -45,7 +45,7 @@ fun longestIncreasingPathTopologicalSort(matrix: Array<IntArray>): Int {
             for (dir in dirs) {
                 val i_ = i + dir[0]
                 val j_ = j + dir[1]
-                if (i_ in 0..m - 1 && j_ in 0..n - 1 && matrix[i][j] < matrix[i_][j_]) {
+                if (i_ in 0 until m && j_ in 0 until n && matrix[i][j] < matrix[i_][j_]) {
                     outDegrees[i][j]++
                 }
             }
@@ -69,7 +69,7 @@ fun longestIncreasingPathTopologicalSort(matrix: Array<IntArray>): Int {
             for (dir in dirs) {
                 val i_ = i + dir[0]
                 val j_ = j + dir[1]
-                if (i_ in 0..m - 1 && j_ in 0..n - 1 && matrix[i][j] > matrix[i_][j_]) {
+                if (i_ in 0 until m && j_ in 0 until n && matrix[i][j] > matrix[i_][j_]) {
                     outDegrees[i_][j_]--
                     if (outDegrees[i_][j_] == 0) {
                         queue.offer(intArrayOf(i_, j_))
