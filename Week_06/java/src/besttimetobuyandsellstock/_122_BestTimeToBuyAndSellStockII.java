@@ -1,5 +1,10 @@
 package besttimetobuyandsellstock;
-
+/**
+ * 第一遍：2020/07/30周四 ✅
+ * 第二遍：2020/07/30周五 ✅
+ * 第三遍：2020/07/29周三
+ * 第四遍：2020/07/05周日
+ */
 class _122_BestTimeToBuyAndSellStockII {
     /**
      * 贪心算法
