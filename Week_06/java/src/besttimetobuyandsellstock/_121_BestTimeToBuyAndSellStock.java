@@ -1,3 +1,5 @@
+package besttimetobuyandsellstock;
+
 /**
  * 第一遍：2020/07/30周四 ✅
  * 第二遍：2020/06/29周一

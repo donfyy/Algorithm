@@ -1,3 +1,5 @@
+package besttimetobuyandsellstock;
+
 class _122_BestTimeToBuyAndSellStockII {
     /**
      * 贪心算法
