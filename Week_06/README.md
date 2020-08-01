@@ -21,6 +21,9 @@
         - **自底向上的优化空间后的循环** 这是应该给出的解法
         
 ### 第六周题目
+#### 简单
+- [杨辉三角](https://leetcode-cn.com/problems/pascals-triangle/)
+- [杨辉三角II](https://leetcode-cn.com/problems/pascals-triangle-ii/)
 #### 中等
 - [最小路径和](https://leetcode-cn.com/problems/minimum-path-sum/)
 - [解码方法](https://leetcode-cn.com/problems/decode-ways)
