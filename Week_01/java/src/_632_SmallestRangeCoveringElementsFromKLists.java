@@ -16,7 +16,7 @@ class _632_SmallestRangeCoveringElementsFromKLists {
         int max = Integer.MIN_VALUE;
         int size = nums.size();
         int[] next = new int[size];
-        PriorityQueue<Integer> priorityQueue = new PriorityQueue(new Comparator<Integer>(){
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue(new Comparator<Integer>() {
             public int compare(Integer idx1, Integer idx2) {
                 return nums.get(idx1).get(next[idx1]) - nums.get(idx2).get(next[idx2]);
             }
@@ -48,49 +48,47 @@ class _632_SmallestRangeCoveringElementsFromKLists {
     public int[] smallestRangeSlidingWindow(List<List<Integer>> nums) {
         int size = nums.size();
         Map<Integer, List<Integer>> indices = new HashMap<>();
-        int xMin = Integer.MAX_VALUE, xMax = Integer.MIN_VALUE;
+        int rangeLeft = Integer.MAX_VALUE, rangeRight = Integer.MIN_VALUE;
         for (int i = 0; i < size; i++) {
-            for (int x : nums.get(i)) {
+            for (Integer x : nums.get(i)) {
                 List<Integer> list = indices.computeIfAbsent(x, k -> new ArrayList<>());
                 list.add(i);
-                xMin = Math.min(xMin, x);
-                xMax = Math.max(xMax, x);
+                rangeLeft = Math.min(rangeLeft, x);
+                rangeRight = Math.max(rangeRight, x);
             }
         }
 
+        int left = rangeLeft, right = rangeLeft;
+        int bestLeft = rangeLeft, bestRight = rangeRight;
         int[] freq = new int[size];
-        int inside = 0;
-        int left = xMin, right = xMin - 1;
-        int bestLeft = xMin, bestRight = xMax;
-        while (right < xMax) {
-            right++;
-            if (!indices.containsKey(right)) {
-                continue;
-            }
-
-            for (int x : indices.get(right)) {
-                freq[x]++;
-                if (freq[x] == 1) {
-                    inside++;
-                }
-            }
-
-            while (inside == size) {
-                if (right - left < bestRight - bestLeft) {
-                    bestLeft = left;
-                    bestRight = right;
-                }
-
-                if (indices.containsKey(left)) {
-                    for (int x : indices.get(left)) {
-                        freq[x]--;
-                        if (freq[x] == 0) {
-                            inside--;
-                        }
+        int inside = 0; //inside list count
+        while (right <= rangeRight) {
+            if (indices.containsKey(right)) {
+                for (int i : indices.get(right)) {
+                    freq[i]++;
+                    if (freq[i] == 1) {
+                        inside++;
                     }
                 }
-                left++;
+
+                while (inside == size) {
+                    if (right - left < bestRight - bestLeft) {
+                        bestLeft = left;
+                        bestRight = right;
+                    }
+
+                    if (indices.containsKey(left)) {
+                        for (int i : indices.get(left)) {
+                            freq[i]--;
+                            if (freq[i] == 0) {
+                                inside--;
+                            }
+                        }
+                    }
+                    left++;
+                }
             }
+            right++;
         }
         return new int[]{bestLeft, bestRight};
     }
