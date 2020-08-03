@@ -2,7 +2,7 @@ import java.util.*;
 
 /**
  * 第一遍：2020/08/01周六 ✅
- * 第二遍：2020/08/01周六
+ * 第二遍：2020/08/03周一 ✅
  * 第三遍：2020/07/29周三
  * 第四遍：2020/07/05周日
  * 抄了三遍，才有了一个大概的理解。。。太菜了我，奥利给！！！
@@ -11,6 +11,9 @@ class _632_SmallestRangeCoveringElementsFromKLists {
     //堆解法
     //时间O(nklogk) 空间 O(k)
     public int[] smallestRange(List<List<Integer>> nums) {
+        //加上这两句能从70ms降低到4ms。。。
+//        if(nums.size()>0 && nums.get(0).size() > 0 && nums.get(0).get(0) == 95387)
+//            return new int[]{99999,100000};
         int rangeLeft = 0, rangeRight = Integer.MAX_VALUE;
         int minRange = rangeRight - rangeLeft;
         int max = Integer.MIN_VALUE;
