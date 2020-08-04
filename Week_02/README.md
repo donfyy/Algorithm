@@ -122,6 +122,6 @@
 
 这周阅读了jdk1.8版本的HashMap，PriorityQueue，ThreadLocalMap的源码，有了数据结构的知识后，分析这些类的源码就变得容易了，也就能轻松掌握这些类，数据结构和算法是学习计算机必须掌握的基本功。这周在刷题的时候也是遵循五毒神掌的教诲，不死磕，过遍数。
 ### 实战题目
-- [不同的二叉搜索树II](https://leetcode.com/problems/unique-binary-search-trees-ii/discuss/31493/Java-Solution-with-DP)
+- [不同的二叉搜索树II](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)
   - [参考题解](https://leetcode.wang/leetCode-95-Unique-Binary-Search-TreesII.html#%E8%A7%A3%E6%B3%95%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92)
 
