@@ -65,3 +65,7 @@
 - [字符串匹配的 KMP 算法](http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html)
 
 # 2 [动态规划](https://github.com/donfyy/algorithm009-class01/tree/master/Week_06)
+
+# 持续刷题
+
+- [字符串相加](https://leetcode-cn.com/problems/add-strings/)
