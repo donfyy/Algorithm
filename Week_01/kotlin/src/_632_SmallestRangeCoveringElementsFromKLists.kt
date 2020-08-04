@@ -4,46 +4,42 @@ import kotlin.collections.HashMap
 
 class _632_SlidingWindow_ {
     fun smallestRange(nums: List<List<Int>>): IntArray {
-        val n = nums.size
+        val idxMap = HashMap<Int, MutableList<Int>>()
         var rangeLeft = Integer.MAX_VALUE
         var rangeRight = Integer.MIN_VALUE
-        val idxMap = HashMap<Int, MutableList<Int>>()
+        val n = nums.size
         for (i in 0 until n) {
-            for (x in nums[i]) {
-                val idxList = idxMap.computeIfAbsent(x) { ArrayList() }
-                idxList.add(i)
-                rangeLeft = rangeLeft.coerceAtMost(x)
-                rangeRight = rangeRight.coerceAtLeast(x)
+            nums[i].forEach { x ->
+                idxMap.computeIfAbsent(x) { ArrayList() }.add(i)
+                rangeLeft = x.coerceAtMost(rangeLeft)
+                rangeRight = x.coerceAtLeast(rangeRight)
             }
         }
 
+        val freq = IntArray(n)
+        var count = 0 // list count inside sliding window
         var left = rangeLeft
         var right = rangeLeft
         var bestLeft = rangeLeft
         var bestRight = rangeRight
-        val freq = IntArray(n)
-        var listCount = 0
         while (right <= rangeRight) {
-            if (idxMap.containsKey(right)) {
-                for (idx in idxMap[right]!!) {
+            idxMap[right]?.let {
+                it.forEach { idx ->
                     freq[idx]++
                     if (freq[idx] == 1) {
-                        listCount++
+                        count++
                     }
                 }
 
-                while (listCount == n) {
+                while (count == n) {
                     if (right - left < bestRight - bestLeft) {
-                        bestRight = right;
-                        bestLeft = left;
+                        bestLeft = left
+                        bestRight = right
                     }
-
-                    if (idxMap.containsKey(left)) {
-                        for (idx in idxMap[left]!!) {
-                            freq[idx]--
-                            if (freq[idx] == 0) {
-                                listCount--
-                            }
+                    idxMap[left]?.forEach { idx ->
+                        freq[idx]--
+                        if (freq[idx] == 0) {
+                            count--
                         }
                     }
                     left++
