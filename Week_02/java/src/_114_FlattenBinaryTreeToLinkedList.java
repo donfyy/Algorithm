@@ -11,62 +11,39 @@ import java.util.LinkedList;
  * 第四遍：2020/07/05周日
  */
 class _114_FlattenBinaryTreeToLinkedList {
-    public void flatten(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-
-        Deque<TreeNode> stack = new LinkedList<>();
-        stack.push(root);
-        TreeNode prev = null;
-        while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-            if (node == null) {
-                continue;
-            }
-            if (prev != null) {
-                prev.left = null;
-                prev.right = node;
-            }
-            stack.push(node.right);
-            stack.push(node.left);
-            prev = node;
-        }
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     //先序遍历，神似Morris算法，时间O(n)，空间O(1)
-    static class SolutionPreorder1 {
-        public void flatten(TreeNode root) {
-            while (root != null) {
-                if (root.left != null) {
-                    TreeNode pre = root.left;
-                    while (pre.right != null) {
-                        pre = pre.right;
-                    }
-                    pre.right = root.right;
-                    root.right = root.left;
-                    root.left = null;
+    public void flatten(TreeNode root) {
+        while (root != null) {
+            if (root.left != null) {
+                TreeNode pre = root.left;
+                while (pre.right != null) {
+                    pre = pre.right;
                 }
-                root = root.right;
+                pre.right = root.right;
+                root.right = root.left;
+                root.left = null;
+            }
+            root = root.right;
+        }
+    }
+
+    //先序遍历，时间O(n)，空间O(n)
+    class SolutionPreorderIterative {
+        public void flatten(TreeNode root) {
+            Deque<TreeNode> stack = new LinkedList<>();
+            stack.push(root);
+            TreeNode pre = null;
+            while (!stack.isEmpty()) {
+                TreeNode node = stack.pop();
+                if (node == null) continue;
+                stack.push(node.right);
+                stack.push(node.left);
+
+                if (pre != null) {
+                    pre.left = null;
+                    pre.right = node;
+                }
+                pre = node;
             }
         }
     }
@@ -125,38 +102,36 @@ class _114_FlattenBinaryTreeToLinkedList {
                     node = node.right;
                 }
 
-                node = stack.peek();
-                if (node.left == null || node.left == next) {
+                TreeNode top = stack.peek();
+                if (top.left == null || top.left == next) {
                     stack.pop();
-                    node.right = next;
-                    node.left = null;
-                    next = node;
-                    node = null;
+                    top.right = next;
+                    top.left = null;
+                    next = top;
                 } else {
-                    node = node.left;
+                    node = top.left;
                 }
             }
         }
     }
 
-    //先序遍历，时间O(n)，空间O(n)
-    class SolutionPreorderIterative {
-        public void flatten(TreeNode root) {
-            Deque<TreeNode> stack = new LinkedList<>();
-            stack.push(root);
-            TreeNode pre = null;
-            while (!stack.isEmpty()) {
-                TreeNode node = stack.pop();
-                if (node == null) continue;
-                stack.push(node.right);
-                stack.push(node.left);
+    public static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
 
-                if (pre != null) {
-                    pre.left = null;
-                    pre.right = node;
-                }
-                pre = node;
-            }
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
         }
     }
+
 }
