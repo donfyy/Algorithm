@@ -5,7 +5,8 @@ import java.util.LinkedList;
  * 第一遍：2020/08/03周一 ✅
  * 第二遍：2020/08/04周二 ✅
  * 第三遍：2020/08/04周四 ✅
- * 第四遍：2020/07/05周日
+ * 第四遍：2020/08/04周五 ✅
+ * 第五遍：2020/08/04周五
  */
 class _114_FlattenBinaryTreeToLinkedList {
     //先序遍历，神似Morris算法，时间O(n)，空间O(1)

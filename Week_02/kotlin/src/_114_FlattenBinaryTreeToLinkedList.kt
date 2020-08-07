@@ -8,9 +8,7 @@ fun flatten(root: TreeNode?): Unit {
             while (pre.right != null) {
                 pre = pre.right!!
             }
-            pre
-        }?.let {
-            it.right = node?.right
+            pre.right = node?.right
             node?.right = node?.left
             node?.left = null
         }
