@@ -25,6 +25,7 @@
 - [验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
 - [验证回文字符串 Ⅱ](https://leetcode-cn.com/problems/valid-palindrome-ii/)
 - [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_5_LongestPalindromicSubstring.java)
+- [回文对](https://leetcode-cn.com/problems/palindrome-pairs/)
 ### 1.1.2 高级字符串算法
 #### 1.1.2.1 最长子串、子序列问题
 - [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_5_LongestPalindromicSubstring.java)
@@ -69,3 +70,4 @@
 # 持续刷题
 
 - [字符串相加](https://leetcode-cn.com/problems/add-strings/)
+
