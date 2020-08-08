@@ -28,30 +28,28 @@ fun canFinish(numCourses: Int, prerequisites: Array<IntArray>): Boolean {
 class _207_dfs {
     fun canFinish(numCourses: Int, prerequisites: Array<IntArray>): Boolean {
         fun dfs(u: Int, edges: Array<ArrayList<Int>>, visited: IntArray): Boolean {
-            return when(visited[u]) {
+            return when (visited[u]) {
                 2 -> true
                 1 -> false
                 else -> {
                     visited[u] = 1
                     for (v in edges[u]) {
-                        if (!dfs(v, edges, visited)) {
-                            return false
-                        }
+                        v.takeUnless { dfs(it, edges, visited) }?.let { return false }
                     }
                     visited[u] = 2
                     true
                 }
             }
         }
-        val edges = Array(numCourses) { ArrayList<Int>() }
+
+        val n = numCourses
+        val edges = Array(n) { ArrayList<Int>() }
+        val visited = IntArray(n)
         for ((v, u) in prerequisites) {
             edges[u].add(v)
         }
-        val visited = IntArray(numCourses)
-        for (u in 0 until numCourses) {
-            if (!dfs(u, edges, visited)) {
-                return false
-            }
+        for (u in 0 until n) {
+            u.takeUnless { dfs(it, edges, visited) }?.let { return false }
         }
         return true
     }
