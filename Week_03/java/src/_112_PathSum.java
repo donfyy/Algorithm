@@ -21,4 +21,23 @@ class _112_PathSum {
         return dfs(node.left, currentSum - node.val)
                 || dfs(node.right, currentSum - node.val);
     }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
 }
