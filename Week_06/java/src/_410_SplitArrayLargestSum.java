@@ -1,10 +1,12 @@
 import java.util.Arrays;
+
 /**
  * 第一遍：2020/07/25周六 ✅
  * 第二遍：2020/07/26周日 ✅
  * 第三遍：2020/07/27周一 ✅
  * 第四遍：2020/07/28周二 ✅
  * 第五遍：2020/08/09周日 ✅
+ * 第六遍：2020/08/09周一 ✅
  */
 class _410_SplitArrayLargestSum {
     //时间O(nnm) 空间O(nm)
@@ -63,7 +65,7 @@ class _410_SplitArrayLargestSum {
             int cnt = 1;
             long s = 0;
             for (int v : nums) {
-                s+= v;
+                s += v;
                 if (s > mid) {
                     s = v;
                     cnt++;
@@ -75,6 +77,6 @@ class _410_SplitArrayLargestSum {
                 r = mid;
             }
         }
-        return (int)l;
+        return (int) l;
     }
 }
