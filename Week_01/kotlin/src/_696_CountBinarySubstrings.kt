@@ -1,15 +1,15 @@
 fun countBinarySubstrings(s: String): Int {
     var pre = 0
+    var curr = 1
     var ret = 0
-    var count = 1
     for (i in 1 until s.length) {
         if (s[i] == s[i - 1]) {
-            count++
+            curr++
         } else {
-            ret += minOf(pre, count)
-            pre = count
-            count = 1
+            ret += minOf(pre, curr)
+            pre = curr
+            curr = 1
         }
     }
-    return ret + minOf(pre, count)
+    return ret + minOf(pre, curr)
 }
