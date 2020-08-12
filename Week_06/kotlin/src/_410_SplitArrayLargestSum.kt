@@ -1,14 +1,9 @@
 fun splitArray(nums: IntArray, m: Int): Int {
-    //f(i,j)表示将前i个数分割成m个连续子数组所能得到的最小的最大和。
-    //f(i,j) = min(max(f(k, j - 1), sum(k, i))) k in (j - 1, i)
-    //f(1, 1) = min(max(f(0, 0) = 0, sum(1, 1)))
-    //f(2, 1) = min(max(f(1, 0) = MAX_VALUE, sum(2, 2)))
-    //f(2, 1) = min(max(f(0, 0), sum(1, 2)))
-    //i < j 时f(i, j)无意义
-    //f(i, j) = Integer.MAX_VALUE f(0, 0) = 0
-    if (nums.isEmpty() || nums.size < m) {
-        return 0
-    }
+    //f(i, j)表示将前i个数分割成j段得到的最大连续子数组和的最小值
+    //f(i, j) = min(max(f(k, j - 1), sub(k + 1, i)))
+    // i >= j 有意义， i < j 状态无意义，初始化为一个较大的值
+    //f(0, 0) = 0  为什么？ 考虑f(1, 1), f(2, 1)即j = 1的情况
+    //f(2, 1) = min(max(f(0, 0), sub(1, 2)))
     val n = nums.size
     val dp = Array(n + 1) { LongArray(m + 1) { Long.MAX_VALUE } }
     dp[0][0] = 0
@@ -16,10 +11,11 @@ fun splitArray(nums: IntArray, m: Int): Int {
     for (i in 1..n) {
         sum[i] = sum[i - 1] + nums[i - 1]
     }
+
     for (i in 1..n) {
-        for (j in 1..Math.min(i, m)) {
-            for (k in 0..i) {
-                dp[i][j] = Math.min(dp[i][j], Math.max(dp[k][j - 1], sum[i] - sum[k]))
+        for (j in 1..minOf(i, m)) {
+            for (k in 0 until i) {
+                dp[i][j] = minOf(dp[i][j], maxOf(dp[k][j - 1], sum[i] - sum[k]))
             }
         }
     }
