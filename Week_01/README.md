@@ -49,7 +49,8 @@ Redis - Skip List
 
 - [盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/)
 - [移动零](https://leetcode-cn.com/problems/move-zeroes/)
-- [爬楼梯](https://leetcode.com/problems/climbing-stairs/)
+- [爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)
+- [使用最小花费爬楼梯](https://leetcode-cn.com/problems/min-cost-climbing-stairs/)
 - [两数之和](https://leetcode-cn.com/problems/two-sum/)
 - [三数之和](https://leetcode-cn.com/problems/3sum/)
 - [删除排序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)
