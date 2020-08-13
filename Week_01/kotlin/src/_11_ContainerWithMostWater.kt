@@ -1,10 +1,14 @@
 fun maxArea(height: IntArray): Int {
-    var i = 0
-    var j = height.size - 1
-    var max = 0
-    while (i < j) {
-        max = Math.max(max, (j - i) * Math.min(height[i], height[j]))
-        if (height[i] < height[j]) i++ else j--
+    var l = 0
+    var r = height.lastIndex
+    var ret = 0
+    while (l < r) {
+        ret = maxOf(ret, minOf(height[l], height[r]) * (r - l))
+        if (height[l] < height[r]) {
+            l++
+        } else {
+            r--
+        }
     }
-    return max;
+    return ret
 }
