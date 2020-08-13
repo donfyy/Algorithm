@@ -52,6 +52,8 @@ Redis - Skip List
 - [爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)
 - [使用最小花费爬楼梯](https://leetcode-cn.com/problems/min-cost-climbing-stairs/)
 - [两数之和](https://leetcode-cn.com/problems/two-sum/)
+     两数之和与回文对这道题目有些相似的地方。暴力法都是枚举两个元素，然后判断两个元素是否满足条件。
+     加速的方法则是根据遍历到的元素a去查找符合条件的元素b，在查找b时使用一些数据结构进行加速如trie树和哈希表
 - [三数之和](https://leetcode-cn.com/problems/3sum/)
 - [删除排序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)
 - [旋转数组](https://leetcode-cn.com/problems/rotate-array/)
