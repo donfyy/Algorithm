@@ -3,6 +3,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 第一遍：2020/05/21周四 ✅
+ * 第二遍：2020/05/22周五 ✅
+ * 第三遍：2020/05/25周一 ✅
+ * 第四遍：2020/08/13周四 ✅
+ * 排序和双指针
+ */
 class _15_TreeSum {
     public List<List<Integer>> threeSum(int[] nums) {
         if (nums == null || nums.length < 3) {
@@ -23,14 +30,14 @@ class _15_TreeSum {
 
                     ret.add(Arrays.asList(curr, nums[l], nums[r]));
 
-                    while (l < r && nums[l] == nums[++l]);
-                    while (l < r && nums[r] == nums[--r]);
+                    while (l < r && nums[l] == nums[++l]) ;
+                    while (l < r && nums[r] == nums[--r]) ;
                 } else if (sum > 0) {
-                    while (l < r && nums[r] == nums[--r]);
+                    while (l < r && nums[r] == nums[--r]) ;
                 } else {
-                    while (l < r && nums[l] == nums[++l]);
+                    while (l < r && nums[l] == nums[++l]) ;
                 }
-            } 
+            }
         }
         return ret;
     }
