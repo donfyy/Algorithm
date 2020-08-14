@@ -1,3 +1,5 @@
+package movezeros
+
 fun moveZeroes(nums: IntArray): Unit {
     var j = -1
     for (i in nums.indices) {
