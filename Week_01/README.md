@@ -59,7 +59,7 @@ Redis - Skip List
 - [旋转数组](https://leetcode-cn.com/problems/rotate-array/)
 - [加一](https://leetcode-cn.com/problems/plus-one/)
 
-- [反转链表](https://leetcode.com/problems/reverse-linked-list/)
+- [反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
 - [两两交换链表中的节点](https://leetcode.com/problems/swap-nodes-in-pairs)
 - [环形链表](https://leetcode.com/problems/linked-list-cycle)
 - [环形链表 II](https://leetcode.com/problems/linked-list-cycle-ii)
