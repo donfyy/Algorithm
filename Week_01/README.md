@@ -66,6 +66,7 @@ Redis - Skip List
 - [环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii)
 - [合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
 - [合并两个有序数组](https://leetcode-cn.com/problems/merge-sorted-array/)
+  - 注意逆向思维的应用，从后往前归并。
 
 - [有效的括号](https://leetcode-cn.com/problems/valid-parentheses/)
 - [最小栈](https://leetcode-cn.com/problems/min-stack/)
