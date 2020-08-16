@@ -1,28 +1,31 @@
 import java.util.LinkedList;
 
+/**
+ * 第一遍：2020/08/13周四 ✅
+ * 第二遍：2020/08/16周日 ✅
+ * 第三遍：2020/08/16周日
+ * 第四遍：2020/07/28周二
+ * 第五遍：2020/08/09周日
+ * 第六遍：2020/08/09周一
+ * 第七遍：2020/08/12周三
+ */
 class _84_LargestRectangleArea {
     public int largestRectangleArea(int[] heights) {
-
-        if (heights == null || heights.length == 0) {
-            return 0;
-        }
-
+        if (heights == null) return -1;
+        int n = heights.length;
         LinkedList<Integer> stack = new LinkedList<>();
-        stack.offerLast(-1);
-        int length = heights.length;
-
-        int max = 0;
-        for (int i = 0; i < length; i++) {
-            int current = heights[i];
-            while (stack.peekLast() != -1 && heights[stack.peekLast()] >= current) {
-                max = Math.max(max, heights[stack.pollLast()] * (i - stack.peekLast() -1));
+        stack.push(-1);
+        int ret = 0;
+        for (int i = 0; i < n; i++) {
+            int curr = heights[i];
+            while (stack.peek() != -1 && heights[stack.peek()] > curr) {
+                ret = Math.max(ret, heights[stack.pop()] * (i - 1 - stack.peek()));
             }
-            stack.offerLast(i);
+            stack.push(i);
         }
-        
-        while (stack.peekLast() != -1) {
-            max = Math.max(max, heights[stack.pollLast()] * (length  - stack.peekLast() - 1));
+        while (stack.peek() != -1) {
+            ret = Math.max(ret, heights[stack.pop()] * (n - 1 - stack.peek()));
         }
-        return max;
+        return ret;
     }
 }
