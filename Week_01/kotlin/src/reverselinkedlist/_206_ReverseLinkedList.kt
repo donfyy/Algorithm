@@ -1,3 +1,5 @@
+package reverselinkedlist
+
 fun reverseList(head: ListNode?): ListNode? {
     var headNew: ListNode? = null
     var node = head
@@ -19,4 +21,12 @@ class _206_Recursive_ {
         head.next = null
         return headNew
     }
+}
+
+class ListNode(var `val`: Int) {
+    constructor(v: Int, next: ListNode?) : this(v) {
+        this.next = next
+    }
+
+    var next: ListNode? = null
 }
