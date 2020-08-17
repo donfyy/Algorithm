@@ -6,6 +6,7 @@ import java.util.PriorityQueue;
  * 第二遍：2020/05/24周日 ✅
  * 第三遍：2020/05/30周六 ✅
  * 第四遍：2020/08/16周日 ✅
+ * 第五遍：2020/08/17周一 ✅
  */
 class _239_SlidingWindowMaximum {
 
@@ -13,9 +14,6 @@ class _239_SlidingWindowMaximum {
      * 使用一个双端队列来记录滑动窗口中的最大值，队列的头部就是最大值。
      * 时间：O(n) 每个元素最多被访问两次
      * 空间：O(k)
-     * @param nums
-     * @param k
-     * @return
      */
     public int[] maxSlidingWindow1(int[] nums, int k) {
         if (nums == null || k < 1 || nums.length < k) {
@@ -50,9 +48,6 @@ class _239_SlidingWindowMaximum {
     /**
      * 使用最大堆来保存滑动窗口中的值，位于堆顶的元素就是滑动窗口中的最大值。
      * 时间：O(nlogk) 空间：O(k)
-     * @param nums
-     * @param k
-     * @return
      */
     public int[] maxSlidingWindow2(int[] nums, int k) {
         if (nums == null || k < 1 || nums.length < k) {
