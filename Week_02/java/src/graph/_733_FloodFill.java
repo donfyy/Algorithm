@@ -2,8 +2,15 @@ package graph;
 
 import java.util.LinkedList;
 
+/**
+ * 第一遍：2020/08/17周一 ✅
+ * 第二遍：2020/05/31周日
+ * 第三遍：2020/06/06周六
+ * 第四遍：2020/06/13周六
+ */
 class _733_FloodFill {
     int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
     //时间O(m * n) 空间O(m * n)
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         int oldColor = image[sr][sc];
