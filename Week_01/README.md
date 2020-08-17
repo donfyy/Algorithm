@@ -72,8 +72,8 @@ Redis - Skip List
 - [最小栈](https://leetcode-cn.com/problems/min-stack/)
 - [柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram)
 - [滑动窗口最大值](https://leetcode-cn.com/problems/sliding-window-maximum)
-- [设计循环双端队列](https://leetcode.com/problems/design-circular-deque)
-- [接雨水](https://leetcode.com/problems/trapping-rain-water/)
+- [设计循环双端队列](https://leetcode-cn.com/problems/design-circular-deque)
+- [接雨水](https://leetcode-cn.com/problems/trapping-rain-water/)
 - 用 add first 或 add last 这套新的 API 改写 Deque 的代码
 - 分析 Queue 和 Priority Queue 的源码
 
