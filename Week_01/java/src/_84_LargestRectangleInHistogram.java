@@ -8,8 +8,10 @@ import java.util.LinkedList;
  * 第五遍：2020/08/09周日
  * 第六遍：2020/08/09周一
  * 第七遍：2020/08/12周三
+ * 从遍历查找每个柱子的左边界和右边界
+ * 到用栈求出每个柱子的左右边界
  */
-class _84_LargestRectangleArea {
+class _84_LargestRectangleInHistogram {
     public int largestRectangleArea(int[] heights) {
         if (heights == null) return -1;
         int n = heights.length;
