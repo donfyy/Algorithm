@@ -46,6 +46,7 @@
   - 这道题目很难，第一遍花了近两个小时，只是懂了大概，继续努力.
   - [动态规划套路解决戳气球问题](https://leetcode-cn.com/problems/burst-balloons/solution/dong-tai-gui-hua-tao-lu-jie-jue-chuo-qi-qiu-wen-ti/)
 - [**最长回文子串**](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+- [回文子串](https://leetcode-cn.com/problems/palindromic-substrings/)
 - [**最长公共子序列**](https://leetcode-cn.com/problems/longest-common-subsequence/)
 
   f(i, j)表示t1\[0, i - 1\]与t2\[0, j - 1\]的最长公共子序列的长度

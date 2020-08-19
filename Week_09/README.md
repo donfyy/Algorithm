@@ -24,11 +24,12 @@
 #### 1.1.1.4 回文串问题
 - [验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
 - [验证回文字符串 Ⅱ](https://leetcode-cn.com/problems/valid-palindrome-ii/)
-- [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_5_LongestPalindromicSubstring.java)
+- [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/longestpalindromicsubstring/_5_LongestPalindromicSubstring.java)
+- [回文子串](https://leetcode-cn.com/problems/palindromic-substrings/)
 - [回文对](https://leetcode-cn.com/problems/palindrome-pairs/)
 ### 1.1.2 高级字符串算法
 #### 1.1.2.1 最长子串、子序列问题
-- [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_5_LongestPalindromicSubstring.java)
+- [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/longestpalindromicsubstring/_5_LongestPalindromicSubstring.java)
 - [最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/kotlin/src/_1143_LongestCommonSubsequence.kt)
 - [编辑距离](https://leetcode-cn.com/problems/edit-distance/) [作业](https://github.com/donfyy/algorithm009-class01/blob/master/Week_06/java/src/_72_EditDistance.java)
 #### 1.1.2.2 字符串+dp

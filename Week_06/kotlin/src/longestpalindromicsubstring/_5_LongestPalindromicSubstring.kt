@@ -1,3 +1,5 @@
+package longestpalindromicsubstring
+
 fun longestPalindrome(s: String): String {
     //f(i,j)表示s[i, j]是否是一个回文子串
     //f(i,j) = f(i + 1, j - 1) && s[i] == s[j]

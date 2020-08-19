@@ -1,3 +1,5 @@
+package longestpalindromicsubstring;
+
 /**
  * 第一遍：2020/07/19周日 ✅
  * 第二遍：2020/07/20周一 ✅
@@ -11,7 +13,7 @@ class _5_LongestPalindromicSubstring {
     //时间O(n^2) 空间O(n)
     public String longestPalindrome(String s) {
         if (s == null || s.length() < 2) return s;
-        //f(i, j)表示字符串s在闭区间[i, j]上的子串是否为会问子串
+        //f(i, j)表示字符串s在闭区间[i, j]上的子串是否为回文子串
         //f(i, j) = f(i + 1, j - 1) && s[i] == s[j]
         //if (i == j) f(i, j) = true; if (i == j - 1) f(i, j) = s[i] == s[j]
         int n = s.length();
