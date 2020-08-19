@@ -31,20 +31,6 @@ Redis - Skip List
 - [为啥 redis 使用跳表(skip list)而不是使用 red-black？](https://www.zhihu.com/question/20202931)
 - [跳跃表](https://redisbook.readthedocs.io/en/latest/internal-datastruct/skiplist.html)
 
-这一周使用了切题四件套和五毒神掌刷了12道算法题。
-
-其中盛水最多的容器，接雨水，柱状图中的最大矩形，三数之和花的时间占比最多。
-
-接雨水的双指针解法与栈解法以及柱状图中的最大矩形的栈解法令我印象深刻。
-
-爬楼梯这道题目虽然简单，其中的坑在于存在着大量的子问题的重复计算，可以通过做缓存或自下而上的循环来避免这样重复计算。
-
-最小栈和滑动窗口的最大值提供了实现栈的最小值，最大值，队列的最小值，最大值的一个思路。
-
-移动零的解题思路和Partition函数挺像的，都是用一个j指针来记录下一个目标元素要插入的位置，该指针将数组分成两个部分。
-
-链表的练习题目和源码分析未能完成，下周努力给补上。
-
 #### 实战题目
 
 - [盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/)
