@@ -68,4 +68,21 @@ class _42_TrappingRainWater {
         }
         return ret;
     }
+
+    // todo:韦恩图？
+    // 时间:O(n) 空间:O(1)
+    class SolutionMath {
+        public int trap(int[] height) {
+            if (height == null) return 0;
+            int n = height.length, s1 = 0, s2 = 0, s = 0, max1 = 0, max2 = 0;
+            for (int i = 0; i < n; i++) {
+                s += height[i];
+                if (height[i] > max1) max1 = height[i];
+                s1 += max1;
+                if (height[n - 1 - i] > max2) max2 = height[n - 1 - i];
+                s2 += max2;
+            }
+            return s1 + s2 - max1 * n - s;
+        }
+    }
 }
