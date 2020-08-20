@@ -5,6 +5,7 @@ import java.util.LinkedList;
  * 第二遍：2020/05/26周二 ✅
  * 第三遍：2020/06/24周三 ✅
  * 第四遍：2020/08/17周日 ✅
+ * 第五遍：2020/08/20周日 ✅
  * 每个柱子能够接的雨水数量取决于其左边最高柱子和右边最高柱子的最小值
  */
 class _42_TrappingRainWater {
@@ -22,7 +23,9 @@ class _42_TrappingRainWater {
 
         int ret = 0;
         while (l < r) {
+            // 这里l与r相当于左右边界，所以l < r就行了
             if (height[l] >= height[r]) {
+                //这里已经确保了leftMax小于r或rightMax的
                 if (height[r] > rM) {
                     rM = height[r];
                 } else {
