@@ -65,3 +65,23 @@ class _42_Solution1_ {
         return ret
     }
 }
+
+class _42_math_ {
+    fun trap(height: IntArray): Int {
+        val n = height.size
+        var sl = 0
+        var sr = 0
+        var s = 0
+        var ml = 0
+        var mr = 0
+        for (i in 0 until n) {
+            ml = maxOf(ml, height[i])
+            mr = maxOf(mr, height[n - 1 - i])
+            sl += ml
+            sr += mr
+            s += height[i]
+        }
+
+        return sl + sr - ml * n - s
+    }
+}
