@@ -48,40 +48,30 @@ fun trapStack(height: IntArray): Int {
 //使用数组存储i左边和右边的最大值(包含i在内)
 class _42_Solution1_ {
     fun trap(height: IntArray): Int {
-        if (height.isEmpty()) return 0
-        val n = height.size
+        val n = height.size.takeIf { it > 2 } ?: return 0
         val left = IntArray(n).apply { this[0] = height[0] }
         val right = IntArray(n).apply { this[n - 1] = height[n - 1] }
-        for (i in 1 until n) {
-            left[i] = maxOf(height[i], left[i - 1])
-        }
-        for (i in n - 2 downTo 0) {
-            right[i] = maxOf(height[i], right[i + 1])
-        }
+        for (i in 1 until n) left[i] = maxOf(height[i], left[i - 1])
+        for (i in n - 2 downTo 0) right[i] = maxOf(height[i], right[i + 1])
         var ret = 0
-        for (i in 1..n - 2) {
-            ret += minOf(left[i], right[i]) - height[i]
-        }
+        for (i in 1..n - 2) ret += minOf(left[i], right[i]) - height[i]
         return ret
     }
 }
 
 class _42_math_ {
     fun trap(height: IntArray): Int {
-        val n = height.size
         var sl = 0
         var sr = 0
         var s = 0
         var ml = 0
         var mr = 0
-        for (i in 0 until n) {
-            ml = maxOf(ml, height[i])
-            mr = maxOf(mr, height[n - 1 - i])
-            sl += ml
-            sr += mr
+        val n = height.size
+        for (i in height.indices) {
             s += height[i]
+            ml = maxOf(ml, height[i]).apply { sl += this }
+            mr = maxOf(mr, height[n - 1 - i]).apply { sr += this }
         }
-
         return sl + sr - ml * n - s
     }
 }
