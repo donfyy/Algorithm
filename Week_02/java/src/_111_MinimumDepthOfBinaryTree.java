@@ -29,13 +29,12 @@ class _111_MinimumDepthOfBinaryTree {
     class SolutionDFS {
         public int minDepth(TreeNode root) {
             if (root == null) return 0;
-            return depth(root);
-        }
-
-        int depth(TreeNode root) {
-            if (root == null) return Integer.MAX_VALUE;
-            if (root.left == null && root.right == null) return 1;
-            return Math.min(depth(root.left), depth(root.right)) + 1;
+            int l = minDepth(root.left);
+            int r = minDepth(root.right);
+            if (Math.min(l, r) > 0) {
+                return 1 + Math.min(l, r);
+            }
+            return 1 + Math.max(l, r);
         }
     }
 

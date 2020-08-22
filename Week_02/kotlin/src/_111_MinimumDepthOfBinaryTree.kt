@@ -2,19 +2,9 @@ import java.util.*
 
 fun minDepth(root: TreeNode?): Int {
     if (root == null) return 0
-
-    fun dfs(node: TreeNode?): Int {
-        return if (node == null) {
-            Integer.MAX_VALUE
-        } else {
-            if (node.left == null && node.right == null) {
-                1
-            } else {
-                minOf(dfs(node.left), dfs(node.right)) + 1
-            }
-        }
-    }
-    return dfs(root)
+    val l = minDepth(root.left)
+    val r = minDepth(root.right)
+    return 1 + if (minOf(l, r) > 0) minOf(l, r) else maxOf(l, r)
 }
 
 class _111_BFS_ {

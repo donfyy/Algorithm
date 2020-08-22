@@ -6,7 +6,7 @@ fun updateBoard(board: Array<CharArray>, click: IntArray): Array<CharArray> {
         if (this[i][j] == 'M') {
             this[i][j] = 'X'
         } else {
-            val m = this.size
+            val m = size
             val n = this[0].size
             fun dfs(i: Int, j: Int) {
                 var c = 0
