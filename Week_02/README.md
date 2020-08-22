@@ -129,3 +129,4 @@
 
 - [课程表](https://leetcode-cn.com/problems/course-schedule/)
 - [恢复二叉搜索树](https://leetcode-cn.com/problems/recover-binary-search-tree/)
+- [二叉树的最小深度](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/)
