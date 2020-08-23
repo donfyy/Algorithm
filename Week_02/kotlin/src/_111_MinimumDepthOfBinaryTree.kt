@@ -1,10 +1,17 @@
 import java.util.*
 
 fun minDepth(root: TreeNode?): Int {
-    if (root == null) return 0
-    val l = minDepth(root.left)
-    val r = minDepth(root.right)
-    return 1 + if (minOf(l, r) > 0) minOf(l, r) else maxOf(l, r)
+    return if (root == null) {
+        0
+    } else {
+        val l = minDepth(root.left)
+        val r = minDepth(root.right)
+        if (minOf(l, r) == 0) {
+            1 + maxOf(l, r)
+        } else {
+            1 + minOf(l, r)
+        }
+    }
 }
 
 class _111_BFS_ {
