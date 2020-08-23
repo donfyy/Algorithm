@@ -15,6 +15,8 @@ siftDown(int,E): void 拿着E从int开始向下调整堆
 grow(int): void 扩容数组，这个扩容实现比HashMap要简单，因为元素的位置在扩容前后没有发生改变。
 
 源码分析：
+```java
+
 //向堆中插入一个元素
 public boolean offer(E e) {
     if (e == null)
@@ -163,3 +165,5 @@ private void grow(int minCapacity) {
     //创建一个长度为newCapacity的数组，并将旧数组中的内容拷贝到新数组。
     queue = Arrays.copyOf(queue, newCapacity);
 }
+
+```
