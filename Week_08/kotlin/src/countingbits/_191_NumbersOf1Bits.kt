@@ -1,3 +1,5 @@
+package countingbits
+
 // you need treat n as an unsigned value
 fun hammingWeight(n:Int):Int {
     var count = 0

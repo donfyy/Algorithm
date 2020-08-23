@@ -40,6 +40,8 @@
     - [N 皇后](https://leetcode-cn.com/problems/n-queens/description/)
     - [N 皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
     - [比特位计数](https://leetcode-cn.com/problems/counting-bits/description/)
+  - 持续刷题
+    - [数字范围按位与](https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/)
 - 布隆过滤器
   - 和哈希表类似。只需要知道某个元素有或没有
   - 一个很长的**二进制**向量和一系列**随机映射函数**。用于检索一个元素是否存在一个集合中
