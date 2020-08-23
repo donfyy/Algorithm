@@ -15,6 +15,8 @@ resize(): Node<K, V>[] 扩容数组，在上界内总是乘2。
 treeifyBin(Node<K, V>[], int): void 将int处的链表转换成红黑树。
 
 源码分析：
+```java
+
 //该函数用于计算key的哈希码
 static final int hash(Object key) {
     int h;
@@ -312,3 +314,5 @@ final void split(HashMap<K,V> map, Node<K,V>[] tab, int index, int bit) {
         }
     }
 }
+
+```

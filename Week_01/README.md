@@ -62,7 +62,8 @@ Redis - Skip List
 - [**接雨水**](https://leetcode-cn.com/problems/trapping-rain-water/)
 - 用 add first 或 add last 这套新的 API 改写 Deque 的代码
 - 分析 [Queue](https://github.com/donfyy/Algorithm/blob/master/Week_01/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/Queue.md)
- 和 Priority Queue 的源码
+  和 [Priority Queue](https://github.com/donfyy/Algorithm/blob/master/Week_01/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/PriorityQueue.md)
+  的源码
 
 - [最小区间](https://leetcode-cn.com/problems/smallest-range-covering-elements-from-k-lists/) 堆解法+滑动窗口解法
 
