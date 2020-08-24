@@ -8,7 +8,7 @@ fun rangeBitwiseAnd(m: Int, n: Int): Int {
     return ret
 }
 
-class _201_Solution_ {
+class _201_Shift_ {
     fun rangeBitwiseAnd(m: Int, n: Int): Int {
         var a = m
         var b = n
