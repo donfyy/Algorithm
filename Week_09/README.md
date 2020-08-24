@@ -71,4 +71,5 @@
 # 持续刷题
 
 - [字符串相加](https://leetcode-cn.com/problems/add-strings/)
+- [重复的子字符串](https://leetcode-cn.com/problems/repeated-substring-pattern/)
 
