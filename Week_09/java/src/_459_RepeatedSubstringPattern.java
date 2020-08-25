@@ -1,6 +1,6 @@
 /**
- * 第一遍：2020/08/23周一 ✅
- * 第二遍：2020/08/24周一
+ * 第一遍：2020/08/24周一 ✅
+ * 第二遍：2020/08/24周二 ✅
  * 第三遍：2020/06/06周六
  * 第四遍：2020/06/13周六
  */
@@ -24,6 +24,7 @@ class _459_RepeatedSubstringPattern {
     }
 
     class SolutionKMP {
+        // 时间O(n) 空间O(n)
         public boolean repeatedSubstringPattern(String s) {
             if (s == null) return false;
             int m = s.length();
@@ -32,18 +33,15 @@ class _459_RepeatedSubstringPattern {
             int i = 1;
             while (i < m) {
                 if (s.charAt(i) == s.charAt(j)) {
-                    j++;
-                    lps[i++] = j;
+                    lps[i++] = ++j;
+                } else if (j != 0) {
+                    j = lps[j - 1];
                 } else {
-                    if (j != 0) {
-                        j = lps[j - 1];
-                    } else {
-                        lps[i++] = 0;
-                    }
+                    lps[i++] = 0;
                 }
             }
 
-            return lps[m - 1] != 0 && m % (m - lps[m - 1]) == 0;
+            return j != 0 && m % (m - j) == 0;
         }
 
     }
