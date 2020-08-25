@@ -42,7 +42,11 @@
     - [比特位计数](https://leetcode-cn.com/problems/counting-bits/description/)
   - 持续刷题
     - [数字范围按位与](https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/)
+    
+      将范围内所有数字的按位与转换成求范围内所有数字的公共前缀
+        
     - [汉明距离](https://leetcode-cn.com/problems/hamming-distance/)
+    
 - 布隆过滤器
   - 和哈希表类似。只需要知道某个元素有或没有
   - 一个很长的**二进制**向量和一系列**随机映射函数**。用于检索一个元素是否存在一个集合中

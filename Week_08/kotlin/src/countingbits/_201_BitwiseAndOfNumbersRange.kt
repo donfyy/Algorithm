@@ -14,8 +14,8 @@ class _201_Shift_ {
         var b = n
         var shift = 0
         while (a != b) {
-            a = a shr 1
-            b = b shr 1
+            a = a ushr 1
+            b = b ushr 1
             shift++
         }
         return a shl shift
