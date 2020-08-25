@@ -10,23 +10,23 @@ class _679_24Game____ {
                 val n = list.size
                 if (n == 1) return Math.abs(list[0] - TARGET) < EPSILON
                 for (i in 0..n - 2) {
-                    for (j in i + 1 until n) {
+                    for (j in i + 1..n - 1) {
                         val next = list.filterIndexed { idx, _ -> idx != i && idx != j }.toMutableList()
                         val a = list[i]
                         val b = list[j]
                         mutableListOf(a + b, a - b, b - a, a * b)
                                 .apply {
-                                    if (Math.abs(a) > EPSILON) add(b / a)
-                                    if (Math.abs(b) > EPSILON) add(a / b)
+                                    if (Math.abs(a) > EPSILON) this += b / a
+                                    if (Math.abs(b) > EPSILON) this += a / b
                                 }
                                 .forEach {
-                                    next.add(it)
+                                    next += it
                                     if (solve(next)) return true
                                     next.removeAt(next.lastIndex)
                                 }
                     }
                 }
-                return false
+                return false;
             }
             return solve(this)
         }
