@@ -8,3 +8,4 @@ todo：链表相关题目，递归的课后习题。
 
 - [复原IP地址](https://leetcode-cn.com/problems/restore-ip-addresses/)
 - [24 点游戏](https://leetcode-cn.com/problems/24-game/)
+- [**递增子序列**](https://leetcode-cn.com/problems/increasing-subsequences/)
