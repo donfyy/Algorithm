@@ -27,10 +27,9 @@ class _459_KMP_ {
             when {
                 s[j] == s[i] -> lps[i++] = ++j
                 j != 0 -> j = lps[j - 1]
-                else -> lps[i++] = 0
+                else -> i++
             }
         }
-
         return j != 0 && n % (n - j) == 0
     }
 }
