@@ -122,27 +122,45 @@
 - [N 叉树的前序遍历](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/description/)
 - [N 叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/)
 
+#### 参考链接
+
+- [二叉搜索树Demo](https://visualgo.net/zh/bst?slide=1)
+
 ### 堆
 
 用O(1)的时间取出最大值或最小值。插入删除的时间复杂度不超过O(logn)。
 
 #### 常见的实现
 
-- 二叉堆
-  - 是一颗完全二叉树
-  - 树中任意节点的值总是大于等于子节点的值
-  - 实现细节
-    - 使用数组作为容器
-    - 假设堆顶元素位于索引0处，则
-      - i处的左子节点的索引为 i<<1+1
-      - i处的右子节点的索引为 i<<1+2
-      - i处的父节点的索引 i >>> 1
-    - 插入：新元素插入堆的尾部，然后将新元素依次上浮，也就是向上调整堆的结构
-    - 删除：将堆尾元素置于被删除元素处，然后将堆尾元素依次下沉，也就是向下调整堆的结构
-  - 二叉堆是一种常见且简单的实现，但不是最优的实现。PriorityQueue的实现就是一个二叉堆。
-- 严格的斐波那契堆，在堆的各种实现中性能最好，只有删除堆顶元素的时间为O(logn)其余皆为O(1)。
+##### 二叉堆
+- 是一颗完全二叉树
+- 树中任意节点的值总是大于等于子节点的值
+- 实现细节
+  - 使用数组作为容器
+  - 假设堆顶元素位于索引0处，则
+    - i处的左子节点的索引为 (i<<1)+1
+    - i处的右子节点的索引为 (i<<1)+2
+    - i处的父节点的索引 i >>> 1
+  - 插入：新元素插入堆的尾部，然后将新元素依次上浮，也就是向上调整堆的结构
+  - 删除：将堆尾元素置于被删除元素处，然后将堆尾元素依次下沉，也就是向下调整堆的结构
+- 二叉堆是一种常见且简单的实现，但不是最优的实现。PriorityQueue的实现就是一个二叉堆。
 
-- 相关的题目包括：前k个高频元素，滑动窗口的最大值，最小的k个数。
+##### 严格的斐波那契堆
+
+在堆的各种实现中性能最好，只有删除堆顶元素的时间为O(logn)其余皆为O(1)。
+
+#### 实战题目
+
+- [最小的 k 个数](https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/)
+- [滑动窗口最大值](https://leetcode-cn.com/problems/sliding-window-maximum/)
+- [HeapSort](https://www.geeksforgeeks.org/heap-sort/)
+- [丑数](https://leetcode-cn.com/problems/chou-shu-lcof/)
+- [前 K 个高频元素](https://leetcode-cn.com/problems/top-k-frequent-elements/)
+
+#### 参考链接
+
+- [维基百科：堆（Heap）](https://en.wikipedia.org/wiki/Heap_(data_structure))
+- [堆的实现代码](https://shimo.im/docs/Lw86vJzOGOMpWZz2/)
 
 ### 图
 由点和边组成，点有入度和出度，点与点之间是否连通。边分为有向和无向，边长可以带有权重。
@@ -153,11 +171,15 @@
 - 有向有权图？
 - 二分图：如果能将一个图的节点集合分割成两个独立的子集，并使图中每一条边的两个节点分别来自两个独立的子集，则称该图为二分图。
 - 实战题目
+  -[岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
   -[判断二分图](https://leetcode-cn.com/problems/is-graph-bipartite/)
   -[矩阵中的最长递增路径](https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/)
 
 - 参考链接
   -[二分图详解](https://zhuanlan.zhihu.com/p/89972891)
+  -[拓扑排序](https://zhuanlan.zhihu.com/p/34871092)
+  -[最短路径](https://www.bilibili.com/video/av25829980?from=search&seid=13391343514095937158)
+  -[最小生成树](https://www.bilibili.com/video/av84820276?from=search&seid=17476598104352152051)
   
 - 动态规划
   - 适用条件（递推的解决问题）
@@ -171,15 +193,11 @@
       - 其实就是寻找f(i)与f(i-1)之间的关系，斐波那契数列非常典型。最长不含重复字符的子字符串，礼物的最大价值等等。
     - 边界情况
 
-
-
-这周阅读了jdk1.8版本的HashMap，PriorityQueue，ThreadLocalMap的源码，有了数据结构的知识后，分析这些类的源码就变得容易了，也就能轻松掌握这些类，数据结构和算法是学习计算机必须掌握的基本功。这周在刷题的时候也是遵循五毒神掌的教诲，不死磕，过遍数。
-### 实战题目
-- [不同的二叉搜索树II](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)
-  - [参考题解](https://leetcode.wang/leetCode-95-Unique-Binary-Search-TreesII.html#%E8%A7%A3%E6%B3%95%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92)
-
 # 持续刷题
 
 - [课程表](https://leetcode-cn.com/problems/course-schedule/)
 - [恢复二叉搜索树](https://leetcode-cn.com/problems/recover-binary-search-tree/)
 - [二叉树的最小深度](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/)
+- [不同的二叉搜索树II](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)
+  - [参考题解](https://leetcode.wang/leetCode-95-Unique-Binary-Search-TreesII.html#%E8%A7%A3%E6%B3%95%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92)
+
