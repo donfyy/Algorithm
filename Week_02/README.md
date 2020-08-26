@@ -174,16 +174,16 @@
 
 #### 实战题目
 
-  -[岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
-  -[判断二分图](https://leetcode-cn.com/problems/is-graph-bipartite/)
-  -[矩阵中的最长递增路径](https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/)
+- [岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
+- [判断二分图](https://leetcode-cn.com/problems/is-graph-bipartite/)
+- [矩阵中的最长递增路径](https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/)
 
 #### 参考链接
 
-  -[二分图详解](https://zhuanlan.zhihu.com/p/89972891)
-  -[拓扑排序](https://zhuanlan.zhihu.com/p/34871092)
-  -[最短路径](https://www.bilibili.com/video/av25829980?from=search&seid=13391343514095937158)
-  -[最小生成树](https://www.bilibili.com/video/av84820276?from=search&seid=17476598104352152051)
+- [二分图详解](https://zhuanlan.zhihu.com/p/89972891)
+- [拓扑排序](https://zhuanlan.zhihu.com/p/34871092)
+- [最短路径](https://www.bilibili.com/video/av25829980?from=search&seid=13391343514095937158)
+- [最小生成树](https://www.bilibili.com/video/av84820276?from=search&seid=17476598104352152051)
   
 ### 动态规划
 
