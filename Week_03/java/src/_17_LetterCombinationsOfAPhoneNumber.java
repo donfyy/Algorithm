@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 第一遍：2020/06/06周五 ✅
  * 第二遍：2020/08/26周三 ✅
- * 第三遍：2020/06/13周五
+ * 第三遍：2020/08/27周四 ✅
  * 第四遍：2020/06/27周五
  */
 class _17_LetterCombinationsOfAPhoneNumber {
