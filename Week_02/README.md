@@ -170,13 +170,25 @@
 - 有向无权图
 - 无向有权图
 - 有向有权图？
-- 二分图：如果能将一个图的节点集合分割成两个独立的子集，并使图中每一条边的两个节点分别来自两个独立的子集，则称该图为二分图。
+
+#### 二分图
+
+如果能将一个图的节点集合分割成两个独立的子集，并使图中每一条边的两个节点分别来自两个独立的子集，则称该图为二分图。
+
+#### 欧拉回路 / 欧拉通路
+
+- 通过图中所有边恰好一次且行遍所有顶点的通路称为欧拉通路
+- 通过图中所有边恰好一次且行遍所有顶点的回路称为欧拉回路
+- 具有欧拉回路的无向图称为欧拉图
+- 具有欧拉通路但不具有欧拉回路的无向图称为半欧拉图
 
 #### 实战题目
 
 - [岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
 - [判断二分图](https://leetcode-cn.com/problems/is-graph-bipartite/)
 - [矩阵中的最长递增路径](https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/)
+- [重新安排行程](https://leetcode-cn.com/problems/reconstruct-itinerary/)
+- [破解保险箱](https://leetcode-cn.com/problems/cracking-the-safe/)
 
 #### 参考链接
 
