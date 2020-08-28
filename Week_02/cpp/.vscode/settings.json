@@ -6,6 +6,9 @@
         "__tree": "cpp",
         "string": "cpp",
         "set": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "array": "cpp",
+        "map": "cpp",
+        "string_view": "cpp"
     }
 }

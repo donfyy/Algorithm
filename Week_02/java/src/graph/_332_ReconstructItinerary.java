@@ -11,49 +11,49 @@ import java.util.*;
  * 参考官方题解
  */
 class _332_ReconstructItinerary {
-    Map<String, PriorityQueue<String>> map = new HashMap<>();
-    List<String> itinerary = new LinkedList<>();
+    class SolutionDfsRecursive {
+        Map<String, PriorityQueue<String>> edges = new HashMap<>();
+        LinkedList<String> path = new LinkedList<>();
 
-    // 时间O(mlogm) 空间O(m)
-    public List<String> findItinerary(List<List<String>> tickets) {
-        for (List<String> ticket : tickets) {
-            String u = ticket.get(0);
-            String v = ticket.get(1);
-            PriorityQueue<String> heap = map.computeIfAbsent(u, k -> new PriorityQueue<>());
-            heap.offer(v);
-        }
-        dfs("JFK");
-        Collections.reverse(itinerary);
-        return itinerary;
-    }
-
-    public void dfs(String u) {
-        PriorityQueue<String> heap = map.get(u);
-        while (heap != null && !heap.isEmpty()) {
-            dfs(heap.poll());
-        }
-        itinerary.add(u);
-    }
-
-    class SolutionIterative {
+        // 时间O(mlogm) 空间O(m)
         public List<String> findItinerary(List<List<String>> tickets) {
-            Map<String, PriorityQueue<String>> map = new HashMap<>();
+            if (tickets == null) return path;
             for (List<String> ticket : tickets) {
-                map.computeIfAbsent(ticket.get(0), k -> new PriorityQueue<>()).offer(ticket.get(1));
+                edges.computeIfAbsent(ticket.get(0), k -> new PriorityQueue<>()).offer(ticket.get(1));
             }
-            LinkedList<String> ret = new LinkedList<>();
-            Deque<String> stack = new LinkedList<>();
+            dfs("JFK");
+            return path;
+        }
+
+        void dfs(String u) {
+            PriorityQueue<String> edge = edges.get(u);
+            while (edge != null && !edge.isEmpty()) {
+                dfs(edge.poll());
+            }
+            path.addFirst(u);
+        }
+    }
+
+    class SolutionDfsIterative {
+        public List<String> findItinerary(List<List<String>> tickets) {
+            if (tickets == null) return Collections.emptyList();
+            Map<String, PriorityQueue<String>> edges = new HashMap<>();
+            for (List<String> ticket : tickets) {
+                edges.computeIfAbsent(ticket.get(0), k -> new PriorityQueue<>()).offer(ticket.get(1));
+            }
+            LinkedList<String> path = new LinkedList<>();
+            LinkedList<String> stack = new LinkedList<>();
             stack.push("JFK");
             while (!stack.isEmpty()) {
-                PriorityQueue<String> heap = map.get(stack.peek());
-                while (heap != null && !heap.isEmpty()) {
-                    String v = heap.poll();
+                PriorityQueue<String> edge = edges.get(stack.peek());
+                while (edge != null && !edge.isEmpty()) {
+                    String v = edge.poll();
                     stack.push(v);
-                    heap = map.get(v);
+                    edge = edges.get(v);
                 }
-                ret.add(0, stack.pop());
+                path.addFirst(stack.pop());
             }
-            return ret;
+            return path;
         }
     }
 }
