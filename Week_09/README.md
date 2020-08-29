@@ -73,4 +73,5 @@
 - [字符串相加](https://leetcode-cn.com/problems/add-strings/)
 - [重复的子字符串](https://leetcode-cn.com/problems/repeated-substring-pattern/) 练习KMP算法
 - [递增子序列](https://leetcode-cn.com/problems/increasing-subsequences/) 练习Rabin-Karp算法
+- [最短回文串](https://leetcode-cn.com/problems/shortest-palindrome/) 练习Rabin-Karp和KMP算法
 

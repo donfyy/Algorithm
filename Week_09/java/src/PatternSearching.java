@@ -79,13 +79,12 @@ public class PatternSearching {
             int j = 0;
             while (i < n) {
                 if (txt.charAt(i) == pat.charAt(j)) {
-                    if (j == m - 1) {
-                        System.out.println("Pattern Found at index " + (i - j));
-                        j = lps[j];
-                        continue;
-                    }
                     i++;
                     j++;
+                    if (j == m) {
+                        System.out.println("Pattern Found at index " + (i - j));
+                        j = lps[j];
+                    }
                 } else {
                     if (j != 0) {
                         j = lps[j];
@@ -102,9 +101,8 @@ public class PatternSearching {
 
         public int[] createLPSArray(String pat) {
             int m = pat.length();
-            int[] lps = new int[m];
+            int[] lps = new int[m + 1];
             lps[0] = -1;
-            lps[1] = 0;
             //f(i)表示[0, i]字符串的最长公共前后缀的长度
             //if (i == 0) f(i) = 0
             //len表示f(i - 1)的最长公共前后缀的长度
@@ -115,15 +113,14 @@ public class PatternSearching {
             //0   0 1 2 0 1 2 3
             int len = 0;
             int i = 1;
-            while (i < m - 1) {
+            while (i < m) {
                 if (pat.charAt(i) == pat.charAt(len)) {
-                    len++;
-                    lps[++i] = len;
+                    lps[++i] = ++len;
                 } else {
                     if (len > 0) {
                         len = lps[len];
                     } else {
-                        lps[++i] = 0;
+                        i++;
                     }
                 }
             }
