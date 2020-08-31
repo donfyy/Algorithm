@@ -5,19 +5,17 @@ import kotlin.collections.HashMap
 
 class _332_Iterative {
     fun findItinerary(tickets: List<List<String>>): List<String> {
-        if (tickets.isEmpty()) return emptyList()
         val edges = HashMap<String, PriorityQueue<String>>()
-        for (ticket in tickets) {
-            edges.computeIfAbsent(ticket[0]) { PriorityQueue() }.offer(ticket[1])
+        tickets.forEach { (u, v) ->
+            edges.computeIfAbsent(u) { PriorityQueue() }.offer(v)
         }
+        val stack = LinkedList<String>().apply { offer("JFK") }
         val path = LinkedList<String>()
-        val stack = LinkedList<String>().apply { push("JFK") }
         while (stack.isNotEmpty()) {
             var edge = edges[stack.peek()]
             while (edge != null && edge.isNotEmpty()) {
-                val v = edge.poll()
-                stack.push(v)
-                edge = edges[v]
+                stack.push(edge.poll())
+                edge = edges[stack.peek()]
             }
             path.offerFirst(stack.pop())
         }
