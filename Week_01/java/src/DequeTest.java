@@ -6,6 +6,16 @@ public class DequeTest {
         test1();
         System.out.println("------------------------------------------------");
         test2();
+        System.out.println("-----------------------------------------");
+        System.out.println(Integer.toBinaryString(-1));
+        System.out.println("128:" + Integer.toBinaryString(128));
+        System.out.println("-128:" + Integer.toBinaryString(-128));
+        System.out.println(Integer.toBinaryString(65408));
+        System.out.println(Integer.toUnsignedString(-1));
+        System.out.println(Integer.toUnsignedLong(-1));
+        System.out.println(Long.toBinaryString(Integer.toUnsignedLong(-1)));
+        System.out.println(Long.toUnsignedString(Integer.toUnsignedLong(-1)));
+        System.out.println(Long.toBinaryString(-1L));
     }
 
     static void test1() {
