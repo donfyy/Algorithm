@@ -1,4 +1,3 @@
-学习笔记
 
 
 | 数据结构   | 时间    |         |         |         |         |         | 空间      | 特性                     |
@@ -125,6 +124,7 @@
 #### 参考链接
 
 - [二叉搜索树Demo](https://visualgo.net/zh/bst?slide=1)
+- [平衡树](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree)
 
 ### 堆
 
