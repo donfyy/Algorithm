@@ -35,6 +35,7 @@ def Factorial(n):
 
 ```
 
+```java
 factorial(6)
 6 * factorial(5)
 6 * (5 * factorial(4))
@@ -47,7 +48,7 @@ factorial(6)
 6 * (5 * 24)
 6 * 120
 720
-
+```
 ### 代码模版
 
 ```python
