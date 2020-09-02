@@ -116,6 +116,7 @@
 
 ## 数学
 
+- [整数拆分](https://leetcode-cn.com/problems/integer-break/)
 - [除数博弈](https://leetcode-cn.com/problems/divisor-game/)
   
   这是一道数学题，奇数先手必败，偶数先手必胜。也可以用动态规划来做，但一开始我没有能正确的定义状态
