@@ -1,6 +1,7 @@
 bool PredictTheWinner(int* nums, int numsSize){
     const int n = numsSize;
     if (n <= 0) return false;
+    if (!(n & 1)) return true; // 特例 参见877
     int dp[n], i = 0, j = 0;
     for (; i < n; i++) dp[i] = nums[i];
     for (i = n - 2; i >= 0; i--) {

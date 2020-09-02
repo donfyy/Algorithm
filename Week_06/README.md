@@ -114,12 +114,25 @@
 - [MIT 动态规划课程最短路径算法](https://www.bilibili.com/video/av53233912?from=search&seid=2847395688604491997)
 - [一个方法团灭 6 道股票问题](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-l-3/)
 
-### 持续刷题
+## 数学
+
 - [除数博弈](https://leetcode-cn.com/problems/divisor-game/)
   
   这是一道数学题，奇数先手必败，偶数先手必胜。也可以用动态规划来做，但一开始我没有能正确的定义状态
   f(i)表示黑板上的数字为i时Alice先手是否必胜，则状态的转移需要枚举\[1, i / 2\]的数字找到任意一个i的因数x并且
   f(i - x) == false(对手必败) 则f(i) = true 否则f(i) = false。
-  
+ 
+- [石子游戏](https://leetcode-cn.com/problems/stone-game/) 
+
+  预测赢家的特例，假设有n堆石子，n是偶数。根据下标的奇偶将石子分成两组，下标为偶数的石子堆属于第一组，下标为奇数的石子堆属于第二组。
+  初识时，A可以自由的选择取走第一组的第一堆石子与第二组的最后一堆石子，假设A取走第一组的第一堆石子，
+  则B只能取走第二组的石子，然后A又可以自由的选择取走第一组的石子还是第二组的石子。若A取走第二组的最后一堆石子，则B只能取走第一堆的石子。
+  然后A又可以自由的选择取走第一组的石子还是第二组的石子。A可以自由的选择完全取走第一组还是第二组的石子。
+  将石子分成两组之后就可以统计出每组石子的总数，A只要选择取走石子数量较多的一组即可获胜。
+  因为石子的总数是奇数，两组之间必有一组石子数量较多。
+
+
+### 持续刷题
+ 
 - [判断子序列](https://leetcode-cn.com/problems/is-subsequence/)
 - [预测赢家](https://leetcode-cn.com/problems/predict-the-winner/)

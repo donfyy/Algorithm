@@ -1,7 +1,9 @@
+package predictthewinner
+
 class _486_RecurWithMemo {
     fun PredictTheWinner(nums: IntArray): Boolean {
-        if (nums.isEmpty()) return false;
         val n = nums.size
+        if ((n and 1) == 0) return true;
         val memo = Array(n) { IntArray(n) }
         fun dp(i: Int, j: Int): Int { // 返回值表示当前玩家赢过另一玩家的分数
             return when {

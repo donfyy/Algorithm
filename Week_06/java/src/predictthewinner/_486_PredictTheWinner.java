@@ -1,3 +1,5 @@
+package predictthewinner;
+
 /**
  * 第一遍：2020/09/02周三 ✅
  * 第二遍：2020/08/25周三
@@ -14,6 +16,7 @@ class _486_PredictTheWinner {
         // i == j 时 f(i, j) = nums[i]
         if (nums == null || nums.length == 0) return false;
         final int n = nums.length;
+        if ((n & 1) == 0) return true;
         int[] dp = new int[n];
         System.arraycopy(nums, 0, dp, 0, n);
         for (int i = n - 2; i >= 0; i--) {
