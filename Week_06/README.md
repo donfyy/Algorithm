@@ -122,3 +122,4 @@
   f(i - x) == false(对手必败) 则f(i) = true 否则f(i) = false。
   
 - [判断子序列](https://leetcode-cn.com/problems/is-subsequence/)
+- [预测赢家](https://leetcode-cn.com/problems/predict-the-winner/)
