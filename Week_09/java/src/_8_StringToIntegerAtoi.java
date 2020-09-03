@@ -1,31 +1,27 @@
 /**
  * 第一遍：2020/07/15周三 ✅
  * 第二遍：2020/07/16周四 ✅
- * 第三遍：2020/07/08周四
+ * 第三遍：2020/09/03周四 ✅
  * 第四遍：2020/07/13周一
  * 第三遍：2020/06/29周一
  * 第四遍：2020/07/05周日
  */
 class _8_StringToIntegerAtoi {
-    public int myAtoi(String str) {
-        if (str == null || str.length() == 0) return 0;
-        int idx = 0, ret = 0, sign = 1;
-        while (idx < str.length() && str.charAt(idx) == ' ') idx++;
-        if (idx == str.length()) return 0;
-        if (str.charAt(idx) == '-') {
-            sign = -1;
-            idx++;
-        } else if (str.charAt(idx) == '+') {
-            idx++;
+    public int myAtoi(String s) {
+        if (s == null || s.isEmpty()) return 0;
+        int i = 0, ret = 0, sign = 1, n = s.length();
+        while (i < n && s.charAt(i) == ' ') i++;
+        if (i < n && (s.charAt(i) == '+' || s.charAt(i) == '-')) {
+            if (s.charAt(i) == '-') sign = -1;
+            i++;
         }
-        while (idx < str.length() && str.charAt(idx) >= '0' && str.charAt(idx) <= '9') {
-            int c = str.charAt(idx) - '0';
-            if (ret > Integer.MAX_VALUE / 10 || (ret == Integer.MAX_VALUE / 10 && c > Integer.MAX_VALUE % 10)) {
-                if (sign == 1) return Integer.MAX_VALUE;
-                else return Integer.MIN_VALUE;
+        while (i < n && s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+            int num = s.charAt(i) - '0';
+            if (ret > Integer.MAX_VALUE / 10 || (ret == Integer.MAX_VALUE / 10 && num > Integer.MAX_VALUE % 10)) {
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
-            ret = ret * 10 + c;
-            idx++;
+            ret = ret * 10 + num;
+            i++;
         }
         return ret * sign;
     }
