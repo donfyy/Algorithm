@@ -8,7 +8,7 @@ import java.util.List;
  * 第二遍：2020/07/06周一 ✅
  * 第三遍：2020/07/08周三 ✅
  * 第四遍：2020/07/13周一 ✅
- * 第四遍：2020/06/27周六
+ * 第五遍：2020/09/03周四 ✅
  */
 class _51_NQueens {
     class SolutionUsingBits {
