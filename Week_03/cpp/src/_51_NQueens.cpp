@@ -28,10 +28,10 @@ public:
             generateSolution();
             return;
         }
-        int positions = ~(col | pie | na) & mask;
+        auto positions = ~(col | pie | na) & mask;
         while (positions)
         {
-            int p = positions & -positions;
+            auto p = positions & -positions;
             queens.push_back(__builtin_ctz(p));
             dfs(i + 1, col | p, (pie | p) << 1, (na | p) >> 1);
             queens.pop_back();
@@ -54,6 +54,6 @@ public:
 
 int main(int argc, char const *argv[])
 {
-	cout << "hi queens" << endl;
+    cout << "hi queens" << endl;
     return 0;
 }
