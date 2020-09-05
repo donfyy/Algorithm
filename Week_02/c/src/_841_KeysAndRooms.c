@@ -1,3 +1,5 @@
+#include <stdbool.h>
+
 bool canVisitAllRooms(int** rooms, int roomsSize, int* roomsColSize){
     int visited[roomsSize];
     memset(visited, 0, sizeof(visited));
