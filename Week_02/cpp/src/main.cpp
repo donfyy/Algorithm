@@ -31,6 +31,7 @@ int main() {
     cout << "size = " << v2.size() << endl;
     v2 = op(v2);
     cout << "v2 %p = " << &v2 << endl;
+    cout << "size = " << v2.size() << endl;
     cout << "v2[0]" << v2[0] << endl;
     return 1;
 }
