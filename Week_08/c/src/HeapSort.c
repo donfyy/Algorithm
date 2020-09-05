@@ -61,10 +61,8 @@ void heapSortRecursive(int *arr, int n)
 }
 void heapifyDownRecursive(int *arr, int n, int i)
 {
-    int half = n >> 1;
-    if (i >= half)
-        return;
     int c = (i << 1) + 1;
+    if (c >= n) return;
     int r = c + 1;
     if (r < n && arr[r] > arr[c])
         c = r;
