@@ -11,3 +11,4 @@
 ## 参考链接
 
 - [拓扑排序](https://www.cnblogs.com/bigsai/p/11489260.html)
+- [康托展开和逆康托展开](https://blog.csdn.net/wbin233/article/details/72998375)
