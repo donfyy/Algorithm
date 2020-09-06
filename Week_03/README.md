@@ -160,3 +160,4 @@ def divide_conquer(problem, param1, param2, ...):
 - [复原IP地址](https://leetcode-cn.com/problems/restore-ip-addresses/)
 - [24 点游戏](https://leetcode-cn.com/problems/24-game/)
 - [**递增子序列**](https://leetcode-cn.com/problems/increasing-subsequences/)
+- [第k个排列](https://leetcode-cn.com/problems/permutation-sequence/)
