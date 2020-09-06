@@ -33,27 +33,47 @@ class _94_BinaryTreeInorderTraversal {
      * 时间：O(n) 空间：O(logn 最差:O(n)))
      */
     public List<Integer> inorderTraversal2(TreeNode root) {
-        if (root == null) {
-            return Collections.emptyList();
-        }
+        if (root == null) return Collections.emptyList();
+        LinkedList<TreeNode> stack = new LinkedList<>();
         LinkedList<Integer> ret = new LinkedList<>();
-        LinkedList<TreeNode> stack = new LinkedList();
-        TreeNode cur = root;
-        while (!stack.isEmpty() || cur != null) {
-            while (cur != null) {
-                stack.offerLast(cur);
-                cur = cur.left;
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
             }
-            TreeNode node = stack.pollLast();
-            ret.add(node.val);
-
-            if (node.right != null) {
-                cur = node.right;
-            }
-
-
+            root = stack.pop();
+            ret.add(root.val);
+            root = root.right;
         }
         return ret;
+    }
+
+    static class SolutionMorris {
+        // 时间O(n) 空间O(1)
+        public List<Integer> inorderTraversal(TreeNode root) {
+            if (root == null) return Collections.emptyList();
+            List<Integer> ret = new LinkedList<>();
+            while (root != null) {
+                if (root.left == null) {
+                    ret.add(root.val);
+                    root = root.right;
+                } else {
+                    TreeNode p = root.left;
+                    while (p.right != null && p.right != root) {
+                        p = p.right;
+                    }
+                    if (p.right == null) {
+                        p.right = root;
+                        root = root.left;
+                    } else {
+                        p.right = null;
+                        ret.add(root.val);
+                        root = root.right;
+                    }
+                }
+            }
+            return ret;
+        }
     }
 
     public static class TreeNode {
