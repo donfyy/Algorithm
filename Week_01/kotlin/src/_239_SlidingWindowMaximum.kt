@@ -24,15 +24,13 @@ fun maxSlidingWindow(nums: IntArray, k: Int): IntArray {
 class _239_Heap_ {
     fun maxSlidingWindow(nums: IntArray, k: Int): IntArray {
         if (nums.size < k) return IntArray(0)
-        val ret = IntArray(nums.size - k + 1)
+        val ret = IntArray(nums.size + 1 - k)
         val heap = PriorityQueue<Int> { l, r -> r - l }
-        for (i in nums.indices) {
-            heap.offer(nums[i])
-            if (i >= k - 1) {
-                if (i >= k) {
-                    heap.remove(nums[i - k])
-                }
-                ret[i + 1 - k] = heap.peek()
+        nums.forEachIndexed { idx, v ->
+            heap.offer(v)
+            if (heap.size >= k) {
+                if (heap.size > k) heap.remove(nums[idx - k])
+                ret[idx + 1 - k] = heap.peek()
             }
         }
         return ret
