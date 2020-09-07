@@ -4,6 +4,7 @@ class _40_Partition {
     // 时间O(n) 空间O(1) 修改输入数组
     fun getLeastNumbers(arr: IntArray, k: Int): IntArray {
         if (k < 1 || k > arr.size) return IntArray(0)
+        mutableMapOf<Int, Int>().forEach { it}
         fun partition(l: Int, r: Int): Int {
             if (l == r) return l
             val pivot = arr[r]

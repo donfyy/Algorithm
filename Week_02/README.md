@@ -156,7 +156,7 @@
 - [最小的 k 个数](https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/)
 - [滑动窗口最大值](https://leetcode-cn.com/problems/sliding-window-maximum/)
 - [HeapSort](https://www.geeksforgeeks.org/heap-sort/)
-- [丑数](https://leetcode-cn.com/problems/chou-shu-lcof/)
+- [丑数](https://leetcode-cn.com/problems/ugly-number-ii/)
 - [前 K 个高频元素](https://leetcode-cn.com/problems/top-k-frequent-elements/)
 
 #### 参考链接
