@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -70,6 +71,33 @@ class _94_BinaryTreeInorderTraversal {
                         ret.add(root.val);
                         root = root.right;
                     }
+                }
+            }
+            return ret;
+        }
+    }
+
+    /**
+     * 每个节点都会入栈两次，效率并不高
+     */
+    static class InorderIterative2 {
+        // 时间O(n) 空间O(n)
+        public List<Integer> inorderTraversal(TreeNode root) {
+            List<Integer> ret = new ArrayList<>();
+            LinkedList<TreeNode> stack = new LinkedList<>();
+            if (root != null) stack.push(root);
+            while (!stack.isEmpty()) {
+                root = stack.peek();
+                if (root != null) {
+                    stack.pop();
+                    if (root.right != null) stack.push(root.right);
+                    stack.push(root);
+                    stack.push(null);
+                    if (root.left != null) stack.push(root.left);
+                } else {
+                    stack.pop();
+                    root = stack.pop();
+                    ret.add(root.val);
                 }
             }
             return ret;

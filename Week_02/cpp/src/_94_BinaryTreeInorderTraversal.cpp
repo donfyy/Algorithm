@@ -1,4 +1,5 @@
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -9,7 +10,7 @@ struct TreeNode
     TreeNode *right;
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
-class Solution
+class InorderMorris
 {
 public:
     vector<int> inorderTraversal(TreeNode *root)
@@ -41,6 +42,66 @@ public:
                     p->right = root;
                     root = root->left;
                 }
+            }
+        }
+        return ret;
+    }
+};
+
+class InorderIterative
+{
+public:
+    vector<int> inorderTraversal(TreeNode *root)
+    {
+        vector<int> ret;
+        stack<TreeNode *> st;
+        while (root || !st.empty())
+        {
+            while (root)
+            {
+                st.push(root);
+                root = root->left;
+            }
+            root = st.top();
+            st.pop();
+            ret.push_back(root->val);
+            root = root->right;
+        }
+        return ret;
+    }
+};
+
+/**
+ * 每个节点都会入栈两次，效率并不高
+ */
+class InorderIterative2
+{
+public:
+    vector<int> inorderTraversal(TreeNode *root)
+    {
+        vector<int> ret;
+        stack<TreeNode *> st;
+        if (root)
+            st.push(root);
+        while (!st.empty())
+        {
+            root = st.top();
+            if (root)
+            {
+                st.pop();
+                if (root->right)
+                    st.push(root->right);
+                st.push(root);
+                st.push(nullptr);
+                if (root->left)
+                    st.push(root->left);
+            }
+            else
+            {
+                st.pop();
+                root = st.top();
+                st.pop();
+                ret.push_back(root->val);
             }
         }
         return ret;
