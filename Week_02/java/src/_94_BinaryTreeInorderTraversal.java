@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 第一遍：2020/05/27周三 ✅
  * 第二遍：2020/05/28周四 ✅
- * 第三遍：2020/06/03周一
+ * 第三遍：2020/09/07周一 ✅
  * 第四遍：2020/06/17周一
  */
 class _94_BinaryTreeInorderTraversal {
@@ -28,28 +28,7 @@ class _94_BinaryTreeInorderTraversal {
         recursive(node.right, ret);
     }
 
-    /**
-     * 需要左根右读值，但最先被访问的是根左。
-     * 根左顺序访问，逆序读值-->先进后出
-     * 时间：O(n) 空间：O(logn 最差:O(n)))
-     */
-    public List<Integer> inorderTraversal2(TreeNode root) {
-        if (root == null) return Collections.emptyList();
-        LinkedList<TreeNode> stack = new LinkedList<>();
-        LinkedList<Integer> ret = new LinkedList<>();
-        while (root != null || !stack.isEmpty()) {
-            while (root != null) {
-                stack.push(root);
-                root = root.left;
-            }
-            root = stack.pop();
-            ret.add(root.val);
-            root = root.right;
-        }
-        return ret;
-    }
-
-    static class SolutionMorris {
+    static class Morris {
         // 时间O(n) 空间O(1)
         public List<Integer> inorderTraversal(TreeNode root) {
             if (root == null) return Collections.emptyList();
@@ -77,10 +56,33 @@ class _94_BinaryTreeInorderTraversal {
         }
     }
 
+    static class Iterative1 {
+        /**
+         * 需要左根右读值，但最先被访问的是根左。
+         * 根左顺序访问，逆序读值-->先进后出
+         * 时间：O(n) 空间：O(logn 最差:O(n)))
+         */
+        public List<Integer> inorderTraversal2(TreeNode root) {
+            if (root == null) return Collections.emptyList();
+            LinkedList<TreeNode> stack = new LinkedList<>();
+            LinkedList<Integer> ret = new LinkedList<>();
+            while (root != null || !stack.isEmpty()) {
+                while (root != null) {
+                    stack.push(root);
+                    root = root.left;
+                }
+                root = stack.pop();
+                ret.add(root.val);
+                root = root.right;
+            }
+            return ret;
+        }
+    }
+
     /**
      * 每个节点都会入栈两次，效率并不高
      */
-    static class InorderIterative2 {
+    static class Iterative2 {
         // 时间O(n) 空间O(n)
         public List<Integer> inorderTraversal(TreeNode root) {
             List<Integer> ret = new ArrayList<>();

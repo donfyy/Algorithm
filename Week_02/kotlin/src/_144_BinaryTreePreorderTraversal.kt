@@ -64,6 +64,7 @@ class _144_Iterative2 {
 }
 
 class _144_Iterative3 {
+    // 时间O(n) 空间O(n)
     fun preorderTraversal(root: TreeNode?): List<Int> {
         val ret = mutableListOf<Int>()
         val stack = LinkedList<TreeNode?>()
