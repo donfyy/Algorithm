@@ -7,8 +7,9 @@ import java.util.List;
  * 第二遍：2020/06/08周一
  * 第三遍：2020/06/14周日
  * 第四遍：2020/06/28周日
+ * todo: 理解多种解法
  */
-public class _347_Combinations {
+public class _77_Combinations {
     static class UsingSequence {
         List<List<Integer>> ret;
         List<Integer> path = new ArrayList<>();
