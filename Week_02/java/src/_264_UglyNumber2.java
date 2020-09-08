@@ -1,6 +1,13 @@
 import java.util.HashSet;
 import java.util.PriorityQueue;
 
+/**
+ * 第一遍：2020/07/27周一 ✅
+ * 第二遍：2020/09/08周二 ✅
+ * 第三遍：2020/07/29周二
+ * 第三遍：2020/06/21周日
+ * 第四遍：2020/07/05周日
+ */
 class _264_UglyNumber2 {
     /**
      * 不断的生成新的丑数，然后放到小顶堆里，注意需要set去重
@@ -12,7 +19,7 @@ class _264_UglyNumber2 {
         }
         PriorityQueue<Long> heap = new PriorityQueue<>();
         HashSet<Long> set = new HashSet<>();
-        int[] primes = new int[]{2,3,5};
+        int[] primes = new int[]{2, 3, 5};
         heap.offer(1L);
         for (int i = 1; i < n; i++) {
             long min = heap.poll();
