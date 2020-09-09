@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -11,30 +10,24 @@ import java.util.List;
  */
 public class _77_Combinations {
     static class UsingSequence {
-        List<List<Integer>> ret;
         List<Integer> path = new ArrayList<>();
-        int k;
-        int n;
+        List<List<Integer>> ret = new ArrayList<>();
 
         public List<List<Integer>> combine(int n, int k) {
-            if (k > n) return Collections.emptyList();
-            ret = new ArrayList<>();
-            this.k = k;
-            this.n = n;
-            dfs(1);
+            dfs(1, n, k);
             return ret;
         }
 
-        void dfs(int i) {
-            if (path.size() + n - i + 1 < k) return;
+        void dfs(int i, int n, int k) {
+            if (path.size() + n + 1 - i < k) return;
             if (path.size() == k) {
                 ret.add(new ArrayList<>(path));
                 return;
             }
             path.add(i);
-            dfs(i + 1);
+            dfs(i + 1, n, k);
             path.remove(path.size() - 1);
-            dfs(i + 1);
+            dfs(i + 1, n, k);
         }
     }
 }
