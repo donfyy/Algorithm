@@ -1,5 +1,6 @@
 ## 😭
 
+- [ ] [组合](https://leetcode-cn.com/problems/combinations/)
 - [ ] [第k个排列](https://leetcode-cn.com/problems/permutation-sequence/)
 - [ ] [移除盒子](https://leetcode-cn.com/problems/remove-boxes/)
 - [ ] 绘制自己的数据结构和算法脑图
