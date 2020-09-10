@@ -161,3 +161,7 @@ def divide_conquer(problem, param1, param2, ...):
 - [24 点游戏](https://leetcode-cn.com/problems/24-game/)
 - [**递增子序列**](https://leetcode-cn.com/problems/increasing-subsequences/)
 - [第k个排列](https://leetcode-cn.com/problems/permutation-sequence/)
+- [组合总和](https://leetcode-cn.com/problems/combination-sum/)
+- [组合总和 II](https://leetcode-cn.com/problems/combination-sum-ii/)
+- [组合总和 III](https://leetcode-cn.com/problems/combination-sum-iii/)
+- [组合总和 Ⅳ](https://leetcode-cn.com/problems/combination-sum-iv/) dp 问题

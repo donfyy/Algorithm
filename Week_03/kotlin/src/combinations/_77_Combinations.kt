@@ -1,3 +1,5 @@
+package combinations
+
 class _347_UsingSequence {
     fun combine(n: Int, k: Int): List<List<Int>> {
         val path = mutableListOf<Int>()
