@@ -1,5 +1,7 @@
 ## 😭
 
+- [ ] [从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) 
+学习迭代与非map版本
 - [ ] [组合](https://leetcode-cn.com/problems/combinations/)
 - [ ] [第k个排列](https://leetcode-cn.com/problems/permutation-sequence/)
 - [ ] [移除盒子](https://leetcode-cn.com/problems/remove-boxes/)
