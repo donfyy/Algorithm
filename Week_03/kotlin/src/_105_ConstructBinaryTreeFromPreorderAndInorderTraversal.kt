@@ -1,4 +1,5 @@
 class _105_ {
+    // 时间 O(n) 空间 O(n)
     fun buildTree(preorder: IntArray, inorder: IntArray): TreeNode? {
         val map = HashMap<Int, Int>()
         inorder.forEachIndexed { idx, v -> map[v] = idx }
