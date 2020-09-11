@@ -1,3 +1,5 @@
+package permutations
+
 import java.util.*
 
 class _46_UsingSwap {
