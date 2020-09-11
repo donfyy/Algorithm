@@ -19,3 +19,23 @@ class _347_UsingSequence {
         return ret
     }
 }
+
+class _77_奇技淫巧 {
+    fun combine(n: Int, k: Int): List<List<Int>> {
+        val ret = mutableListOf<List<Int>>()
+        val path = IntArray(k)
+        var i = 0
+        while (i >= 0) {
+            path[i]++
+            when {
+                path[i] > n -> i--
+                i == k - 1 -> ret += path.toList()
+                else -> {
+                    i++
+                    path[i] = path[i - 1]
+                }
+            }
+        }
+        return ret
+    }
+}
