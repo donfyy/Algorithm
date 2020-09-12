@@ -128,6 +128,21 @@ def BFS(graph, start, end):
             right = mid - 1
 ```
 
+```kotlin
+    // 这段代码会造成死循环 l == r && drinks[m] > t 时
+    var l = 0
+    var r = drinks.size - 1
+    // var r = drinks.size
+    while (l <= r) {
+        val m = (l + r) ushr 1
+        if (drinks[m] > t) {
+            r = m
+        } else {
+            l = m + 1
+        }
+    }
+```
+
 ### 实战题目
 
 - [x 的平方根](https://leetcode-cn.com/problems/sqrtx/)
