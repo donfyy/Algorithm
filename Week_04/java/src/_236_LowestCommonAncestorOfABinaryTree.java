@@ -1,8 +1,10 @@
 /**
  * 第一遍：2020/06/08周一 ✅
- * 第二遍：2020/06/09周二
+ * 第二遍：2020/09/12周二 ✅
  * 第三遍：2020/06/15周一
  * 第四遍：2020/06/29周一
+ * 因为要求二叉树的最近公共祖先，所以就要考虑是最近公共祖先的节点应该满足什么条件。
+ * 思路应该这么来。
  */
 class _236_LowestCommonAncestorOfABinaryTree {
     private TreeNode ancestor;
@@ -31,6 +33,23 @@ class _236_LowestCommonAncestorOfABinaryTree {
             ancestor = node;
         }
         return node.val == q.val || node.val == p.val || l || r;
+    }
+
+    class ReturnNode {
+        /**
+         * 返回值为null则表示root这棵树不包含p和q
+         * 返回值不为null则有两种情况，
+         * 1.如果root这棵树只包含p或者q，则返回p或者q
+         * 2.如果root这棵树同时包含p或者q，则返回p或者q的最低公共祖先
+         * 因此这个解法的返回值存在二义性，这一点并不好。
+         */
+        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+            if (root == null || root == p || root == q) return root;
+            TreeNode l = lowestCommonAncestor(root.left, p, q);
+            TreeNode r = lowestCommonAncestor(root.right, p, q);
+            if (l != null && r != null) return root;
+            return l != null ? l : r;
+        }
     }
 
     public class TreeNode {
