@@ -1,10 +1,11 @@
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+
 /**
  * 第一遍：2020/07/02周四 ✅
  * 第二遍：2020/07/03周五 ✅
- * 第三遍：2020/06/29周一
+ * 第三遍：2020/09/13周日 ✅
  * 第四遍：2020/07/05周日
  * 小技巧：dx和dy的应用使得代码更加简洁美观易读, StringBuilder的应用使得性能提升了一倍，发现一个单词时修改trie树避免了使用set去判重
  * dfs的时间复杂度O(M * N * 3 ^ K)K 表示单词的平均长度 MN分别表示board的行数和列数。构建trie的时间复杂度O(H * K) H表示单词的个数
