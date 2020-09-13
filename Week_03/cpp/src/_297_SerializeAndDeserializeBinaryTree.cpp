@@ -22,21 +22,17 @@ public:
         q.push(root);
         while (!q.empty())
         {
-            int size = q.size();
-            while (size-- > 0)
+            auto node = q.front();
+            q.pop();
+            if (node == nullptr)
             {
-                auto node = q.front();
-                q.pop();
-                if (node == nullptr)
-                {
-                    ret += "$,";
-                }
-                else
-                {
-                    ret += to_string(node->val) + ",";
-                    q.push(node->left);
-                    q.push(node->right);
-                }
+                ret += "$,";
+            }
+            else
+            {
+                ret += to_string(node->val) + ",";
+                q.push(node->left);
+                q.push(node->right);
             }
         }
         return ret;
@@ -93,6 +89,65 @@ public:
                 q.pop();
             }
         }
+        return root;
+    }
+};
+class CodecDfs
+{
+public:
+    bool readNum(string &s, int *idx, int *num)
+    {
+        int i = *idx;
+        bool read = false;
+        while (i < s.size() && s[i] != ',')
+            i++;
+        if (*idx < s.size() && s[*idx] != '$')
+        {
+            *num = stoi(s.substr(*idx, i - *idx));
+            read = true;
+        }
+        *idx = i + 1;
+        return read;
+    }
+    void dfs(TreeNode *root, string *s)
+    {
+        if (!root)
+        {
+            *s += "$,";
+            return;
+        }
+        *s += to_string(root->val) + ",";
+        dfs(root->left, s);
+        dfs(root->right, s);
+    }
+    void dfs_(TreeNode **root, string &s, int *idx)
+    {
+        int num;
+        if (readNum(s, idx, &num))
+        {
+            *root = new TreeNode(num);
+            (*root)->left = NULL;
+            (*root)->right = NULL;
+            dfs_(&(*root)->left, s, idx);
+            dfs_(&(*root)->right, s, idx);
+        }
+    }
+
+    // Encodes a tree to a single string.
+    string serialize(TreeNode *root)
+    {
+        string ret;
+        dfs(root, &ret);
+        return ret;
+    }
+
+    // Decodes your encoded data to tree.
+    TreeNode *deserialize(string data)
+    {
+        // 一定要初始化自动变量
+        int idx = 0;
+        TreeNode *root = NULL;
+        dfs_(&root, data, &idx);
         return root;
     }
 };
