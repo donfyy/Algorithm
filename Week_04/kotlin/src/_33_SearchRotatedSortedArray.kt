@@ -1,15 +1,16 @@
-fun search(nums: IntArray, target: Int): Int {
-    var l = 0
-    var h = nums.size - 1
-    while (l <= h) {
-        val m = l + ((h - l) ushr 1)
-        val v = nums[m]
-        if (v == target) return m
-        if (v >= nums[l]) {
-            if (v > target && target >= nums[l]) h = m - 1 else l = m + 1
-        } else {
-            if (target >= nums[l] || target < v) h = m - 1 else l = m + 1
+class _33_ {
+    fun search(nums: IntArray, target: Int): Int {
+        var l = 0
+        var r = nums.lastIndex
+        while (l <= r) {
+            val m = (l + r) ushr 1
+            if (nums[m] == target) return m
+            if (nums[m] >= nums[l]) {
+                if (target < nums[m] && target >= nums[l]) r = m - 1 else l = m + 1
+            } else {// [l, r] 一定是旋转数组
+                if (target > nums[m] && target <= nums[r]) l = m + 1 else r = m - 1
+            }
         }
+        return -1
     }
-    return -1
 }
