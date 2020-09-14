@@ -1,0 +1,25 @@
+#include <vector>
+using namespace std;
+class Solution
+{
+public:
+    // 时间 O(n * 2 ^ n) 空间 O(n)
+    vector<vector<int>> subsets(vector<int> &nums)
+    {
+        vector<vector<int>> ret;
+        vector<int> path;
+        dfs(nums, 0, path, ret);
+        return ret;
+    }
+    // 每一层子集的元素个数是相同的，长度为3的子集可以由长度为2的子集加上一个新的元素组成。
+    void dfs(vector<int> &nums, int start, vector<int> &path, vector<vector<int>> &ret)
+    {
+        ret.push_back(path);
+        for (int i = start; i < nums.size(); i++)
+        {
+            path.push_back(nums[i]);
+            dfs(nums, i + 1, path, ret);
+            path.pop_back();
+        }
+    }
+};
