@@ -1,6 +1,6 @@
 #include <vector>
 using namespace std;
-class Solution
+class UsingDfsIncrement
 {
 public:
     // 时间 O(n * 2 ^ n) 空间 O(n)
@@ -21,5 +21,28 @@ public:
             dfs(nums, i + 1, path, ret);
             path.pop_back();
         }
+    }
+};
+class UsingBits
+{
+public:
+    // O(2^n * n) O(1)
+    vector<vector<int>> subsets(vector<int> &nums)
+    {
+        int n = nums.size(), max = 1 << n;
+        vector<vector<int>> ret;
+        for (int i = 0; i < max; i++)
+        {
+            vector<int> subset;
+            for (int j = 0, k = i; j < n; j++, k >>= 1)
+            {
+                if (k & 1)
+                {
+                    subset.push_back(nums[j]);
+                }
+            }
+            ret.push_back(subset);
+        }
+        return ret;
     }
 };
