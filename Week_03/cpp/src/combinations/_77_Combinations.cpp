@@ -32,32 +32,31 @@ public:
 class 横
 {
 public:
-    vector<vector<int>> ret;
-    vector<int> path;
-    // 时间O((n,k) * k) 空间O(k)
     vector<vector<int>> combine(int n, int k)
     {
-        dfs(1, n, k);
+        vector<int> path;
+        vector<vector<int>> ret;
+        dfs(ret, path, 1, n, k);
         return ret;
     }
-    void dfs(int start, int n, int k)
+    void dfs(vector<vector<int>> &ret, vector<int> &path, int start, int n, int k)
     {
-        if (k == 0)
+        if (path.size() == k)
         {
             ret.push_back(path);
             return;
         }
-        if (n + 1 - start < k)
-            return;
-        k--;
         for (int i = start; i <= n; i++)
         {
+            if (path.size() + n - i + 1 < k)
+                return;
             path.push_back(i);
-            dfs(i + 1, n, k);
+            dfs(ret, path, i + 1, n, k);
             path.pop_back();
         }
     }
 };
+
 int main(int argc, char const *argv[])
 {
     cout << "combinations!" << endl;
