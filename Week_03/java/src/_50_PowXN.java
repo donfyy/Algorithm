@@ -3,7 +3,7 @@
  * 第二遍：2020/06/04周四 ✅
  * 第三遍：2020/09/15周二 ✅
  * 第四遍：2020/06/23周二
- *
+ * <p>
  * 需要注意最小的负整数,这道题看似简单，容易错在这里。
  * 这道题过了3个月就忘了。。这道题对我来说不简单。
  */
@@ -43,25 +43,20 @@ class _50_PowXN {
         return ((n & 1) == 1) ? x * temp : temp;
     }
 
-    /**
-     * 循环
-     * 时间：O(logn) 空间：O(1)
-     */
-    public double myPow3(double x, int n) {
-        if (x == 0) return 0;
-        long _n = n;
-        if (n < 0) _n = -_n;
-
-        double ret = 1;
-        while (_n > 0) {
-            if ((_n & 1) == 1) {
-                ret *= x;
+    static class UsingIteration {
+        // 时间：O(logn) 空间：O(1)
+        public double myPow(double x, int n) {
+            long N = n < 0 ? -(long) n : n;
+            double ret = 1;
+            while (N > 0) {
+                if ((N & 1) == 1) {
+                    ret *= x;
+                }
+                x *= x;
+                N >>= 1;
             }
-            x *= x;
-            _n >>>= 1;
+            return n < 0 ? 1 / ret : ret;
         }
-
-        return n < 0 ? 1 / ret : ret;
     }
 
     //错误示例==============================================================================================================
@@ -70,7 +65,7 @@ class _50_PowXN {
 
         int n = -2147483648;
         System.out.println(Integer.toBinaryString(-2147483648));
-        System.out.println(Long.toBinaryString(-(long)n));
+        System.out.println(Long.toBinaryString(-(long) n));
         System.out.println(Long.toBinaryString(n));
         System.out.println(Integer.toBinaryString(2147483647));
         System.out.println(Integer.toBinaryString(-2147483647));
