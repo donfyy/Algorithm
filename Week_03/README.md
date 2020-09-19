@@ -100,7 +100,7 @@ public void recur(int level, int param) {
 - [从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal)
 - [组合](https://leetcode-cn.com/problems/combinations/)
 - [全排列](https://leetcode-cn.com/problems/permutations/)
-- [全排列 II ](https://leetcode-cn.com/problems/permutations-ii/)
+- [全排列 II ](https://leetcode-cn.com/problems/permutations-ii/) 使用visited数组做选择，去重不易理解。交换法去重易理解
 
 ## 分治（divide & conquer）
 

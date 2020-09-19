@@ -5,11 +5,12 @@
 - [ ] [组合](https://leetcode-cn.com/problems/combinations/)
 - [ ] [第k个排列](https://leetcode-cn.com/problems/permutation-sequence/)
 - [ ] [移除盒子](https://leetcode-cn.com/problems/remove-boxes/)
-- [ ] 绘制自己的数据结构和算法脑图
+- [ ] [全排列 II](https://leetcode-cn.com/problems/permutations-ii/) 使用visited数组做选择，去重不易理解
 
 ## 简单但容易出错的题目
 
-- [ ] [PowXN](https://leetcode-cn.com/problems/powx-n/)
+- [x] [PowXN](https://leetcode-cn.com/problems/powx-n/)
+- [x] [寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/) 容易忘记 >= l
 
 - [x] [矩阵中的最长递增路径](https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/)
    [参考题解](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/discuss/78336/Graph-theory-Java-solution-O(v2)-no-DFS)

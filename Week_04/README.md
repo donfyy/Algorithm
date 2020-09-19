@@ -149,7 +149,8 @@ def BFS(graph, start, end):
 - [有效的完全平方数](https://leetcode-cn.com/problems/valid-perfect-square/)
 - [搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
 - [搜索二维矩阵](https://leetcode-cn.com/problems/search-a-2d-matrix/)
-- [寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)
+- [寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/) 
+经常写成 m > l 而不是 m >= l 
 
 ### 参考链接
 
