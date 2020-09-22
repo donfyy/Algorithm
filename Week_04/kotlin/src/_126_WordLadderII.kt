@@ -1,12 +1,15 @@
 class _126_UsingBiBfs {
+    // L 单词的平均长度  N 字典中单词的个数
+    // O(V + E) O(V + E)  V = N, E  = N * 26 * L
     fun findLadders(beginWord: String, endWord: String, wordList: List<String>): List<List<String>> {
-        val ret = mutableListOf<List<String>>()
-        val wordSet = wordList.toMutableSet()
+        val ret = arrayListOf<List<String>>()
+        // O(N)
+        val wordSet = wordList.toHashSet()
         if (endWord !in wordSet) return ret
-        val edges = HashMap<String, MutableSet<String>>()
+        val adjacency = hashMapOf<String, HashSet<String>>()
         fun biBfs(): Boolean {
-            var beginSet = mutableSetOf(beginWord)
-            var endSet = mutableSetOf(endWord)
+            var beginSet = hashSetOf(beginWord)
+            var endSet = hashSetOf(endWord)
             wordSet.apply {
                 remove(beginWord)
                 remove(endWord)
@@ -14,8 +17,8 @@ class _126_UsingBiBfs {
             var forward = true
             while (beginSet.isNotEmpty()) {
                 var find = false
-                val nextSet = mutableSetOf<String>()
-                val nextVisited = mutableSetOf<String>()
+                val nextSet = hashSetOf<String>()
+                val nextVisited = hashSetOf<String>()
                 for (u in beginSet) {
                     val arr = u.toCharArray()
                     for (i in arr.indices) {
@@ -27,14 +30,14 @@ class _126_UsingBiBfs {
                                     find = true
                                     var p = u
                                     if (!forward) p = v.also { v = p }
-                                    edges.computeIfAbsent(p) { mutableSetOf() }.add(v)
+                                    adjacency.computeIfAbsent(p) { hashSetOf() }.add(v)
                                 }
                                 in wordSet -> {
                                     nextSet += v
                                     nextVisited += v
                                     var p = u
                                     if (!forward) p = v.also { v = p }
-                                    edges.computeIfAbsent(p) { mutableSetOf() }.add(v)
+                                    adjacency.computeIfAbsent(p) { hashSetOf() }.add(v)
                                 }
                             }
                         }
@@ -54,13 +57,13 @@ class _126_UsingBiBfs {
             return false
         }
         if (!biBfs()) return ret
-        val path = mutableListOf(beginWord)
+        val path = arrayListOf(beginWord)
         fun dfs(u: String) {
             if (u == endWord) {
                 ret += path.toList()
                 return
             }
-            edges[u]?.forEach { v ->
+            adjacency[u]?.forEach { v ->
                 path += v
                 dfs(v)
                 path.removeAt(path.lastIndex)
