@@ -156,6 +156,8 @@ def BFS(graph, start, end):
 
 - [二分查找代码模板](https://shimo.im/docs/xvIIfeEzWYEUdBPD/)
 - [Fast InvSqrt() 扩展阅读](https://www.beyond3d.com/content/articles/8/)
+- [牛顿迭代法原理](http://www.matrix67.com/blog/archives/361)
+- [牛顿迭代法代码](http://www.voidcn.com/article/p-eudisdmk-zm.html)
 
 # 持续刷题
 

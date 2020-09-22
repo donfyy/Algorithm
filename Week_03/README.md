@@ -152,8 +152,6 @@ def divide_conquer(problem, param1, param2, ...):
 ### 参考链接
 
 - [分治代码模板](https://shimo.im/docs/zvlDqLLMFvcAF79A/)
-- [牛顿迭代法原理](http://www.matrix67.com/blog/archives/361)
-- [牛顿迭代法代码](http://www.voidcn.com/article/p-eudisdmk-zm.html)
 
 # 持续刷题
 
