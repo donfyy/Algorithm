@@ -223,4 +223,5 @@
 - [二叉树的层平均值](https://leetcode-cn.com/problems/average-of-levels-in-binary-tree/)
 - [左叶子之和](https://leetcode-cn.com/problems/sum-of-left-leaves/)
 - [把二叉搜索树转换为累加树](https://leetcode-cn.com/problems/convert-bst-to-greater-tree/)
+- [合并二叉树](https://leetcode-cn.com/problems/merge-two-binary-trees/)
 
