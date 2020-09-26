@@ -225,4 +225,5 @@
 - [把二叉搜索树转换为累加树](https://leetcode-cn.com/problems/convert-bst-to-greater-tree/)
 - [合并二叉树](https://leetcode-cn.com/problems/merge-two-binary-trees/)
 - [二叉搜索树中的众数](https://leetcode-cn.com/problems/find-mode-in-binary-search-tree/)
+- [从中序与后序遍历序列构造二叉树](https://leetcode-cn.com/problems/find-mode-in-binary-search-tree/)
 
