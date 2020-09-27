@@ -163,3 +163,4 @@ def divide_conquer(problem, param1, param2, ...):
 - [组合总和 II](https://leetcode-cn.com/problems/combination-sum-ii/)
 - [组合总和 III](https://leetcode-cn.com/problems/combination-sum-iii/)
 - [组合总和 Ⅳ](https://leetcode-cn.com/problems/combination-sum-iv/) dp 问题
+- [二叉搜索树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree)
