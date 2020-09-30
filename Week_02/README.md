@@ -228,4 +228,5 @@
 - [从中序与后序遍历序列构造二叉树](https://leetcode-cn.com/problems/find-mode-in-binary-search-tree/)
 - [二叉树的右视图](https://leetcode-cn.com/problems/binary-tree-right-side-view/)
 - [填充每个节点的下一个右侧节点指针](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/)
+- [二叉搜索树中的插入操作](https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/)
 
