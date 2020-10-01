@@ -1,6 +1,6 @@
 /**
  * 第一遍：2020/09/13周日 ✅
- * 第二遍：2020/06/21周日
+ * 第二遍：2020/10/01周四 ✅
  * 第二遍：2020/06/12周二
  * 第三遍：2020/06/18周四
  * 第四遍：2020/07/02周四
@@ -30,6 +30,27 @@ public class _154_FindMinimumInRotatedSortedArrayII {
                 }
             }
             return nums[idx];
+        }
+    }
+
+    static class Solution2 {
+        public int findMin(int[] nums) {
+            if (nums == null || nums.length == 0) return -1;
+            int l = 0, r = nums.length - 1;
+            while (l < r) {
+                if (nums[r] > nums[l]) break;
+                int m = (l + r) >>> 1;
+                if (nums[m] > nums[l]) {
+                    l = m + 1;
+                } else if (nums[m] < nums[l]) {
+                    r = m;
+                } else if (nums[m] != nums[r]) {
+                    l = m + 1;
+                } else {
+                    l++;
+                }
+            }
+            return nums[l];
         }
     }
 }

@@ -55,20 +55,20 @@ class _153_FindMinimumInRotatedSortedArray {
     /**
      * 放上自己的冗余代码，卧薪尝胆
      */
-    public int findMin2(int[] nums) {
-        if (nums == null) {
-            return -1;
-        }
-        int l = 0, h = nums.length - 1;
-        while (l < h - 1) {
-            int m = l + ((h - l) >>> 1);
-            int val = nums[m];
-            if (val > nums[l] && val > nums[h]) {
-                l = m;
-            } else {
-                h = m;
+    static class Solution1 {
+        public int findMin(int[] nums) {
+            if (nums == null || nums.length == 0) return -1;
+            int l = 0, r = nums.length - 1;
+            while (l < r) {
+                if (nums[r] > nums[l]) break;
+                int m = (l + r) >>> 1;
+                if (nums[m] >= nums[l]) {
+                    l = m + 1;
+                } else {
+                    r = m;
+                }
             }
+            return nums[l];
         }
-        return l == h - 1 ? (Math.min(nums[l], nums[h])) : nums[l];
     }
 }

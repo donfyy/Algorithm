@@ -138,6 +138,7 @@
 - [判断子序列](https://leetcode-cn.com/problems/is-subsequence/)
 - [预测赢家](https://leetcode-cn.com/problems/predict-the-winner/)
 - [组合总和 Ⅳ](https://leetcode-cn.com/problems/combination-sum-iv/)
+- [秋叶收藏集](https://leetcode-cn.com/problems/UlBDOe/)
 
 ### todo
 
