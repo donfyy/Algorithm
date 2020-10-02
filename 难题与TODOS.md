@@ -9,6 +9,7 @@
 - [ ] [秋叶收藏集](https://leetcode-cn.com/problems/UlBDOe/) 没看懂前缀和解法
 - [ ] [监控二叉树](https://leetcode-cn.com/problems/binary-tree-cameras/) 
 - [ ] [冗余连接 II](https://leetcode-cn.com/problems/redundant-connection-ii/) 练习并查集
+- [ ] [背包问题](https://leetcode-cn.com/problems/combination-sum-iv/solution/xi-wang-yong-yi-chong-gui-lu-gao-ding-bei-bao-wen-/)
 
 ## 简单但容易出错的题目
 
@@ -21,3 +22,4 @@
 
 - [拓扑排序](https://www.cnblogs.com/bigsai/p/11489260.html)
 - [康托展开和逆康托展开](https://blog.csdn.net/wbin233/article/details/72998375)
+- [前缀和技巧](https://zhuanlan.zhihu.com/p/107778275)

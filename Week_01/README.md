@@ -84,3 +84,4 @@ Redis - Skip List
 # 持续刷题
 
 - [计数二进制子串](https://leetcode-cn.com/problems/count-binary-substrings)
+- [和为K的子数组](https://leetcode-cn.com/problems/subarray-sum-equals-k/)
