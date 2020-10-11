@@ -11,6 +11,7 @@
 - [ ] [冗余连接 II](https://leetcode-cn.com/problems/redundant-connection-ii/) 练习并查集
 - [ ] [背包问题](https://leetcode-cn.com/problems/combination-sum-iv/solution/xi-wang-yong-yi-chong-gui-lu-gao-ding-bei-bao-wen-/)
 - [ ] [树中距离之和](https://leetcode-cn.com/problems/sum-of-distances-in-tree/)
+- [ ] [分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum/)
 
 ## 简单但容易出错的题目
 

@@ -140,8 +140,10 @@
 - [组合总和 Ⅳ](https://leetcode-cn.com/problems/combination-sum-iv/)
 - [秋叶收藏集](https://leetcode-cn.com/problems/UlBDOe/)
 - [树中距离之和](https://leetcode-cn.com/problems/sum-of-distances-in-tree/)
+- [分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum/)
 
 
 ### 参考链接
 
 - [前缀和技巧](https://zhuanlan.zhihu.com/p/107778275)
+- [背包问题](https://github.com/tianyicui/pack)
