@@ -1,12 +1,13 @@
 #include <vector>
 #include <queue>
 using namespace std;
-  struct TreeNode {
-      int val;
-      TreeNode *left;
-      TreeNode *right;
-      TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-  };
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
 class UsingBfs
 {
 public:
@@ -33,5 +34,24 @@ public:
             }
         }
         return ret;
+    }
+};
+class UsingDfs
+{
+public:
+    vector<int> rightSideView(TreeNode *root)
+    {
+        vector<int> ret;
+        dfs(root, 0, ret);
+        return ret;
+    }
+    void dfs(TreeNode *root, int depth, vector<int> &ret)
+    {
+        if (!root)
+            return;
+        if (ret.size() == depth)
+            ret.push_back(root->val);
+        dfs(root->right, ++depth, ret);
+        dfs(root->left, depth, ret);
     }
 };
