@@ -53,6 +53,8 @@ Redis - Skip List
 - [合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
 - [合并两个有序数组](https://leetcode-cn.com/problems/merge-sorted-array/)
   - 注意逆向思维的应用，从后往前归并。
+- [有序数组的平方](https://leetcode-cn.com/problems/squares-of-a-sorted-array/)
+  - 注意逆向思维的应用，从两边向中间归并。
 
 - [有效的括号](https://leetcode-cn.com/problems/valid-parentheses/)
 - [最小栈](https://leetcode-cn.com/problems/min-stack/)
