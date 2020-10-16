@@ -4,15 +4,15 @@ using namespace std;
 void selectSort(vector<int> &nums)
 {
     const int n = nums.size();
-    for (int i = n - 1; i >= 0; --i)
+    for (int i = 0; i < n - 1; ++i)
     {
-        for (int j = 0; j < i; ++j)
-        {
-            if (nums[j] > nums[j + 1])
-            {
-                swap(nums[j], nums[j + 1]);
+        int min = i;
+        for (int j = i + 1; j < n; ++j) {
+            if (nums[j] < nums[min]) {
+                min = j;
             }
         }
+        swap(nums[min], nums[i]);
     }
 }
 int main(int argc, char const *argv[])

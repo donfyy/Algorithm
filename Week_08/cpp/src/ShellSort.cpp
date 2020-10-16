@@ -1,7 +1,7 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-void shellSort(vector<int> &nums) {
+void heapSort(vector<int> &nums) {
     int n = nums.size();
     for (int gap = n >> 1; gap > 0; gap >>= 1) {
         for (int i = gap; i < n; i++) {
@@ -18,7 +18,7 @@ void shellSort(vector<int> &nums) {
 int main(int argc, char const *argv[])
 {
     vector<int> array = {1, 5, 3, 2, 6, 4};
-    shellSort(array);
+    heapSort(array);
     cout << "[";
     for (int i = 0; i < array.size(); i++)
     {

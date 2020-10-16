@@ -1,21 +1,25 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-void shellSort(vector<int> &nums) {
-    for (int i = 1; i < nums.size(); i++) {
+void heapSort(vector<int> &nums)
+{
+    int n = nums.size();
+    for (int i = 1; i < n; i++)
+    {
         int j = i - 1;
-        int value = nums[i];
-        while (j >= 0 && nums[j] > value) {
+        int v = nums[i];
+        while (j >= 0 && nums[j] > v)
+        {
             nums[j + 1] = nums[j];
             j--;
         }
-        nums[j + 1] = value;
+        nums[j + 1] = v;
     }
 }
 int main(int argc, char const *argv[])
 {
     vector<int> array = {1, 5, 3, 2, 6, 4};
-    shellSort(array);
+    heapSort(array);
     cout << "[";
     for (int i = 0; i < array.size(); i++)
     {

@@ -5,19 +5,19 @@ int partition(vector<int> &nums, int start, int end)
 {
     int pivot = end;
     int j = start - 1;
-    for (int i = start; i < end; i++) {
+    for (int i = start; i < end; ++i) {
         if (nums[i] < nums[pivot]) {
             swap(nums[i], nums[++j]);
         }
-    }  
-    swap(nums[pivot], nums[++j]);
+    }
+    swap(nums[++j], nums[pivot]);
     return j;
 }
 void quickSort(vector<int> &nums, int start, int end) {
     if (start >= end) return;
     int pivot = partition(nums, start, end);
-    quickSort(nums, start, pivot - 1);
-    quickSort(nums, pivot + 1, end);
+    partition(nums, start, pivot - 1);
+    partition(nums, pivot + 1, end);
 }
 int main(int argc, char const *argv[])
 {
