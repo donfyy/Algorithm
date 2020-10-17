@@ -3,19 +3,23 @@
 using namespace std;
 void mergeSort(vector<int> &nums, int start, int end, vector<int> &temp)
 {
-    if (start >= end) return;
+    if (start >= end)
+        return;
     int mid = start + ((end - start) >> 1);
     mergeSort(nums, start, mid, temp);
     mergeSort(nums, mid + 1, end, temp);
 
     int i = start, j = mid + 1, k = 0;
-    while (i <= mid && j <= end) {
+    while (i <= mid && j <= end)
+    {
         temp[k++] = nums[i] < nums[j] ? nums[i++] : nums[j++];
     }
-    while (i <= mid) {
+    while (i <= mid)
+    {
         temp[k++] = nums[i++];
     }
-    while (j <= end) {
+    while (j <= end)
+    {
         temp[k++] = nums[j++];
     }
     copy(temp.begin(), temp.begin() + k, nums.begin() + start);
