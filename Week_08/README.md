@@ -305,18 +305,21 @@ private static void merge(int[] array, int[] temp, int left, int mid, int right)
 作为一种线性时间复杂度的排序，计数排序要求输入的数据是有确定范围的整数。
 当k不是很大且序列比较集中时，计数排序是一个很有效的排序算法。
 
-```java
-public static void countingSort(int[] array) {
-    int maxValue = findMaxValue(array);
-    int[] bucket = new int[maxValue + 1];
-    for (int value : array) {
-        bucket[value]++;
+```c++
+void countingSort(vector<int> &nums)
+{
+    // 注意，修改nums的元素, *pmax是动态变化的
+    const auto [pmin, pmax] = minmax_element(nums.begin(), nums.end());
+    int min = *pmin, max = *pmax;
+    vector<int> bucket(max - min + 1, 0);
+    for (int num : nums) {
+        bucket[num - min]++;
     }
-
-    for (int i = 0, j = 0; i < bucket.length; i++) {
-        int count = bucket[i];
-        while (count-- > 0) {
-            array[j++] = i;
+    int j = 0;
+    for (int i = min; i <= max; i++) {
+        int cnt = bucket[i - min];
+        while (cnt-- > 0) {
+            nums[j++] = i;
         }
     }
 }
@@ -327,40 +330,25 @@ public static void countingSort(int[] array) {
 它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。
 假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶在分别排序。
 
-```java
-public static void bucketSort(int[] array) {
-    int bucketSize = 3;
-    int max = array[0];
-    int min = array[0];
-    for (int i = 1; i < array.length; i++) {
-        if (array[i] > max) {
-            max = array[i];
-        }
-        if (array[i] < min) {
-            min = array[i];
-        }
+```c++
+void bucketSort(vector<int> &nums)
+{
+    // 注意，修改nums的元素, *pmax是动态变化的
+    const auto [pmin, pmax] = minmax_element(nums.begin(), nums.end());
+    const int min = *pmin, max = *pmax;
+    const int bucketSize = 3, bucketCount = (max - min) / bucketSize + 1;
+    // 创建桶
+    vector<vector<int>> buckets(bucketCount, vector<int>());
+    // 将元素映射到桶中
+    for (int num : nums) {
+        buckets[(num - min) / bucketSize].push_back(num);
     }
-
-    //创建桶
-    int bucketCount = (max - min) / bucketSize + 1;
-    List[] buckets = new ArrayList[bucketCount];
-    for (int i = 0; i < bucketCount; i++) {
-        buckets[i] = new ArrayList();
-    }
-
-    //将元素添加到所属的桶中
-    for (int i = 0; i < array.length; i++) {
-        int value = array[i];
-        buckets[(value - min) / bucketSize].add(value);
-    }
-
-    int k = 0;
-    for (int i = 0; i < buckets.length; i++) {
-        //对桶进行排序
-        Collections.sort(buckets[i]);
-        //排序后在取出放到原来的数组中
-        for (int j = 0; j < buckets[i].size(); j++) {
-            array[k++] = (int) buckets[i].get(j);
+    // 对每一个桶中的元素进行排序，然后取出桶中的元素
+    for (int i = 0, j = 0; i < bucketCount; i++) {
+        auto bucket = buckets[i];
+        sort(bucket.begin(), bucket.end());
+        for (int v : bucket) {
+            nums[j++] = v;
         }
     }
 }

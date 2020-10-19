@@ -3,19 +3,16 @@
 using namespace std;
 void countingSort(vector<int> &nums)
 {
-    int max = nums[0], n = nums.size();
-    for (int i = 1; i < n; i++) {
-        if (nums[i] > max) {
-            max = nums[i];
-        }
+    // 注意，修改nums的元素, *pmax是动态变化的
+    const auto [pmin, pmax] = minmax_element(nums.begin(), nums.end());
+    int min = *pmin, max = *pmax;
+    vector<int> bucket(max - min + 1, 0);
+    for (int num : nums) {
+        bucket[num - min]++;
     }
-
-    vector<int> bucket(max + 1);
-    for (int i = 0; i < n; i++) {
-        bucket[nums[i]]++;
-    }
-    for (int i = 0, j = 0; i <= max; i++) {
-        int cnt = bucket[i];
+    int j = 0;
+    for (int i = min; i <= max; i++) {
+        int cnt = bucket[i - min];
         while (cnt-- > 0) {
             nums[j++] = i;
         }
