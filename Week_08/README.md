@@ -310,15 +310,16 @@ void countingSort(vector<int> &nums)
 {
     // 注意，修改nums的元素, *pmax是动态变化的
     const auto [pmin, pmax] = minmax_element(nums.begin(), nums.end());
-    int min = *pmin, max = *pmax;
+    const int min = *pmin, max = *pmax;
     vector<int> bucket(max - min + 1, 0);
-    for (int num : nums) {
+    for (int num : nums)
         bucket[num - min]++;
-    }
     int j = 0;
-    for (int i = min; i <= max; i++) {
+    for (int i = min; i <= max; i++)
+    {
         int cnt = bucket[i - min];
-        while (cnt-- > 0) {
+        while (cnt-- > 0)
+        {
             nums[j++] = i;
         }
     }
@@ -340,14 +341,15 @@ void bucketSort(vector<int> &nums)
     // 创建桶
     vector<vector<int>> buckets(bucketCount, vector<int>());
     // 将元素映射到桶中
-    for (int num : nums) {
+    for (int num : nums)
         buckets[(num - min) / bucketSize].push_back(num);
-    }
     // 对每一个桶中的元素进行排序，然后取出桶中的元素
-    for (int i = 0, j = 0; i < bucketCount; i++) {
+    for (int i = 0, j = 0; i < bucketCount; i++)
+    {
         auto bucket = buckets[i];
         sort(bucket.begin(), bucket.end());
-        for (int v : bucket) {
+        for (int v : bucket)
+        {
             nums[j++] = v;
         }
     }
@@ -363,33 +365,28 @@ void bucketSort(vector<int> &nums)
 假如待排序序列可以分为d个关键字，则基数排序的时间复杂度将是O(d * 2n)，d远远小于n，因此时间复杂度还是线性级别。
 空间复杂度为O(n+k),其中k为桶的数量。
 
-```java
-public static void radixSort(int[] array) {
-    //找到最大元素
-    int max = findMaxValue(array);
-    //找到最高位
-    int maxDigit = 0;
-    while (max > 0) {
-        max /= 10;
-        maxDigit++;
-    }
-    //对每一位进行计数排序
-    LinkedList[] bucket = new LinkedList[10];
-    for (int i = 0; i < bucket.length; i++) {
-        bucket[i] = new LinkedList();
-    }
-    for (int digit = 0, dev = 1, mod = 10; digit < maxDigit; digit++, mod *= 10, dev *= 10) {
-        //将元素放到对应的桶中
-        for (int i = 0; i < array.length; i++) {
-            int bucketIndex = array[i] % mod / dev;
-            bucket[bucketIndex].offer(array[i]);
-        }
-        //再从桶中将元素恢复到数组里
-        int k = 0;
-        for (int i = 0; i < bucket.length; i++) {
-            LinkedList list = bucket[i];
-            while (!list.isEmpty()) {
-                array[k++] = (int) list.poll();
+```c++
+void radixSort(vector<int> &nums)
+{
+    // 找到最大元素，算出最大元素的十进制位个数
+    const int bucketCount = 10, max = *max_element(nums.begin(), nums.end());
+    int digitCount = 0;
+    for (int i = max; i > 0; i /= 10)
+        digitCount++;
+    // 从低位到高位，按位对数组执行基数排序
+    vector<vector<int>> buckets(bucketCount, vector<int>());
+    for (int digit = 0, div = 1, mod = 10; digit < digitCount; digit++, div *= 10, mod *= 10)
+    {
+        for (int num : nums)
+            buckets[num % mod / div].push_back(num);
+        for (int i = 0, j = 0; i < bucketCount; i++)
+        {
+            auto bucket = buckets[i];
+            sort(bucket.rbegin(), bucket.rend());
+            while (!bucket.empty())
+            {
+                nums[j++] = bucket.back();
+                bucket.pop_back();
             }
         }
     }

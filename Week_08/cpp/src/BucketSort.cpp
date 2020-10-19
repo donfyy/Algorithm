@@ -10,14 +10,15 @@ void bucketSort(vector<int> &nums)
     // 创建桶
     vector<vector<int>> buckets(bucketCount, vector<int>());
     // 将元素映射到桶中
-    for (int num : nums) {
+    for (int num : nums)
         buckets[(num - min) / bucketSize].push_back(num);
-    }
     // 对每一个桶中的元素进行排序，然后取出桶中的元素
-    for (int i = 0, j = 0; i < bucketCount; i++) {
+    for (int i = 0, j = 0; i < bucketCount; i++)
+    {
         auto bucket = buckets[i];
         sort(bucket.begin(), bucket.end());
-        for (int v : bucket) {
+        for (int v : bucket)
+        {
             nums[j++] = v;
         }
     }
