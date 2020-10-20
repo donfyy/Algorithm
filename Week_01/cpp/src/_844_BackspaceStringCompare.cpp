@@ -5,6 +5,7 @@ class Solution
 public:
     // 要学会逆向思考，正向做比较麻烦的时候可以尝试下逆向
     // O(m + n) O(1)
+    // 当前的字符是否被删掉只取决于后面的字符，而与前面的字符无关
     bool backspaceCompare(string S, string T)
     {
         // 从后向前比较, i, j分别指向S与T的最后一个字符
