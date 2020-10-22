@@ -104,6 +104,7 @@ def BFS(graph, start, end):
 - [模拟行走机器人](https://leetcode-cn.com/problems/walking-robot-simulation/description/)
 - [跳跃游戏](https://leetcode-cn.com/problems/jump-game/)
 - [跳跃游戏 II](https://leetcode-cn.com/problems/jump-game-ii/)
+- [划分字母区间](https://leetcode-cn.com/problems/partition-labels/)
 
 ### 参考链接
 
