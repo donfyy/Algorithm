@@ -17,6 +17,7 @@ public class DequeTest {
         System.out.println(Long.toUnsignedString(Integer.toUnsignedLong(-1)));
         System.out.println(Long.toBinaryString(-1L));
         System.out.println("你:" + "你".length());
+        System.out.println(~0 + ":" + Integer.toBinaryString(~0));
     }
 
     static void test1() {
