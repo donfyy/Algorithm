@@ -141,6 +141,7 @@
 - [秋叶收藏集](https://leetcode-cn.com/problems/UlBDOe/)
 - [树中距离之和](https://leetcode-cn.com/problems/sum-of-distances-in-tree/)
 - [分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum/)
+- [数组中的最长山脉](https://leetcode-cn.com/problems/longest-mountain-in-array/)
 
 
 ### 参考链接
