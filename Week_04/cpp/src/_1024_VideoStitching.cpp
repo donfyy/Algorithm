@@ -26,22 +26,25 @@ class UsingGreedy
 public:
     int videoStitching(vector<vector<int>> &clips, int T)
     {
-        vector<int> maxn(T);
+        // maxr[i] 表示以i为左端点的所有子区间中最远的右端点
+        // r 所有左端点不大于i的子区间中可以覆盖的最远的右端点
+        // pre 表示上一个被使用的子区间的结束位置
+        vector<int> maxr(T);
         for (const auto &it : clips)
         {
             if (it[0] < T)
-                maxn[it[0]] = max(maxn[it[0]], it[1]);
+                maxr[it[0]] = max(maxr[it[0]], it[1]);
         }
-        int last = 0, pre = 0, ret = 0;
+        int r = 0, pre = 0, ret = 0;
         for (int i = 0; i < T; i++)
         {
-            last = max(last, maxn[i]);
-            if (i == last)
+            r = max(r, maxr[i]);
+            if (r == i)
                 return -1;
             if (i == pre)
             {
                 ret++;
-                pre = last;
+                pre = r;
             }
         }
         return ret;
