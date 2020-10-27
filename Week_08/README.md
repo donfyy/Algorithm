@@ -412,3 +412,7 @@ void radixSort(vector<int> &nums)
 - [合并区间](https://leetcode-cn.com/problems/merge-intervals/)
 - [翻转对](https://leetcode-cn.com/problems/reverse-pairs/)
 - [计算右侧小于当前元素的个数](https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/)
+
+## 持续刷题
+
+- [有多少小于当前数字的数字](https://leetcode-cn.com/problems/how-many-numbers-are-smaller-than-the-current-number/)
