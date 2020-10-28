@@ -1,5 +1,5 @@
 class _1365_HowManyNumbersAreSmallerThanTheCurrentNumber_ {
-    class Solution {
+    class CountingSort {
         // O(N + K)  O(K)
         fun smallerNumbersThanCurrent(nums: IntArray): IntArray {
             val bucket = IntArray(101)
@@ -16,6 +16,24 @@ class _1365_HowManyNumbersAreSmallerThanTheCurrentNumber_ {
             val ret = IntArray(n)
             repeat(n) {
                 ret[it] = if (nums[it] == 0) 0 else bucket[nums[it] - 1]
+            }
+            return ret
+        }
+    }
+
+    class QuickSort {
+        // O(NlogN)  O(N)
+        fun smallerNumbersThanCurrent(nums: IntArray): IntArray {
+            // 复制nums，对复制后的nums排序
+            val sorted = nums.copyOf().sorted()
+            // 用map保存小于元素的元素数目
+            val cnt = hashMapOf<Int, Int>()
+            sorted.forEachIndexed { i, num -> cnt.putIfAbsent(num, i) }
+            // 按照元素在nums中的顺序返回小于数目数组
+            val n = nums.size
+            val ret = IntArray(n)
+            repeat (n) {
+                ret[it] = cnt[nums[it]]!!
             }
             return ret
         }
