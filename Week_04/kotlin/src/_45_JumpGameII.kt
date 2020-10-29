@@ -16,4 +16,20 @@ class _45_UsingReverseGreedy {
         }
         return step
     }
+
+    class Solution {
+        fun jump(nums: IntArray): Int {
+            var r = 0
+            var nextR = 0
+            var ret = 0
+            repeat(nums.lastIndex) {
+                nextR = maxOf(nextR, it + nums[it])
+                if (it == r) {
+                    ret++
+                    r = nextR
+                }
+            }
+            return ret
+        }
+    }
 }
