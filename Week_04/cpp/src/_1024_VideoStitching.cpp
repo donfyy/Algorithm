@@ -29,30 +29,30 @@ public:
         // 对于所有左端点相同的子区间，其右端点越远越有利。
         // 对于当前的位置i，每次选择能够覆盖i的所有子区间中右端点最远的那个子区间。
         // 所以要求出覆盖i的所有子区间的最远右端点。
-        // 这样就可以从0开始，每次选择覆盖当前位置的最远子区间
-        // maxr[i] 表示左端点小于等于i的所有子区间的最远右端点
-        // r 表示当前选择的子区间的右端点
-        // last 表示可以覆盖i的所有子区间中的最远右端点。
+        // 这样就可以从0开始，每次选择覆盖当前位置的最远子区间，就可以用最少的区间覆盖整个位置
+        // maxr[i] 记录覆盖i的所有子区间的最远右端点
+        // r 当前选择的子区间的最远右端点
+        // nextR 下一次选择的子区间的最远右端点
         vector<int> maxr(T);
-        for (const auto &it : clips)
+        for (const auto &clip : clips)
         {
-            if (it[0] < T)
+            if (clip[0] < T)
             {
-                maxr[it[0]] = max(maxr[it[0]], it[1]);
+                maxr[clip[0]] = max(maxr[clip[0]], clip[1]);
             }
         }
-        int r = 0, last = 0, ret = 0;
+        int r = 0, nextR = 0, ret = 0;
         for (int i = 0; i < T; i++)
         {
-            last = max(last, maxr[i]);
-            if (i == last)
+            nextR = max(nextR, maxr[i]);
+            if (i == nextR)
             {
                 return -1;
             }
             if (i == r)
             {
                 ret++;
-                r = last;
+                r = nextR;
             }
         }
         return ret;
