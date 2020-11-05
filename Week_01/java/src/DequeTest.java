@@ -18,6 +18,8 @@ public class DequeTest {
         System.out.println(Long.toBinaryString(-1L));
         System.out.println("你:" + "你".length());
         System.out.println(~0 + ":" + Integer.toBinaryString(~0));
+
+        System.out.println(~3);
     }
 
     static void test1() {
