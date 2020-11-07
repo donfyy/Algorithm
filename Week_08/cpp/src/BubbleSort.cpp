@@ -25,5 +25,11 @@ int main(int argc, char const *argv[])
         cout << nums[i] << ",";
     }
     cout << "]" << endl;
+    vector<int> t{0};
+    cout << "[";
+    for (auto &it : t) {
+        cout << it << ",";
+    }
+    cout << "]" << endl;
     return 0;
 }
