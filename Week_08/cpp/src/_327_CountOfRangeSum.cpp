@@ -4,6 +4,7 @@ class Solution
 {
 public:
     // O(nlogn) O(n)
+    // todo 数状数组，平衡二叉树等解法
     int countRangeSum(vector<int> &nums, int lower, int upper)
     {
         // 暴力法：使用两个指针i和j，枚举所有的区间[i, j]然后线性扫描该区间求和，时间复杂度O(n^3)
