@@ -1,5 +1,22 @@
 #include <vector>
 using namespace std;
+class UsingTwoPointersWithPatition
+{
+public:
+    vector<int> sortArrayByParity(vector<int> &A)
+    {
+        // 双指针
+        const int n = A.size();
+        for (int i = 0, j = -1; i < n; i++)
+        {
+            if (!(A[i] & 1))
+            {
+                swap(A[++j], A[i]);
+            }
+        }
+        return A;
+    }
+};
 class UsingTwoPointers
 {
 public:
