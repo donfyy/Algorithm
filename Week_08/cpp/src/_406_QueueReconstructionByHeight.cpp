@@ -30,3 +30,36 @@ public:
         return ret;
     }
 };
+class UsingSortAscending
+{
+public:
+    // 注意逆向思维的应用，若将所有的元素按照身高从小到大排序，则对于第i个元素来说
+    // 假设[0, i - 1]元素已经有序，并且因为[0, i - 1]个元素的身高都比第i个元素要低
+    // 因此我们预留ki个空位置用来存放身高大于等于hi的元素
+    // 这就是逆向思维，我昨天没想到，要想到这一点才行。
+    vector<vector<int>> reconstructQueue(vector<vector<int>> &people)
+    {
+        sort(people.begin(), people.end(), [](vector<int> &l, vector<int> &r) {
+            return l[0] == r[0] ? l[1] > r[1] : l[0] < r[0];
+        });
+
+        const int n = people.size();
+        vector<vector<int>> ret(n);
+        for (const auto &it : people)
+        {
+            int spaces = it[1] + 1;
+            for (int i = 0; i < n; i++)
+            {
+                if (ret[i].empty())
+                {
+                    spaces--;
+                    if (!spaces)
+                    {
+                        ret[i] = it;
+                    }
+                }
+            }
+        }
+        return ret;
+    }
+};
