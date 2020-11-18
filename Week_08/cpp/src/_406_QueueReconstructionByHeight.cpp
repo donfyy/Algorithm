@@ -16,6 +16,7 @@ public:
         sort(people.begin(), people.end(), [](vector<int> &u, vector<int> &v) {
             return u[0] > v[0] || (u[0] == v[0] && u[1] <= v[1]);
         });
+        // 因为第i个人前面要有ki个身高大于等于hi的人，所以我们将第i个人插入到位置ki
         const int n = people.size();
         vector<int> idx;
         vector<vector<int>> ret;
@@ -42,7 +43,7 @@ public:
         sort(people.begin(), people.end(), [](vector<int> &l, vector<int> &r) {
             return l[0] == r[0] ? l[1] > r[1] : l[0] < r[0];
         });
-
+        // 因为第i个人前面要有ki个身高大于等于hi的人，所以我们在第i个人前面预留ki个位置
         const int n = people.size();
         vector<vector<int>> ret(n);
         for (const auto &it : people)
