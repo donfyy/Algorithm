@@ -1,7 +1,12 @@
+import java.io.BufferedInputStream
+import java.io.FileInputStream
+
 class _1030_ {
     class Solution {
         fun allCellsDistOrder(R: Int, C: Int, r0: Int, c0: Int): Array<IntArray> {
             val ret = Array<IntArray>(R * C) { IntArray(2) }
+            val inputStream = BufferedInputStream(FileInputStream(""))
+            inputStream.use {  }
             for (i in 0 until R) {
                 for (j in 0 until C) {
                     ret[i * C + j][0] = i
