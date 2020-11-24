@@ -155,6 +155,7 @@ def BFS(graph, start, end):
 - [搜索二维矩阵](https://leetcode-cn.com/problems/search-a-2d-matrix/)
 - [寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/) 
 经常写成 m > l 而不是 m >= l 
+- [完全二叉树的节点个数](https://leetcode-cn.com/problems/count-complete-tree-nodes/)  
 
 ### 参考链接
 
