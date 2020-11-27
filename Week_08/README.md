@@ -414,6 +414,7 @@ void radixSort(vector<int> &nums)
 - [翻转对](https://leetcode-cn.com/problems/reverse-pairs/)
 - [区间和的个数](https://leetcode-cn.com/problems/count-of-range-sum/)
 - [计算右侧小于当前元素的个数](https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/)
+- [最大间距](https://leetcode-cn.com/problems/maximum-gap/) 基数排序和**桶排序**
 
 ## 持续刷题
 
