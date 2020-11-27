@@ -3,21 +3,25 @@
 using namespace std;
 int partition(vector<int> &nums, int start, int end)
 {
-    int pivot = end;
-    int j = start - 1;
-    for (int i = start; i < end; ++i) {
-        if (nums[i] < nums[pivot]) {
+    int pivot = end, j = start - 1;
+    for (int i = start; i < end; i++)
+    {
+        if (nums[i] < nums[pivot])
+        {
             swap(nums[i], nums[++j]);
         }
     }
-    swap(nums[++j], nums[pivot]);
+    swap(nums[end], nums[++j]);
     return j;
 }
-void quickSort(vector<int> &nums, int start, int end) {
-    if (start >= end) return;
-    int pivot = partition(nums, start, end);
-    partition(nums, start, pivot - 1);
-    partition(nums, pivot + 1, end);
+// O(logn) O(logn) 不稳定
+void quickSort(vector<int> &nums, int start, int end)
+{
+    if (start >= end)
+        return;
+    int pivotIdx = partition(nums, start, end);
+    quickSort(nums, start, pivotIdx - 1);
+    quickSort(nums, pivotIdx + 1, end);
 }
 int main(int argc, char const *argv[])
 {
