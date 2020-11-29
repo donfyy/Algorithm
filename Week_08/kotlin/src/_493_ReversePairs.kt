@@ -19,7 +19,7 @@ class _493_ {
                     cache[l++] = nums[i++];
                 }
                 while (k <= right) cache[l++] = nums[k++];
-                System.arraycopy(cache, left, nums, left, right - left + 1);
+                cache.copyInto(nums, left, left, right + 1)
                 return ret
             }
             return merge(0, n - 1);
