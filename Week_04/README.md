@@ -156,6 +156,8 @@ def BFS(graph, start, end):
 - [寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/) 
 经常写成 m > l 而不是 m >= l 
 - [完全二叉树的节点个数](https://leetcode-cn.com/problems/count-complete-tree-nodes/)  
+- [在排序数组中查找元素的第一个和最后一个位置](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)  
+查找区间的左端点和右端点或者是查找第一个大于等于target的数或第一个大于target的数
 
 ### 参考链接
 
