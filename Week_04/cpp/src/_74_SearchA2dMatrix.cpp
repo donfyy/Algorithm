@@ -22,6 +22,56 @@ public:
         return false;
     }
 };
+class UsingBinarySearch2
+{
+public:
+    bool searchMatrix(vector<vector<int>> &matrix, int target)
+    {
+        if (matrix.empty())
+            return false;
+        int row = matrix.size(), col = matrix[0].size();
+        int l = 0, r = row * col;
+        // 查找第一个大于target的数
+        while (l < r)
+        {
+            int m = l + ((r - l) >> 1);
+            if (target < matrix[m / col][m % col])
+            {
+                r = m;
+            }
+            else
+            {
+                l = m + 1;
+            }
+        }
+        return l > 0 && matrix[(l - 1) / col][(l - 1) % col] == target;
+    }
+};
+class UsingBinarySearch3
+{
+public:
+    bool searchMatrix(vector<vector<int>> &matrix, int target)
+    {
+        if (matrix.empty() || matrix[0].empty())
+            return false;
+        int row = matrix.size(), col = matrix[0].size();
+        int l = 0, r = row * col - 1;
+        // 查找第一个大于等于target的数
+        while (l < r)
+        {
+            int m = l + ((r - l) >> 1);
+            if (target <= matrix[m / col][m % col])
+            {
+                r = m;
+            }
+            else
+            {
+                l = m + 1;
+            }
+        }
+        return matrix[l / col][l % col] == target;
+    }
+};
 class UsingExclusion
 {
 public:

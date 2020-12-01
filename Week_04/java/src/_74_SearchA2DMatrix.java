@@ -48,7 +48,7 @@ class _74_SearchA2DMatrix {
         int n = matrix[0].length;
         int l = 0, h = matrix.length * n - 1;
         while (l < h) {
-            int m = l + ((h - l) >>> 1);
+            int m = ((h + l) >>> 1);
             int val = matrix[m / n][m % n];
             if (val < target) {
                 l = m + 1;
