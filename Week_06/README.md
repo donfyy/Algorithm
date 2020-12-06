@@ -142,6 +142,7 @@
 - [树中距离之和](https://leetcode-cn.com/problems/sum-of-distances-in-tree/)
 - [分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum/)
 - [数组中的最长山脉](https://leetcode-cn.com/problems/longest-mountain-in-array/)
+- [计数质数](https://leetcode-cn.com/problems/count-primes/) (埃士筛：从事实出发找到做法，在论证做法的正确性，再优化做法，妙)
 
 
 ### 参考链接
