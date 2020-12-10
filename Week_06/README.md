@@ -143,6 +143,7 @@
 - [分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum/)
 - [数组中的最长山脉](https://leetcode-cn.com/problems/longest-mountain-in-array/)
 - [计数质数](https://leetcode-cn.com/problems/count-primes/) (埃士筛：从事实出发找到做法，在论证做法的正确性，再优化做法，妙)
+- [加油站](https://leetcode-cn.com/problems/gas-station/) (从加油站x出发，最后可以到达的加油站是y，则\[x, y\]中任意一个加油站出发都无法到达y+1，妙)
 
 
 ### 参考链接
