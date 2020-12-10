@@ -12,6 +12,11 @@
 - [ ] [背包问题](https://leetcode-cn.com/problems/combination-sum-iv/solution/xi-wang-yong-yi-chong-gui-lu-gao-ding-bei-bao-wen-/)
 - [ ] [树中距离之和](https://leetcode-cn.com/problems/sum-of-distances-in-tree/)
 - [ ] [分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum/)
+- [ ] [拼接最大数](https://leetcode-cn.com/problems/create-maximum-number/)
+- [ ] [四数相加 II](https://leetcode-cn.com/problems/4sum-ii/)
+- [ ] [分割数组为连续子序列](https://leetcode-cn.com/problems/split-array-into-consecutive-subsequences/)
+- [ ] [任务调度器](https://leetcode-cn.com/problems/task-scheduler/)
+- [ ] [翻转矩阵后的得分](https://leetcode-cn.com/problems/score-after-flipping-matrix/)
 
 ## 简单但容易出错的题目
 
