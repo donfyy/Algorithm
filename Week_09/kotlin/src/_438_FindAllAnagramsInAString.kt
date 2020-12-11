@@ -30,7 +30,7 @@ class _FindAllAnagramsInAString_ {
                     // 将字符出现的次数-1
                     freq[c] = freq[c]!! - 1
                     // 如果字符出现的次数为0，说明[left, right]中c出现的次数和c在p中出现的次数相同
-                    if (freq[c]!! == 0) count--
+                    if (freq[c] == 0) count--
                 }
                 right++
                 // 如果p中每个字符都在[left, right]中出现了
@@ -44,7 +44,7 @@ class _FindAllAnagramsInAString_ {
                         // 如果当前c在[left, right]中出现的次数和c在p中出现的次数相同，
                         // 则p中的所有字符不会出现在[left, right]中，因此移动right
                         // 那么将c出现的次数增加
-                        if (freq[c]!! == 0) count++
+                        if (freq[c] == 0) count++
                         freq[c] = freq[c]!! + 1
                     }
                     left++
