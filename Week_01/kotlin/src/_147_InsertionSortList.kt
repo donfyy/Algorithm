@@ -5,7 +5,7 @@ class _147_InsertionSortList_ {
             // 假设l1,l2...li-1是有序的，由于链表是单向的，我们需要从前向后扫描[1, i - 1]找到待插入位置的前一个节点
             // 因此为了方便我们添加一个dummy节点
             head?.next?:return head
-            val dummy = ListNode(0).apply { this.next = head }
+            val dummy = ListNode(0).apply { next = head }
             var tail = head
             var curr = head.next
             while (curr != null) {

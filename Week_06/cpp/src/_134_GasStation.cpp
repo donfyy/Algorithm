@@ -30,3 +30,24 @@ public:
         return -1;
     }
 };
+class UsingGraph
+{
+public:
+    // 画图理解
+    int canCompleteCircuit(vector<int> &gas, vector<int> &cost)
+    {
+        // 从总油量剩余值最小的点出发，并且总油量剩余值大于等于0，即可环绕一周
+        const auto n = gas.size();
+        int spare = 0, minSpare = INT_MAX, idx;
+        for (int i = 0; i < n; i++)
+        {
+            spare += gas[i] - cost[i];
+            if (spare < minSpare)
+            {
+                minSpare = spare;
+                idx = i;
+            }
+        }
+        return spare < 0 ? -1 : (idx + 1) % n;
+    }
+};

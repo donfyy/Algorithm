@@ -17,6 +17,7 @@
 - [ ] [分割数组为连续子序列](https://leetcode-cn.com/problems/split-array-into-consecutive-subsequences/)
 - [ ] [任务调度器](https://leetcode-cn.com/problems/task-scheduler/)
 - [ ] [翻转矩阵后的得分](https://leetcode-cn.com/problems/score-after-flipping-matrix/)
+- [ ] [摆动序列](https://leetcode-cn.com/problems/wiggle-subsequence/)
 
 ## 简单但容易出错的题目
 
