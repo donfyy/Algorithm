@@ -380,7 +380,7 @@ void radixSort(vector<int> &nums)
             cnt[i] += cnt[i - 1];
         }
         for (int i = n - 1; i >= 0; i--) {
-            buf[cnt[nums[i] / div % 10]-- - 1] = nums[i];
+            buf[--cnt[nums[i] / div % 10]] = nums[i];
         }
         copy(buf.begin(), buf.end(), nums.begin());
     }
@@ -410,6 +410,7 @@ void radixSort(vector<int> &nums)
 - [计算右侧小于当前元素的个数](https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/)
 - [排序链表](https://leetcode-cn.com/problems/sort-list/) 自下而上的循环实现的归并排序
 - [最大间距](https://leetcode-cn.com/problems/maximum-gap/) 基数排序和**桶排序**
+- [距离顺序排列矩阵单元格](https://leetcode-cn.com/problems/matrix-cells-in-distance-order/) **桶排序**和**几何法**
 
 ## 持续刷题
 

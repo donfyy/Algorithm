@@ -23,7 +23,7 @@ public:
             }
             for (int i = n - 1; i >= 0; i--)
             {
-                buf[cnt[(nums[i] / div) % 10]-- - 1] = nums[i];
+                buf[--cnt[(nums[i] / div) % 10]] = nums[i];
             }
             copy(buf.begin(), buf.end(), nums.begin());
         }
