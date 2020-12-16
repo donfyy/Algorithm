@@ -8,6 +8,7 @@
 - [宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/)
 - [字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
 - [**字符串转换整数 (atoi)**](https://leetcode-cn.com/problems/string-to-integer-atoi/)
+- [**剑指 Offer 20. 表示数值的字符串**](https://leetcode-cn.com/problems/biao-shi-shu-zhi-de-zi-fu-chuan-lcof/)
 
 ### 字符串操作问题
 
