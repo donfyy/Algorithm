@@ -9,10 +9,11 @@ class _387_FirstUniqueCharacterInAString_ {
             return -1
         }
     }
+
     class UsingHash2 {
         fun firstUniqChar(s: String): Int {
             val freq = IntArray(26) { -1 }
-            s.forEachIndexed {idx, it ->
+            s.forEachIndexed { idx, it ->
                 if (freq[it - 'a'] == -1) {
                     freq[it - 'a'] = idx
                 } else {
@@ -28,16 +29,18 @@ class _387_FirstUniqueCharacterInAString_ {
             return if (ret == s.length) -1 else ret
         }
     }
+
     class UsingHashAndQueue {
         fun firstUniqChar(s: String): Int {
-            val freq = IntArray(26) { -1 }
+            val freq = IntArray(26)
             val q = LinkedList<Pair<Char, Int>>()
-            s.forEachIndexed {idx, it ->
-                freq[it - 'a'] = if(freq[it - 'a'] == -1) idx else -2
-                q.offer(Pair(it, idx))
-                while (q.isNotEmpty()) {
-                    if (freq[q.peek().first - 'a'] > -1) break
-                    q.poll()
+            s.forEachIndexed { idx, it ->
+                if (++freq[it - 'a'] == 1) {
+                    q.offer(Pair(it, idx))
+                } else {
+                    while (q.isNotEmpty() && freq[q.peek().first - 'a'] > 1) {
+                        q.poll()
+                    }
                 }
             }
             return if (q.isEmpty()) -1 else q.peek().second

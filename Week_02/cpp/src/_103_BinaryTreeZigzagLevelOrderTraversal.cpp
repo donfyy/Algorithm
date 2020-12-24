@@ -1,4 +1,9 @@
+#include <stack>
+#include <queue>
+#include <deque>
 #include <vector>
+#include <unistd.h>
+
 using namespace std;
 struct TreeNode
 {
@@ -99,3 +104,9 @@ public:
         return ret;
     }
 };
+int main(int argc, char const *argv[])
+{
+    char *msg = "hi\n";
+    write(1, msg, strlen(msg));
+    return 0;
+}
