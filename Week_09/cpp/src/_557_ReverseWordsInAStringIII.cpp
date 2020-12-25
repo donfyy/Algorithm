@@ -19,3 +19,26 @@ public:
         return s;
     }
 };
+class Solution1
+{
+public:
+    string reverseWords(string s)
+    {
+        int i = 0, n = s.size();
+        auto reverse = [&](int l, int r) {
+            while (l < r)
+            {
+                swap(s[l++], s[r--]);
+            }
+        };
+        while (i < n)
+        {
+            int j = i;
+            while (s[j] && s[j] != ' ')
+                j++;
+            reverse(i, j - 1);
+            i = j + 1;
+        }
+        return s;
+    }
+};
