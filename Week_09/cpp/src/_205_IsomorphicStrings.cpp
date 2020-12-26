@@ -33,17 +33,17 @@ public:
 class Solution2
 {
 public:
+    // 将字符映射到数字
     bool isIsomorphic(string s, string t)
     {
         if (s.size() != t.size())
             return false;
-        int lastPosS[256] = {0}, lastPosT[256] = {0}, n = s.size();
-        for (int i = 0; i < n; i++)
+        int ms[256] = {0}, mt[256] = {0};
+        for (int i = 0; i < s.size(); i++)
         {
-            if (lastPosS[s[i]] != lastPosT[t[i]])
+            if (ms[s[i]] != mt[t[i]])
                 return false;
-            lastPosS[s[i]] = i + 1;
-            lastPosT[t[i]] = i + 1;
+            ms[s[i]] = mt[t[i]] = i + 1;
         }
         return true;
     }
