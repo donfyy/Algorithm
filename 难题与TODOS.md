@@ -19,6 +19,7 @@
 - [ ] [翻转矩阵后的得分](https://leetcode-cn.com/problems/score-after-flipping-matrix/)
 - [ ] [摆动序列](https://leetcode-cn.com/problems/wiggle-subsequence/)
 - [ ] [单调递增的数字](https://leetcode-cn.com/problems/monotone-increasing-digits/)
+- [ ] [按要求补齐数组](https://leetcode-cn.com/problems/patching-array/)
 
 ## 简单但容易出错的题目
 
