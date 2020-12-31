@@ -8,6 +8,15 @@ public class Test {
 //        testTreeMap();
 //        testThread1();
 //        testThread2();
+//        testThread3();
+        System.out.println(Integer.toBinaryString(Integer.MIN_VALUE));
+        System.out.println(-1073741824 + ":" + Integer.toBinaryString(-1073741824));
+        int v = -1073741824 + Integer.MIN_VALUE;
+        System.out.println(" " + v + ":" + Integer.toBinaryString(v));
+        System.out.println(Integer.parseInt("-01000000000000000000000000000000", 2));
+    }
+
+    private static void testThread3() {
         Object lock = new Object();
         new Thread(() -> {
             synchronized (lock) {
