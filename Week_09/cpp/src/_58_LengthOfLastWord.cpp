@@ -6,8 +6,7 @@ public:
     int lengthOfLastWord(string s)
     {
         // 该想法来自于区间和
-        const int n = s.size();
-        int r = n - 1;
+        int r = s.size() - 1;
         while (r >= 0 && s[r] == ' ')
             r--;
         int l = r;
