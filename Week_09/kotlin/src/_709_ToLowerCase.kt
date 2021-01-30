@@ -1,10 +1,9 @@
-fun toLowerCase(str: String): String {
-    if (str.isEmpty()) return str
-    val array = str.toCharArray()
-    val offset = 'a' - 'A'
-    for (i in array.indices) {
-        val c = array[i]
-        if (c in 'A'..'Z') array[i] = (offset + array[i].toInt()).toChar()
+class _709_ {
+    fun toLowerCase(str: String): String {
+        val ret = str.toCharArray()
+        for (i in ret.indices) {
+            ret[i] = (ret[i].toInt() or 32).toChar()
+        }
+        return String(ret)
     }
-    return String(array)
 }
