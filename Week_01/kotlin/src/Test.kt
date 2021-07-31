@@ -43,4 +43,5 @@ fun main() {
 //    }
 
     println(60L/8L)
+    println(0.1 + 0.2 == 0.3)
 }

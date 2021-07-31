@@ -20,6 +20,9 @@ public class DequeTest {
         System.out.println(~0 + ":" + Integer.toBinaryString(~0));
 
         System.out.println(~3);
+        System.out.println(0.1 + 0.2);
+        System.out.println(0.1 + 0.2 == 0.3);
+        System.out.println(0.1 + 0.2 - 0.3 <  0.0001);
     }
 
     static void test1() {
