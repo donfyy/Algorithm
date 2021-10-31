@@ -1,0 +1,38 @@
+{
+  "app_id": "cli_9c21a4767c305107",
+  "app_name": "打卡",
+  "app_type": "native_app",
+  "app_version": "3.9.0",
+  "biz_data": {
+    "appid": "cli_9c21a4767c305107",
+    "biz_trace_id": "1-r7pimth6-7nsh5jp4-pblzn9jm-mdgmlh6j-6d421bjl",
+    "err": {
+      "errCode": 10052,
+      "errMsg": "startLocalFaceVerify:fail bitmap is invalid"
+    },
+    "errorCode": 10052,
+    "ispc": false,
+    "larkVersionNumber": 40405,
+    "method": "startLocalFaceVerify",
+    "punchIndex": 0,
+    "punchType": "off",
+    "punchVersionNumber": 30445,
+    "timeCost": 65,
+    "type": "fail"
+  },
+  "biz_event_name": "op_biz_event",
+  "common_data": {},
+  "js_grey_hash": null,
+  "js_version": "1.9.47.94",
+  "monitor_code": 10006,
+  "monitor_domain": "attendance.offline.business",
+  "monitor_id": "1-attendance.offline.business-10006",
+  "monitor_level": 2,
+  "monitor_message": "offline_face_verify",
+  "monitor_tags": "",
+  "scene": "1001",
+  "tenant_id": "a42f921f3f16c804c602230c1d6e5b0f9468dc84",
+  "time": 1627802089723,
+  "trace_id": "1-juzlp5vs-xzlybz4h",
+  "user_id": "fd801942845879677a052f921b01ab0822da647e"
+}
