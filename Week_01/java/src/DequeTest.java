@@ -1,8 +1,14 @@
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 
 public class DequeTest {
+    static class A<T> {
+
+    }
     public static void main(String[] args) {
+        A<String>[] array = null;
+        array = new ArrayList<String>().toArray(array);
         test1();
         System.out.println("------------------------------------------------");
         test2();
