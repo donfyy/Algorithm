@@ -1,14 +1,43 @@
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DequeTest {
     static class A<T> {
 
+        private T t;
+
+        public T getT() {
+            return t;
+        }
+
+        public void setT(T t) {
+            this.t = t;
+        }
     }
+
+    static class E1{}
+    static class E2 extends E1 {}
     public static void main(String[] args) {
-        A<String>[] array = null;
-        array = new ArrayList<String>().toArray(array);
+        A<? extends E1> a1 = new A<>();
+        E1 t = a1.getT();
+//        a1.setT(); x 因为不知道传入的对象是不是E1的子类
+        // 有上界的范型类型不能写入对象，是因为不知道要写入的对象是什么类型，这些对象
+        // 不能够被安全的转换成目标类型，但是对于有下界的范型类型可以写入对象，因为可供写入的对象都是
+        // 下界或者下界的对象，这些对象可以被安全的转换成目标对象
+        A<? super E1> a2 = new A<>();
+        a2.setT(new E1());
+        a2.setT(new E2());
+
+
+        synchronized (a1) {
+            System.out.println("i");
+        }
+        ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
+        System.out.println(map.putIfAbsent("a", "b"));
+
+        System.out.println("------------------------------------------------");
+
         test1();
         System.out.println("------------------------------------------------");
         test2();
