@@ -100,7 +100,9 @@ class _144_BinaryTreePreorderTraversal {
         // 时间:O(n) 空间:O(n)，每个节点会被入栈两次，且增加了额外的空间开销保存了null
         // 该方法是Iterative1的通用版本
         public List<Integer> preorderTraversal(TreeNode root) {
+
             List<Integer> ret = new ArrayList<>();
+
             LinkedList<TreeNode> stack = new LinkedList<>();
             if (root != null) stack.push(root);
             while (!stack.isEmpty()) {
